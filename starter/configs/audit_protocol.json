@@ -1,0 +1,55 @@
+{
+  "version": "1.1-calibrated",
+  "near_duplicate_cosine_threshold": 0.92,
+  "shortcut_warning_accuracy": 0.70,
+  "max_impact_examples": 30,
+  "strict_submission_min_rows": 35,
+  "strict_submission_min_issue_types": 6,
+  "strict_high_confidence_max_fraction": 0.55,
+  "adjudication_categories": [
+    "should_fix",
+    "keep_but_flag",
+    "ambiguous_policy_case",
+    "false_positive_audit_finding"
+  ],
+  "id_columns": {
+    "train_prefix": "T",
+    "heldout_prefix": "H"
+  },
+  "issue_types": [
+    "exact_duplicate",
+    "near_duplicate",
+    "leakage",
+    "label_error",
+    "shortcut",
+    "ambiguous"
+  ],
+  "confidence_values": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "suspicious_examples_schema": [
+    "id",
+    "split",
+    "issue_type",
+    "rank",
+    "confidence",
+    "evidence_1",
+    "evidence_2",
+    "recommended_action",
+    "short_explanation"
+  ],
+  "split_values": [
+    "train",
+    "heldout"
+  ],
+  "minimum_definitions": {
+    "exact_duplicate": "Normalized text strings are identical after lowercasing and whitespace collapse.",
+    "near_duplicate": "TF-IDF cosine similarity is at least near_duplicate_cosine_threshold and the examples are not exact duplicates.",
+    "leakage": "A held-out example is exact or near-duplicate of a training example, or metadata directly exposes the label or split.",
+    "label_error": "At least two independent signals disagree with the assigned label.",
+    "shortcut": "A shallow model using only derived text or row-order features reaches shortcut_warning_accuracy or explains many errors.",
+    "ambiguous": "The example plausibly admits more than one label under the annotation guideline."
+  }
+}
