@@ -1,0 +1,21 @@
+{
+  "total_rows": 5574,
+  "train_rows": 4460,
+  "heldout_rows": 1114,
+  "unique_ids": 5574,
+  "unique_row_numbers": 5574,
+  "empty_text_rows": 0,
+  "labels": [
+    "ham",
+    "spam"
+  ],
+  "splits": [
+    "heldout",
+    "train"
+  ],
+  "train_prefix_errors": 0,
+  "heldout_prefix_errors": 0,
+  "normalized_unique_texts": 5159,
+  "raw_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d",
+  "decoded_encoding": "utf-8"
+}

@@ -1,0 +1,193 @@
+{
+  "review_method": "AI-assisted evidence pass plus a separate policy pass; no independent human reviewer is claimed",
+  "label_errors": [
+    {
+      "id": "T2378",
+      "proposed_label": "ham",
+      "confidence": "high",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "A standalone observational driving joke contains no solicitation, charge, contact instruction, or commercial intent; both OOF models and ham neighbours oppose the spam label."
+    },
+    {
+      "id": "T0059",
+      "proposed_label": "ham",
+      "confidence": "high",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "The Divorce Barbie line is a self-contained joke with no spam action; both OOF text models strongly predict ham."
+    },
+    {
+      "id": "T2232",
+      "proposed_label": "ham",
+      "confidence": "high",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "The child-versus-teenager line is a conversational joke with no commercial or contact mechanism; both OOF models strongly predict ham."
+    },
+    {
+      "id": "T4358",
+      "proposed_label": "ham",
+      "confidence": "high",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "The stolen-toilet line is a one-line joke rather than a solicitation; both OOF models strongly oppose the spam label."
+    },
+    {
+      "id": "T1149",
+      "proposed_label": "ham",
+      "confidence": "high",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "The Arsenal dartboard line is a joke with no transaction details or response route; both OOF models strongly predict ham."
+    },
+    {
+      "id": "T1798",
+      "proposed_label": "ham",
+      "confidence": "medium",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "The sender warns the recipient about a scam and says not to respond; the spam-like terms are quoted as safety context, and both OOF models predict ham."
+    },
+    {
+      "id": "T4296",
+      "proposed_label": "ham",
+      "confidence": "medium",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "The message asks whether received dating texts are connected to a prior action; it discusses spam rather than soliciting the recipient, and both OOF models predict ham."
+    },
+    {
+      "id": "T3272",
+      "proposed_label": "ham",
+      "confidence": "medium",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "This is a named personal debt-collection update thanking the recipient for information, not an offer; both OOF models strongly predict ham."
+    },
+    {
+      "id": "H0143",
+      "proposed_label": "ham",
+      "confidence": "high",
+      "decision": "keep_but_flag",
+      "action": "do_not_change_heldout_label",
+      "reason": "The tattoo line is a standalone joke without solicitation; both trained models strongly predict ham, but held-out labels remain untouched."
+    },
+    {
+      "id": "H0896",
+      "proposed_label": "ham",
+      "confidence": "medium",
+      "decision": "keep_but_flag",
+      "action": "do_not_change_heldout_label",
+      "reason": "The wording reads as a recipient asking what to do after a winning-number message rather than originating the promotion; both models predict ham."
+    },
+    {
+      "id": "T3791",
+      "proposed_label": "spam",
+      "confidence": "high",
+      "decision": "should_fix",
+      "action": "apply_training_label_overlay",
+      "reason": "An unsolicited contact-platform invitation promotes free SMS and supplies an opt-out command; both OOF models predict spam."
+    }
+  ],
+  "ambiguous": [
+    {
+      "id": "T2139",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_adult_chat_policy",
+      "reason": "The message could be personal flirting or an unsolicited adult-chat lure; no explicit price or service identifier resolves the sender relationship."
+    },
+    {
+      "id": "T2710",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_premium_number_policy",
+      "reason": "The text resembles a personal missed-call follow-up but includes a 070 number often used in premium-rate lures; sender context is unavailable."
+    },
+    {
+      "id": "T0702",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_recruitment_policy",
+      "reason": "Product-trial recruitment requests address and date of birth, but could be an expected research invitation or unsolicited promotion."
+    },
+    {
+      "id": "T3981",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_charity_campaign_policy",
+      "reason": "A charity donation call-to-action is promotional and billable but socially legitimate; the corpus policy does not state whether opt-in charity campaigns count as spam."
+    },
+    {
+      "id": "T2847",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_membership_notice_policy",
+      "reason": "A club ticket-sale notice may be expected by members or unsolicited commercial advertising; relationship context is missing."
+    },
+    {
+      "id": "T1020",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_recruitment_followup_policy",
+      "reason": "A job-description delivery notice may be an expected recruiter follow-up, while the generic contact wording resembles bulk recruitment messaging."
+    },
+    {
+      "id": "H0949",
+      "confidence": "medium",
+      "decision": "ambiguous_policy_case",
+      "action": "clarify_social_invitation_policy",
+      "reason": "A contact-list invitation advertises a free-SMS website but may be generated by a known contact; consent and sender context are unavailable."
+    },
+    {
+      "id": "H0935",
+      "confidence": "low",
+      "decision": "false_positive_audit_finding",
+      "action": "keep_original_label",
+      "reason": "The short statement about liking a mobile triggered model uncertainty but is plainly compatible with ordinary ham; uncertainty is not semantic ambiguity."
+    }
+  ],
+  "shortcut_examples": [
+    {
+      "id": "H0946",
+      "confidence": "high",
+      "reason": "The shallow model predicts spam at 0.991 because of price and digits, while the full text model predicts ham; monetary cues cause a clear false positive."
+    },
+    {
+      "id": "H0491",
+      "confidence": "medium",
+      "reason": "Recruitment language plus contact details produces a 0.900 shallow spam score although the public label and text model are ham."
+    },
+    {
+      "id": "H0044",
+      "confidence": "high",
+      "reason": "The shallow model misses a ringtone-club solicitation because it lacks the usual numeric cues, while the full text model predicts spam."
+    },
+    {
+      "id": "H0891",
+      "confidence": "high",
+      "reason": "A mobile-club offer is a shallow-model false negative, showing that contact/digit rules do not cover all spam templates."
+    },
+    {
+      "id": "H0287",
+      "confidence": "high",
+      "reason": "A premium-rate adult-chat lure is detected almost entirely by phone, price, and contact markers while the full text model misses it."
+    },
+    {
+      "id": "H0318",
+      "confidence": "high",
+      "reason": "Premium-price and reply markers drive the shallow spam probability to approximately 1.0 even though the text model is below threshold."
+    },
+    {
+      "id": "H0949",
+      "confidence": "medium",
+      "reason": "URL and free-SMS language push the shallow model toward spam on a public ham label, exposing a policy-sensitive shortcut."
+    },
+    {
+      "id": "H0896",
+      "confidence": "medium",
+      "reason": "A spam-labelled recipient reply has almost no shallow spam markers, demonstrating how surface cues interact with likely label noise."
+    }
+  ]
+}

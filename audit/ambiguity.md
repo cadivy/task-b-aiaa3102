@@ -1,82 +1,53 @@
 # Ambiguity and Annotation-Policy Audit
 
-## Status
+## Definition
 
-**V1 method specification — manual review results are pending.**
+Ambiguity is reserved for messages where both ham and spam remain reasonable under missing consent, sender relationship or campaign context. It is not a synonym for low model confidence. Candidate retrieval used model disagreement, near-boundary probability and mixed-label neighbours; the final decision used a separate policy reading.
 
-## Audit question
+## Findings
 
-Which messages plausibly admit both `ham` and `spam` under a reasonable annotation guideline, and how does this policy uncertainty limit the interpretation of model errors and maximum attainable score?
+Eight ambiguity claims appear in the ranked audit: seven medium-confidence policy cases and one low-confidence rejected candidate.
 
-## Ambiguity is not label error
+| ID | Public label | Decision | Policy boundary |
+|---|---|---|---|
+| T2139 | spam | Ambiguous | Personal flirtation versus adult-chat lure |
+| T2710 | spam | Ambiguous | Personal missed-call follow-up versus premium-number lure |
+| T0702 | spam | Ambiguous | Expected research recruitment versus unsolicited promotion |
+| T3981 | spam | Ambiguous | Charity fundraising versus billable promotion |
+| T2847 | spam | Ambiguous | Expected club notice versus ticket advertising |
+| T1020 | ham | Ambiguous | Recruiter follow-up versus bulk recruitment message |
+| H0949 | ham | Ambiguous | Known-contact social invitation versus website promotion |
+| H0935 | ham | False positive | Ordinary statement; model uncertainty only |
 
-The distinction used in this project is:
+`H0935` (“I liked the new mobile”) is deliberately retained as a false-positive audit finding. Its word and character probabilities straddle 0.5, but the content is ordinary ham. This demonstrates that predictive uncertainty is neither label error nor semantic ambiguity by itself.
 
-- **Likely label error:** one label is clearly better supported after applying the policy and available context.
-- **Ambiguous example:** two labels remain reasonable because the policy or message context is insufficient.
-- **Ordinary model error:** the label is reasonable and the model simply failed.
-- **False-positive audit finding:** initial signals suggested ambiguity, but review found a clear interpretation.
+## Effect on score interpretation
 
-## Candidate sources
+The word baseline makes ten held-out errors. Two errors (`H0143` and `H0896`) are separately judged likely public-label errors, while other false negatives such as paid chat and quiz messages remain defensible spam. If the two likely label-policy errors are treated as unresolved rather than model failures, the file-level error count changes from 10 to 8, corresponding to a sensitivity accuracy of 99.28% rather than 99.10%.
 
-- word and character models strongly disagree;
-- prediction probabilities are persistently near the decision boundary;
-- nearest semantic neighbors have mixed labels;
-- short or context-dependent messages;
-- service notifications, subscriptions, relationship-dependent promotions or opt-in messages;
-- human reviewers independently disagree.
+This 99.28% value is not a corrected official score. It is a boundary analysis showing that two examples account for 20% of the baseline's apparent held-out errors. The official public-label metric remains 99.10%.
 
-Low model confidence alone does not establish ambiguity.
+## Recommended policy clarification
 
-## Review rubric
+A future annotation guide should explicitly state how to handle:
 
-Reviewers answer the following without seeing each other’s decision:
+- opted-in service and club notifications;
+- charity and socially beneficial campaigns;
+- recruitment or product-trial invitations;
+- messages that quote, discuss or warn about spam;
+- personal-sounding messages containing premium-rate numbers;
+- automated contact-list and social-platform invitations.
 
-1. Is the message clearly unsolicited commercial or deceptive content?
-2. Could it plausibly come from an expected personal or service relationship?
-3. Does the classification depend on unavailable sender/context information?
-4. Does the working annotation policy resolve the case?
-5. Would two careful annotators reasonably choose different labels?
+Where consent or sender context cannot be recovered, `uncertain` or a second-stage policy label would be more honest than forcing every message into ham/spam.
 
-## Cases to document
+## Review limitation
 
-The final version should include:
+The evidence and policy passes were performed in an AI-assisted workflow and logged as such. No fabricated inter-annotator agreement or Cohen's kappa is reported. Independent human verification would strengthen these policy judgments but is not falsely claimed in this repository.
 
-- at least one high-quality `ambiguous_policy_case`;
-- at least one `keep_but_flag` example;
-- at least one candidate reclassified as likely label error;
-- at least two rejected ambiguity candidates;
-- a short description of which policy clarification would resolve each genuine boundary case.
+## Reproducible evidence
 
-## Result table to complete
-
-| ID | Current label | Reviewer 1 | Reviewer 2 | Missing context or policy boundary | Final decision | Confidence |
-|---|---|---|---|---|---|---|
-| TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-
-## Score-ceiling analysis
-
-The project will not claim an exact irreducible-error rate from a small manual sample. Instead it will report:
-
-- number of reviewed candidates;
-- number and percentage judged genuinely ambiguous;
-- inter-reviewer raw agreement and Cohen’s kappa when sample size permits;
-- model errors overlapping with ambiguous cases;
-- an explicitly labelled sensitivity range obtained by treating ambiguous errors as unresolved rather than definitively wrong.
-
-This analysis changes the meaning of the score: some errors may measure annotation-policy disagreement rather than failure to recognize spam.
-
-## Recommended actions
-
-- Keep the public labels unchanged for official evaluation.
-- Flag genuine policy-boundary cases in the memo.
-- Propose a clearer annotation guideline for future data collection.
-- Where context is structurally unavailable, report uncertainty rather than forcing a relabel.
-
-## Limitations
-
-- Reviewers do not know the sender-recipient relationship.
-- The working policy may differ from the original UCI annotation process.
-- Agreement statistics from a targeted candidate sample do not estimate full-corpus agreement.
-- Human review can be influenced by model explanations; reviewers should make an initial blinded judgment.
+- `results/ambiguity_candidates.csv`
+- `results/label_noise_evidence.csv`
+- `configs/manual_review.json`
+- `adjudication_memo.csv`
 

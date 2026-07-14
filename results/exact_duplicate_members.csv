@@ -1,0 +1,706 @@
+cluster_id,id,split,label,uci_row_number,text
+E0001,T0003,train,spam,3,Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's
+E0001,T0942,train,spam,1164,Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's
+E0002,T0008,train,ham,8,As per your request 'Melle Melle (Oru Minnaminunginte Nurungu Vettam)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune
+E0002,T0089,train,ham,104,As per your request 'Melle Melle (Oru Minnaminunginte Nurungu Vettam)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune
+E0002,T0131,train,ham,155,As per your request 'Melle Melle (Oru Minnaminunginte Nurungu Vettam)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune
+E0003,T0009,train,spam,9,WINNER!! As a valued network customer you have been selected to receivea £900 prize reward! To claim call 09061701461. Claim code KL341. Valid 12 hours only.
+E0003,T3446,train,spam,4282,WINNER!! As a valued network customer you have been selected to receivea £900 prize reward! To claim call 09061701461. Claim code KL341. Valid 12 hours only.
+E0004,T0010,train,spam,10,Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free! Call The Mobile Update Co FREE on 08002986030
+E0004,T3348,train,spam,4163,Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free! Call The Mobile Update Co FREE on 08002986030
+E0005,T0012,train,spam,12,"SIX chances to win CASH! From 100 to 20,000 pounds txt> CSH11 and send to 87575. Cost 150p/day, 6days, 16+ TsandCs apply Reply HL 4 info"
+E0005,T2597,train,spam,3230,"SIX chances to win CASH! From 100 to 20,000 pounds txt> CSH11 and send to 87575. Cost 150p/day, 6days, 16+ TsandCs apply Reply HL 4 info"
+E0006,T0013,train,spam,13,"URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: 81010 T&C www.dbuk.net LCCLTD POBOX 4403LDNW1A7RW18"
+E0006,T4227,train,spam,5288,"URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM to No: 81010 T&C www.dbuk.net LCCLTD POBOX 4403LDNW1A7RW18"
+E0007,T0039,train,ham,46,No calls..messages..missed calls
+E0007,T0271,train,ham,327,No calls..messages..missed calls
+E0007,T1590,train,ham,1989,No calls..messages..missed calls
+E0008,T0049,train,spam,57,"Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now! C Suprman V, Matrix3, StarWars3, etc all 4 FREE! bx420-ip4-5we. 150pm. Dont miss out! "
+E0008,T0401,train,spam,493,"Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now! C Suprman V, Matrix3, StarWars3, etc all 4 FREE! bx420-ip4-5we. 150pm. Dont miss out!"
+E0008,T1838,train,spam,2301,"Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now! C Suprman V, Matrix3, StarWars3, etc all 4 FREE! bx420-ip4-5we. 150pm. Dont miss out!"
+E0009,H0009,heldout,ham,58,"Sorry, I'll call later in meeting."
+E0009,T3705,train,ham,4621,"Sorry, I'll call later In meeting."
+E0010,T0054,train,ham,63,Its a part of checking IQ
+E0010,T4198,train,ham,5244,Its a part of checking IQ
+E0011,T0057,train,spam,66,"As a valued customer, I am pleased to advise you that following recent review of your Mob No. you are awarded with a £1500 Bonus Prize, call 09066364589"
+E0011,T2741,train,spam,3402,"As a valued customer, I am pleased to advise you that following recent review of your Mob No. you are awarded with a £1500 Bonus Prize, call 09066364589"
+E0012,H0010,heldout,ham,67,"Today is ""song dedicated day.."" Which song will u dedicate for me? Send this to all ur valuable frnds but first rply me..."
+E0012,H0332,heldout,ham,1681,"Today is ""song dedicated day.."" Which song will u dedicate for me? Send this to all ur valuable frnds but first rply me..."
+E0013,T0058,train,spam,68,"Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to 87121 18+6*£1.50(moreFrmMob. ShrAcomOrSglSuplt)10, LS1 3AJ"
+E0013,T3573,train,spam,4451,"Urgent UR awarded a complimentary trip to EuroDisinc Trav, Aco&Entry41 Or £1000. To claim txt DIS to 87121 18+6*£1.50(moreFrmMob. ShrAcomOrSglSuplt)10, LS1 3AJ"
+E0014,T0069,train,ham,81,"Sorry, I'll call later"
+E0014,T0188,train,ham,224,"Sorry, I'll call later"
+E0014,T0283,train,ham,340,"Sorry, I'll call later"
+E0014,T0367,train,ham,445,"Sorry, I'll call later"
+E0014,T0569,train,ham,703,"Sorry, I'll call later"
+E0014,T0623,train,ham,769,"Sorry, I'll call later"
+E0014,T0915,train,ham,1133,"Sorry, I'll call later"
+E0014,T0933,train,ham,1153,"Sorry, I'll call later"
+E0014,T1194,train,ham,1486,"Sorry, I'll call later"
+E0014,T1277,train,ham,1586,"Sorry, I'll call later"
+E0014,T1526,train,ham,1903,"Sorry, I'll call later"
+E0014,T1586,train,ham,1982,"Sorry, I'll call later"
+E0014,T1591,train,ham,1990,"Sorry, I'll call later"
+E0014,T1911,train,ham,2386,"Sorry, I'll call later"
+E0014,T1965,train,ham,2448,"Sorry, I'll call later"
+E0014,T2024,train,ham,2519,"Sorry, I'll call later"
+E0014,T2028,train,ham,2523,"Sorry, I'll call later"
+E0014,T2029,train,ham,2525,"Sorry, I'll call later"
+E0014,T2128,train,ham,2647,"Sorry, I'll call later"
+E0014,T2699,train,ham,3350,"Sorry, I'll call later"
+E0014,T2714,train,ham,3367,"Sorry, I'll call later"
+E0014,T2850,train,ham,3535,"Sorry, I'll call later"
+E0014,T2900,train,ham,3595,"Sorry, I'll call later"
+E0014,T3321,train,ham,4129,"Sorry, I'll call later"
+E0014,T3358,train,ham,4174,"Sorry, I'll call later"
+E0014,T3373,train,ham,4192,"Sorry, I'll call later"
+E0014,T4158,train,ham,5194,"Sorry, I'll call later"
+E0014,T4338,train,ham,5426,"Sorry, I'll call later"
+E0014,T4366,train,ham,5461,"Sorry, I'll call later"
+E0014,T4448,train,ham,5561,"Sorry, I'll call later"
+E0015,T0072,train,ham,84,You will be in the place of that man
+E0015,T0538,train,ham,659,You will be in the place of that man
+E0015,T1883,train,ham,2352,You will be in the place of that man
+E0016,T0074,train,ham,86,"I call you later, don't have network. If urgnt, sms me."
+E0016,T1011,train,ham,1251,"I call you later, don't have network. If urgnt, sms me."
+E0017,H0013,heldout,ham,93,Smile in Pleasure Smile in Pain Smile when trouble pours like Rain Smile when sum1 Hurts U Smile becoz SOMEONE still Loves to see u Smiling!!
+E0017,H1042,heldout,ham,5228,Smile in Pleasure Smile in Pain Smile when trouble pours like Rain Smile when sum1 Hurts U Smile becoz SOMEONE still Loves to see u Smiling!!
+E0018,H0014,heldout,spam,94,Please call our customer service representative on 0800 169 6031 between 10am-9pm as you have WON a guaranteed £1000 cash or £5000 prize!
+E0018,H0918,heldout,spam,4629,Please call our customer service representative on 0800 169 6031 between 10am-9pm as you have WON a guaranteed £1000 cash or £5000 prize!
+E0019,H0015,heldout,spam,96,"Your free ringtone is waiting to be collected. Simply text the password ""MIX"" to 85069 to verify. Get Usher and Britney. FML, PO Box 5249, MK17 92H. 450Ppw 16"
+E0019,H0171,heldout,spam,901,"Your free ringtone is waiting to be collected. Simply text the password ""MIX"" to 85069 to verify. Get Usher and Britney. FML, PO Box 5249, MK17 92H. 450Ppw 16"
+E0020,T0098,train,spam,115,GENT! We are trying to contact you. Last weekends draw shows that you won a £1000 prize GUARANTEED. Call 09064012160. Claim Code K52. Valid 12hrs only. 150ppm
+E0020,T0462,train,spam,565,GENT! We are trying to contact you. Last weekends draw shows that you won a £1000 prize GUARANTEED. Call 09064012160. Claim Code K52. Valid 12hrs only. 150ppm 
+E0021,T0099,train,ham,117,"As I entered my cabin my PA said, '' Happy B'day Boss !!''. I felt special. She askd me 4 lunch. After lunch she invited me to her apartment. We went there."
+E0021,T0176,train,ham,208,"As I entered my cabin my PA said, '' Happy B'day Boss !!''. I felt special. She askd me 4 lunch. After lunch she invited me to her apartment. We went there."
+E0021,T0916,train,ham,1135,"As I entered my cabin my PA said, '' Happy B'day Boss !!''. I felt special. She askd me 4 lunch. After lunch she invited me to her apartment. We went there."
+E0022,T0103,train,spam,121,PRIVATE! Your 2004 Account Statement for 07742676969 shows 786 unredeemed Bonus Points. To claim call 08719180248 Identifier Code: 45239 Expires
+E0022,T1681,train,spam,2096,PRIVATE! Your 2004 Account Statement for 07742676969 shows 786 unredeemed Bonus Points. To claim call 08719180248 Identifier Code: 45239 Expires
+E0023,T0115,train,spam,135,Sunshine Quiz Wkly Q! Win a top Sony DVD player if u know which country the Algarve is in? Txt ansr to 82277. £1.50 SP:Tyrone
+E0023,T1357,train,spam,1692,Sunshine Quiz Wkly Q! Win a top Sony DVD player if u know which country the Algarve is in? Txt ansr to 82277. £1.50 SP:Tyrone
+E0024,T0118,train,ham,139,No no. I will check all rooms befor activities
+E0024,T3282,train,ham,4084,No no. I will check all rooms befor activities
+E0024,T4074,train,ham,5094,No no. I will check all rooms befor activities
+E0025,T0136,train,spam,161,You are a winner U have been specially selected 2 receive £1000 cash or a 4* holiday (flights inc) speak to a live operator 2 claim 0871277810810
+E0025,T0994,train,spam,1226,You are a winner U have been specially selected 2 receive £1000 cash or a 4* holiday (flights inc) speak to a live operator 2 claim 0871277810810
+E0026,T0145,train,ham,171,Yes :)it completely in out of form:)clark also utter waste.
+E0026,T1574,train,ham,1965,Yes :)it completely in out of form:)clark also utter waste.
+E0027,T0155,train,ham,181,Hi! You just spoke to MANEESHA V. We'd like to know if you were satisfied with the experience. Reply Toll Free with Yes or No.
+E0027,T2126,train,ham,2645,Hi! You just spoke to MANEESHA V. We'd like to know if you were satisfied with the experience. Reply Toll Free with Yes or No.
+E0027,T3043,train,ham,3777,Hi! You just spoke to MANEESHA V. We'd like to know if you were satisfied with the experience. Reply Toll Free with Yes or No.
+E0028,T0161,train,spam,189,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!
+E0028,T0811,train,spam,1003,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!
+E0028,T3230,train,spam,4013,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!
+E0028,T3252,train,spam,4043,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!
+E0029,T0166,train,ham,196,How are you doing? Hope you've settled in for the new school year. Just wishin you a gr8 day
+E0029,T1893,train,ham,2364,How are you doing? Hope you've settled in for the new school year. Just wishin you a gr8 day
+E0030,H0031,heldout,ham,197,Gud mrng dear hav a nice day
+E0030,H0152,heldout,ham,791,Gud mrng dear hav a nice day
+E0030,H0727,heldout,ham,3734,Gud mrng dear hav a nice day
+E0031,T0167,train,ham,198,Did u got that persons story
+E0031,T0535,train,ham,656,Did u got that persons story
+E0031,T3725,train,ham,4646,Did u got that persons story
+E0032,T0173,train,ham,204,Your account has been refilled successfully by INR  &lt;DECIMAL&gt; . Your KeralaCircle prepaid account balance is Rs  &lt;DECIMAL&gt; . Your Transaction ID is KR &lt;#&gt; .
+E0032,T1179,train,ham,1468,Your account has been refilled successfully by INR  &lt;DECIMAL&gt; . Your KeralaCircle prepaid account balance is Rs  &lt;DECIMAL&gt; . Your Transaction ID is KR &lt;#&gt; .
+E0033,T0185,train,ham,219,Easy ah?sen got selected means its good..
+E0033,T0843,train,ham,1044,Easy ah?sen got selected means its good..
+E0034,H0038,heldout,ham,235,Yes:)here tv is always available in work place..
+E0034,H0732,heldout,ham,3758,Yes:)here tv is always available in work place..
+E0035,H0040,heldout,ham,240,"New Theory: Argument wins d SITUATION, but loses the PERSON. So dont argue with ur friends just.. . . . kick them &amp; say, I'm always correct.!"
+E0035,H0223,heldout,ham,1165,"New Theory: Argument wins d SITUATION, but loses the PERSON. So dont argue with ur friends just.. . . . kick them &amp; say, I'm always correct.!"
+E0035,H0975,heldout,ham,4885,"New Theory: Argument wins d SITUATION, but loses the PERSON. So dont argue with ur friends just.. . . . kick them &amp; say, I'm always correct.!"
+E0036,T0201,train,spam,241,U 447801259231 have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094597
+E0036,T3494,train,spam,4349,U 447801259231 have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094597
+E0037,T0209,train,spam,251,Congratulations ur awarded 500 of CD vouchers or 125gift guaranteed & Free entry 2 100 wkly draw txt MUSIC to 87066 TnCs www.Ldew.com1win150ppmx3age16
+E0037,T0296,train,spam,358,Congratulations ur awarded 500 of CD vouchers or 125gift guaranteed & Free entry 2 100 wkly draw txt MUSIC to 87066 TnCs www.Ldew.com1win150ppmx3age16
+E0038,T0210,train,ham,252,Ranjith cal drpd Deeraj and deepak 5min hold
+E0038,T3585,train,ham,4466,Ranjith cal drpd Deeraj and deepak 5min hold
+E0039,T0211,train,ham,253,"Wen ur lovable bcums angry wid u, dnt take it seriously.. Coz being angry is d most childish n true way of showing deep affection, care n luv!.. kettoda manda... Have nice day da."
+E0039,T1136,train,ham,1414,"Wen ur lovable bcums angry wid u, dnt take it seriously.. Coz being angry is d most childish n true way of showing deep affection, care n luv!.. kettoda manda... Have nice day da."
+E0039,T1214,train,ham,1509,"Wen ur lovable bcums angry wid u, dnt take it seriously.. Coz being angry is d most childish n true way of showing deep affection, care n luv!.. kettoda manda... Have nice day da."
+E0039,T2184,train,ham,2713,"Wen ur lovable bcums angry wid u, dnt take it seriously.. Coz being angry is d most childish n true way of showing deep affection, care n luv!.. kettoda manda... Have nice day da."
+E0040,T0212,train,ham,254,What you doing?how are you?
+E0040,T3312,train,ham,4118,What you doing?how are you?
+E0041,T0220,train,ham,262,Yup
+E0041,T4377,train,ham,5474,Yup
+E0042,T0230,train,spam,274,HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com
+E0042,T1506,train,spam,1877,HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com
+E0042,T3459,train,spam,4297,HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com
+E0043,T0238,train,ham,285,Okie...
+E0043,T1877,train,ham,2346,Okie...
+E0043,T3415,train,ham,4245,Okie...
+E0044,H0048,heldout,ham,290,"My life Means a lot to me, Not because I love my life, But because I love the people in my life, The world calls them friends, I call them my World:-).. Ge:-).."
+E0044,H0931,heldout,ham,4686,"My life Means a lot to me, Not because I love my life, But because I love the people in my life, The world calls them friends, I call them my World:-).. Ge:-).."
+E0045,T0247,train,ham,295,Are you this much buzy
+E0045,T0781,train,ham,966,Are you this much buzy
+E0045,T2204,train,ham,2741,Are you this much buzy
+E0046,T0251,train,ham,299,Hurt me... Tease me... Make me cry... But in the end of my life when i die plz keep one rose on my grave and say STUPID I MISS U.. HAVE A NICE DAY BSLVYL
+E0046,T3463,train,ham,4301,Hurt me... Tease me... Make me cry... But in the end of my life when i die plz keep one rose on my grave and say STUPID I MISS U.. HAVE A NICE DAY BSLVYL
+E0047,H0049,heldout,ham,300,I cant pick the phone right now. Pls send a message
+E0047,H0147,heldout,ham,770,I cant pick the phone right now. Pls send a message
+E0047,H0252,heldout,ham,1305,I cant pick the phone right now. Pls send a message
+E0047,H0347,heldout,ham,1739,I cant pick the phone right now. Pls send a message
+E0047,H0387,heldout,ham,1950,I cant pick the phone right now. Pls send a message
+E0047,H0459,heldout,ham,2267,I cant pick the phone right now. Pls send a message
+E0047,H0518,heldout,ham,2619,I cant pick the phone right now. Pls send a message
+E0047,H0717,heldout,ham,3682,I cant pick the phone right now. Pls send a message
+E0047,H0791,heldout,ham,4041,I cant pick the phone right now. Pls send a message
+E0047,H0923,heldout,ham,4661,I cant pick the phone right now. Pls send a message
+E0047,H0979,heldout,ham,4899,I cant pick the phone right now. Pls send a message
+E0047,H1079,heldout,ham,5378,I cant pick the phone right now. Pls send a message
+E0048,T0259,train,ham,312,Today is ACCEPT DAY..U Accept me as? Brother Sister Lover Dear1 Best1 Clos1 Lvblefrnd Jstfrnd Cutefrnd Lifpartnr Belovd Swtheart Bstfrnd No rply means enemy
+E0048,T1265,train,ham,1570,Today is ACCEPT DAY..U Accept me as? Brother Sister Lover Dear1 Best1 Clos1 Lvblefrnd Jstfrnd Cutefrnd Lifpartnr Belovd Swtheart Bstfrnd No rply means enemy
+E0048,T3145,train,ham,3916,Today is ACCEPT DAY..U Accept me as? Brother Sister Lover Dear1 Best1 Clos1 Lvblefrnd Jstfrnd Cutefrnd Lifpartnr Belovd Swtheart Bstfrnd No rply means enemy
+E0049,T0266,train,spam,320,December only! Had your mobile 11mths+? You are entitled to update to the latest colour camera mobile for Free! Call The Mobile Update Co FREE on 08002986906
+E0049,H0548,heldout,spam,2809,December only! Had your mobile 11mths+? You are entitled to update to the latest colour camera mobile for Free! Call The Mobile Update Co FREE on 08002986906 
+E0049,T4368,train,spam,5463,December only! Had your mobile 11mths+? You are entitled to update to the latest colour camera mobile for Free! Call The Mobile Update Co FREE on 08002986906
+E0050,T0282,train,ham,339,Just sleeping..and surfing
+E0050,T0628,train,ham,776,Just sleeping..and surfing
+E0050,T4432,train,ham,5542,Just sleeping..and surfing
+E0051,T0289,train,ham,347,Gudnite....tc...practice going on
+E0051,T0437,train,ham,534,Gudnite....tc...practice going on
+E0052,T0293,train,ham,354,"TODAY is Sorry day.! If ever i was angry with you, if ever i misbehaved or hurt you? plz plz JUST SLAP URSELF Bcoz, Its ur fault, I'm basically GOOD"
+E0052,T2548,train,ham,3166,"TODAY is Sorry day.! If ever i was angry with you, if ever i misbehaved or hurt you? plz plz JUST SLAP URSELF Bcoz, Its ur fault, I'm basically GOOD"
+E0053,T0317,train,spam,386,"Double mins and txts 4 6months FREE Bluetooth on Orange. Available on Sony, Nokia Motorola phones. Call MobileUpd8 on 08000839402 or call2optout/N9DX"
+E0053,T3378,train,spam,4197,"Double mins and txts 4 6months FREE Bluetooth on Orange. Available on Sony, Nokia Motorola phones. Call MobileUpd8 on 08000839402 or call2optout/N9DX"
+E0054,H0071,heldout,spam,390,4mths half price Orange line rental & latest camera phones 4 FREE. Had your phone 11mths ? Call MobilesDirect free on 08000938767 to update now! or2stoptxt
+E0054,H0408,heldout,spam,2045,4mths half price Orange line rental & latest camera phones 4 FREE. Had your phone 11mths ? Call MobilesDirect free on 08000938767 to update now! or2stoptxt
+E0055,T0338,train,ham,411,Message:some text missing* Sender:Name Missing* *Number Missing *Sent:Date missing *Missing U a lot thats y everything is missing sent via fullonsms.com
+E0055,T0922,train,ham,1141,Message:some text missing* Sender:Name Missing* *Number Missing *Sent:Date missing *Missing U a lot thats y everything is missing sent via fullonsms.com
+E0056,T0342,train,ham,417,Whatsup there. Dont u want to sleep
+E0056,T2194,train,ham,2729,Whatsup there. Dont u want to sleep
+E0057,T0352,train,ham,428,aathi..where are you dear..
+E0057,T2293,train,ham,2844,aathi..where are you dear..
+E0057,T2804,train,ham,3472,aathi..where are you dear..
+E0058,T0355,train,ham,431,I wnt to buy a BMW car urgently..its vry urgent.but hv a shortage of  &lt;#&gt; Lacs.there is no source to arng dis amt. &lt;#&gt; lacs..thats my prob
+E0058,T1588,train,ham,1985,I wnt to buy a BMW car urgently..its vry urgent.but hv a shortage of  &lt;#&gt; Lacs.there is no source to arng dis amt. &lt;#&gt; lacs..thats my prob
+E0058,T4083,train,ham,5108,I wnt to buy a BMW car urgently..its vry urgent.but hv a shortage of  &lt;#&gt; Lacs.there is no source to arng dis amt. &lt;#&gt; lacs..thats my prob
+E0059,T0356,train,spam,434,Congrats! Nokia 3650 video camera phone is your Call 09066382422 Calls cost 150ppm Ave call 3mins vary from mobiles 16+ Close 300603 post BCM4284 Ldn WC1N3XX
+E0059,T3354,train,spam,4170,Congrats! Nokia 3650 video camera phone is your Call 09066382422 Calls cost 150ppm Ave call 3mins vary from mobiles 16+ Close 300603 post BCM4284 Ldn WC1N3XX
+E0060,T0364,train,ham,442,Yes..he is really great..bhaji told kallis best cricketer after sachin in world:).very tough to get out.
+E0060,T0812,train,ham,1004,Yes..he is really great..bhaji told kallis best cricketer after sachin in world:).very tough to get out.
+E0061,T0374,train,spam,456,"Loan for any purpose £500 - £75,000. Homeowners + Tenants welcome. Have you been previously refused? We can still help. Call Free 0800 1956669 or text back 'help'"
+E0061,T1429,train,spam,1781,"Loan for any purpose £500 - £75,000. Homeowners + Tenants welcome. Have you been previously refused? We can still help. Call Free 0800 1956669 or text back 'help'"
+E0061,T2420,train,spam,3010,"Loan for any purpose £500 - £75,000. Homeowners + Tenants welcome. Have you been previously refused? We can still help. Call Free 0800 1956669 or text back 'help'"
+E0062,H0086,heldout,ham,478,Love you aathi..love u lot..
+E0062,H0460,heldout,ham,2278,Love you aathi..love u lot..
+E0062,H0780,heldout,ham,3967,Love you aathi..love u lot..
+E0063,T0398,train,spam,488,"FREE MESSAGE Activate your 500 FREE Text Messages by replying to this message with the word FREE For terms & conditions, visit www.07781482378.com"
+E0063,T2670,train,spam,3317,"FREE MESSAGE Activate your 500 FREE Text Messages by replying to this message with the word FREE For terms & conditions, visit www.07781482378.com"
+E0064,T0402,train,ham,494,"Sorry,in meeting I'll call later"
+E0064,T2340,train,ham,2913,"Sorry,in meeting I'll call later"
+E0065,T0410,train,ham,502,"Fighting with the world is easy, u either win or lose bt fightng with some1 who is close to u is dificult if u lose - u lose if u win - u still lose."
+E0065,T1173,train,ham,1460,"Fighting with the world is easy, u either win or lose bt fightng with some1 who is close to u is dificult if u lose - u lose if u win - u still lose."
+E0065,T1379,train,ham,1722,"Fighting with the world is easy, u either win or lose bt fightng with some1 who is close to u is dificult if u lose - u lose if u win - u still lose."
+E0066,T0413,train,spam,506,+123 Congratulations - in this week's competition draw u have won the £1450 prize to claim just call 09050002311 b4280703. T&Cs/stop SMS 08718727868. Over 18 only 150ppm
+E0066,T1703,train,spam,2125,+123 Congratulations - in this week's competition draw u have won the £1450 prize to claim just call 09050002311 b4280703. T&Cs/stop SMS 08718727868. Over 18 only 150ppm
+E0067,T0415,train,ham,511,Your opinion about me? 1. Over 2. Jada 3. Kusruthi 4. Lovable 5. Silent 6. Spl character 7. Not matured 8. Stylish 9. Simple Pls reply..
+E0067,T0634,train,ham,782,Your opinion about me? 1. Over 2. Jada 3. Kusruthi 4. Lovable 5. Silent 6. Spl character 7. Not matured 8. Stylish 9. Simple Pls reply..
+E0067,T1000,train,ham,1237,Your opinion about me? 1. Over 2. Jada 3. Kusruthi 4. Lovable 5. Silent 6. Spl character 7. Not matured 8. Stylish 9. Simple Pls reply..
+E0067,T4196,train,ham,5239,Your opinion about me? 1. Over 2. Jada 3. Kusruthi 4. Lovable 5. Silent 6. Spl character 7. Not matured 8. Stylish 9. Simple Pls reply..
+E0068,T0416,train,ham,513,Prabha..i'm soryda..realy..frm heart i'm sory
+E0068,T1774,train,ham,2217,Prabha..i'm soryda..realy..frm heart i'm sory
+E0068,T4187,train,ham,5229,Prabha..i'm soryda..realy..frm heart i'm sory
+E0069,T0426,train,ham,523,Shall i come to get pickle
+E0069,T1598,train,ham,1997,Shall i come to get pickle
+E0070,T0431,train,spam,528,"Today's Offer! Claim ur £150 worth of discount vouchers! Text YES to 85023 now! SavaMob, member offers mobile! T Cs 08717898035. £3.00 Sub. 16 . Unsub reply X"
+E0070,T0688,train,spam,851,"Today's Offer! Claim ur £150 worth of discount vouchers! Text YES to 85023 now! SavaMob, member offers mobile! T Cs 08717898035. £3.00 Sub. 16 . Unsub reply X"
+E0071,T0436,train,ham,533,What Today-sunday..sunday is holiday..so no work..
+E0071,T2488,train,ham,3091,What Today-sunday..sunday is holiday..so no work..
+E0071,T4381,train,ham,5480,What Today-sunday..sunday is holiday..so no work..
+E0072,T0442,train,ham,540,Ummmmmaah Many many happy returns of d day my dear sweet heart.. HAPPY BIRTHDAY dear
+E0072,T1012,train,ham,1252,Ummmmmaah Many many happy returns of d day my dear sweet heart.. HAPPY BIRTHDAY dear
+E0072,T3858,train,ham,4816,Ummmmmaah Many many happy returns of d day my dear sweet heart.. HAPPY BIRTHDAY dear
+E0073,T0483,train,ham,591,"I'm in a meeting, call me later at"
+E0073,T2734,train,ham,3393,"I'm in a meeting, call me later at"
+E0073,T3715,train,ham,4634,"I'm in a meeting, call me later at"
+E0074,H0109,heldout,spam,592,"For ur chance to win a £250 wkly shopping spree TXT: SHOP to 80878. T's&C's www.txt-2-shop.com custcare 08715705022, 1x150p/wk"
+E0074,H0911,heldout,spam,4585,"For ur chance to win a £250 wkly shopping spree TXT: SHOP to 80878. T's&C's www.txt-2-shop.com custcare 08715705022, 1x150p/wk"
+E0075,T0489,train,spam,599,You have an important customer service announcement. Call FREEPHONE 0800 542 0825 now!
+E0075,T3143,train,spam,3914,You have an important customer service announcement. Call FREEPHONE 0800 542 0825 now!
+E0076,T0515,train,spam,631,Todays Vodafone numbers ending with 4882 are selected to a receive a £350 award. If your number matches call 09064019014 to receive your £350 award.
+E0076,T3913,train,spam,4889,Todays Vodafone numbers ending with 4882 are selected to a receive a £350 award. If your number matches call 09064019014 to receive your £350 award.
+E0077,H0117,heldout,ham,641,I had askd u a question some hours before. Its answer
+E0077,H0395,heldout,ham,1975,I had askd u a question some hours before. Its answer
+E0077,H0749,heldout,ham,3835,I had askd u a question some hours before. Its answer
+E0078,T0526,train,ham,645,Ya very nice. . .be ready on thursday
+E0078,T3802,train,ham,4744,Ya very nice. . .be ready on thursday
+E0079,T0528,train,ham,647,"Watching cartoon, listening music &amp; at eve had to go temple &amp; church.. What about u?"
+E0079,T0780,train,ham,964,"Watching cartoon, listening music &amp; at eve had to go temple &amp; church.. What about u?"
+E0079,T3900,train,ham,4870,"Watching cartoon, listening music &amp; at eve had to go temple &amp; church.. What about u?"
+E0080,T0541,train,ham,662,"Under the sea, there lays a rock. In the rock, there is an envelope. In the envelope, there is a paper. On the paper, there are 3 words... '"
+E0080,T2061,train,ham,2566,"Under the sea, there lays a rock. In the rock, there is an envelope. In the envelope, there is a paper. On the paper, there are 3 words... '"
+E0081,T0546,train,ham,670,Have a good evening! Ttyl
+E0081,T0669,train,ham,826,Have a good evening! Ttyl
+E0082,T0575,train,ham,712,"Height of Confidence: All the Aeronautics professors wer calld &amp; they wer askd 2 sit in an aeroplane. Aftr they sat they wer told dat the plane ws made by their students. Dey all hurried out of d plane.. Bt only 1 didnt move... He said:""if it is made by my students,this wont even start........ Datz confidence.."
+E0082,T2385,train,ham,2973,"Height of Confidence: All the Aeronautics professors wer calld &amp; they wer askd 2 sit in an aeroplane. Aftr they sat they wer told dat the plane ws made by their students. Dey all hurried out of d plane.. Bt only 1 didnt move... He said:""if it is made by my students,this wont even start........ Datz confidence.."
+E0083,T0579,train,ham,716,He also knows about lunch menu only da. . I know
+E0083,T0968,train,ham,1199,He also knows about lunch menu only da. . I know
+E0084,T0620,train,ham,766,"Wishing you and your family Merry ""X"" mas and HAPPY NEW Year in advance.."
+E0084,T1334,train,ham,1656,"Wishing you and your family Merry ""X"" mas and HAPPY NEW Year in advance.."
+E0084,T2443,train,ham,3041,"Wishing you and your family Merry ""X"" mas and HAPPY NEW Year in advance.."
+E0085,H0154,heldout,ham,800,Ok i msg u b4 i leave my house.
+E0085,H0872,heldout,ham,4422,Ok i msg u b4 i leave my house.
+E0086,T0648,train,spam,802,"Last Chance! Claim ur £150 worth of discount vouchers today! Text SHOP to 85023 now! SavaMob, offers mobile! T Cs SavaMob POBOX84, M263UZ. £3.00 Sub. 16"
+E0086,T2319,train,spam,2882,"Last Chance! Claim ur £150 worth of discount vouchers today! Text SHOP to 85023 now! SavaMob, offers mobile! T Cs SavaMob POBOX84, M263UZ. £3.00 Sub. 16"
+E0087,T0650,train,spam,804,FREE for 1st week! No1 Nokia tone 4 ur mobile every week just txt NOKIA to 8077 Get txting and tell ur mates. www.getzed.co.uk POBox 36504 W45WQ 16+ norm150p/tone
+E0087,T4113,train,spam,5144,FREE for 1st week! No1 Nokia tone 4 ur mobile every week just txt NOKIA to 8077 Get txting and tell ur mates. www.getzed.co.uk POBox 36504 W45WQ 16+ norm150p/tone
+E0088,T0671,train,ham,828,Hahaha..use your brain dear
+E0088,T4252,train,ham,5318,Hahaha..use your brain dear
+E0088,T4444,train,ham,5556,Hahaha..use your brain dear
+E0089,H0159,heldout,spam,832,U have a secret admirer. REVEAL who thinks U R So special. Call 09065174042. To opt out Reply REVEAL STOP. 1.50 per msg recd. Cust care 07821230901
+E0089,H0586,heldout,spam,2960,U have a secret admirer. REVEAL who thinks U R So special. Call 09065174042. To opt out Reply REVEAL STOP. 1.50 per msg recd. Cust care 07821230901
+E0090,T0677,train,ham,837,Good Morning my Dear........... Have a great &amp; successful day.
+E0090,T2608,train,ham,3244,Good Morning my Dear........... Have a great &amp; successful day.
+E0091,T0683,train,spam,845,"Urgent! call 09066350750 from your landline. Your complimentary 4* Ibiza Holiday or 10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+ "
+E0091,H0909,heldout,spam,4580,"Urgent! call 09066350750 from your landline. Your complimentary 4* Ibiza Holiday or 10,000 cash await collection SAE T&Cs PO BOX 434 SK3 8WP 150 ppm 18+"
+E0092,H0169,heldout,spam,877,"Shop till u Drop, IS IT YOU, either 10K, 5K, £500 Cash or £100 Travel voucher, Call now, 09064011000. NTT PO Box CR01327BT fixedline Cost 150ppm mobile vary"
+E0092,H0435,heldout,spam,2171,"Shop till u Drop, IS IT YOU, either 10K, 5K, £500 Cash or £100 Travel voucher, Call now, 09064011000. NTT PO Box CR01327BT fixedline Cost 150ppm mobile vary"
+E0093,H0170,heldout,spam,879,Sunshine Quiz Wkly Q! Win a top Sony DVD player if u know which country Liverpool played in mid week? Txt ansr to 82277. £1.50 SP:Tyrone
+E0093,H0515,heldout,spam,2597,Sunshine Quiz Wkly Q! Win a top Sony DVD player if u know which country Liverpool played in mid week? Txt ansr to 82277. £1.50 SP:Tyrone
+E0094,T0721,train,ham,891,Wife.how she knew the time of murder exactly
+E0094,T2280,train,ham,2830,Wife.how she knew the time of murder exactly
+E0094,T2596,train,ham,3229,Wife.how she knew the time of murder exactly
+E0095,T0728,train,ham,898,Hope you are having a good week. Just checking in
+E0095,T3646,train,ham,4550,Hope you are having a good week. Just checking in
+E0096,T0745,train,ham,919,"When people see my msgs, They think Iam addicted to msging... They are wrong, Bcoz They don\'t know that Iam addicted to my sweet Friends..!! BSLVYL"
+E0096,T2549,train,ham,3169,"When people see my msgs, They think Iam addicted to msging... They are wrong, Bcoz They don\'t know that Iam addicted to my sweet Friends..!! BSLVYL"
+E0097,T0773,train,ham,954,"Beautiful Truth against Gravity.. Read carefully: ""Our heart feels light when someone is in it.. But it feels very heavy when someone leaves it.."" GOOD NIGHT"
+E0097,T1704,train,ham,2126,"Beautiful Truth against Gravity.. Read carefully: ""Our heart feels light when someone is in it.. But it feels very heavy when someone leaves it.."" GOOD NIGHT"
+E0098,H0183,heldout,ham,958,"Love isn't a decision, it's a feeling. If we could decide who to love, then, life would be much simpler, but then less magical"
+E0098,H0590,heldout,ham,2992,"Love isn't a decision, it's a feeling. If we could decide who to love, then, life would be much simpler, but then less magical"
+E0099,T0779,train,spam,963,URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001808 from land line. Claim M95. Valid12hrs only
+E0099,T2801,train,spam,3469,URGENT! We are trying to contact U. Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050001808 from land line. Claim M95. Valid12hrs only
+E0100,H0186,heldout,ham,968,I am not sure about night menu. . . I know only about noon menu
+E0100,H0541,heldout,ham,2763,I am not sure about night menu. . . I know only about noon menu
+E0101,H0189,heldout,ham,982,If he started searching he will get job in few days.he have great potential and talent.
+E0101,H0426,heldout,ham,2136,If he started searching he will get job in few days.he have great potential and talent.
+E0102,T0804,train,ham,995,The Xmas story is peace.. The Xmas msg is love.. The Xmas miracle is jesus.. Hav a blessed month ahead &amp; wish U Merry Xmas...
+E0102,T1862,train,ham,2328,The Xmas story is peace.. The Xmas msg is love.. The Xmas miracle is jesus.. Hav a blessed month ahead &amp; wish U Merry Xmas...
+E0103,H0196,heldout,spam,1018,FREE for 1st week! No1 Nokia tone 4 ur mob every week just txt NOKIA to 8007 Get txting and tell ur mates www.getzed.co.uk POBox 36504 W45WQ norm150p/tone 16+
+E0103,H0733,heldout,spam,3764,FREE for 1st week! No1 Nokia tone 4 ur mob every week just txt NOKIA to 8007 Get txting and tell ur mates www.getzed.co.uk POBox 36504 W45WQ norm150p/tone 16+
+E0103,H0821,heldout,spam,4199,FREE for 1st week! No1 Nokia tone 4 ur mob every week just txt NOKIA to 8007 Get txting and tell ur mates www.getzed.co.uk POBox 36504 W45WQ norm150p/tone 16+
+E0104,H0198,heldout,ham,1025,May i call You later Pls
+E0104,H0360,heldout,ham,1830,May i call You later Pls
+E0105,T0840,train,ham,1040,"Edison has rightly said, ""A fool can ask more questions than a wise man can answer"" Now you know why all of us are speechless during ViVa.. GM,GN,GE,GNT:-)"
+E0105,T4042,train,ham,5051,"Edison has rightly said, ""A fool can ask more questions than a wise man can answer"" Now you know why all of us are speechless during ViVa.. GM,GN,GE,GNT:-)"
+E0106,T0847,train,ham,1048,"Do 1 thing! Change that sentence into: ""Because i want 2 concentrate in my educational career im leaving here.."""
+E0106,T3151,train,ham,3923,"Do 1 thing! Change that sentence into: ""Because i want 2 concentrate in my educational career im leaving here.."""
+E0107,T0850,train,spam,1051,18 days to Euro2004 kickoff! U will be kept informed of all the latest news and results daily. Unsubscribe send GET EURO STOP to 83222.
+E0107,T2189,train,spam,2720,18 days to Euro2004 kickoff! U will be kept informed of all the latest news and results daily. Unsubscribe send GET EURO STOP to 83222.
+E0108,T0856,train,ham,1057,I'm at work. Please call
+E0108,T1741,train,ham,2177,I'm at work. Please call
+E0108,T4308,train,ham,5389,I'm at work. Please call
+E0109,T0859,train,spam,1061,EASTENDERS TV Quiz. What FLOWER does DOT compare herself to? D= VIOLET E= TULIP F= LILY txt D E or F to 84025 NOW 4 chance 2 WIN £100 Cash WKENT/150P16+
+E0109,T2458,train,spam,3057,EASTENDERS TV Quiz. What FLOWER does DOT compare herself to? D= VIOLET E= TULIP F= LILY txt D E or F to 84025 NOW 4 chance 2 WIN £100 Cash WKENT/150P16+
+E0110,H0204,heldout,ham,1069,Meeting u is my work. . . Tel me when shall i do my work tomorrow
+E0110,H0702,heldout,ham,3630,Meeting u is my work. . . Tel me when shall i do my work tomorrow
+E0111,T0866,train,spam,1070,Someone U know has asked our dating service 2 contact you! Cant Guess who? CALL 09058091854 NOW all will be revealed. PO BOX385 M6 6WU
+E0111,T3470,train,spam,4312,Someone U know has asked our dating service 2 contact you! Cant Guess who? CALL 09058091854 NOW all will be revealed. PO BOX385 M6 6WU
+E0112,T0876,train,ham,1080,Convey my regards to him
+E0112,T1093,train,ham,1357,Convey my regards to him
+E0112,T3918,train,ham,4896,Convey my regards to him
+E0113,T0880,train,ham,1085,Wat makes some people dearer is not just de happiness dat u feel when u meet them but de pain u feel when u miss dem!!!
+E0113,T1468,train,ham,1827,Wat makes some people dearer is not just de happiness dat u feel when u meet them but de pain u feel when u miss dem!!!
+E0113,T2524,train,ham,3137,Wat makes some people dearer is not just de happiness dat u feel when u meet them but de pain u feel when u miss dem!!!
+E0114,T0884,train,spam,1090,You are awarded a SiPix Digital Camera! call 09061221061 from landline. Delivery within 28days. T Cs Box177. M221BP. 2yr warranty. 150ppm. 16 . p p£3.99
+E0114,T4421,train,spam,5527,You are awarded a SiPix Digital Camera! call 09061221061 from landline. Delivery within 28days. T Cs Box177. M221BP. 2yr warranty. 150ppm. 16 . p p£3.99
+E0115,T0889,train,ham,1096,Now only i reached home. . . I am very tired now. . I will come tomorro
+E0115,T3408,train,ham,4236,Now only i reached home. . . I am very tired now. . I will come tomorro
+E0116,T0909,train,ham,1124,Ok.ok ok..then..whats ur todays plan
+E0116,T2987,train,ham,3711,Ok.ok ok..then..whats ur todays plan
+E0116,T4311,train,ham,5392,Ok.ok ok..then..whats ur todays plan
+E0117,H0216,heldout,ham,1125,Good morning princess! How are you?
+E0117,H0219,heldout,ham,1134,Good morning princess! How are you?
+E0118,T0924,train,spam,1143,I don't know u and u don't know me. Send CHAT to 86688 now and let's find each other! Only 150p/Msg rcvd. HG/Suite342/2Lands/Row/W1J6HL LDN. 18 years or over.
+E0118,T1936,train,spam,2414,I don't know u and u don't know me. Send CHAT to 86688 now and let's find each other! Only 150p/Msg rcvd. HG/Suite342/2Lands/Row/W1J6HL LDN. 18 years or over.
+E0118,T2206,train,spam,2743,I don't know u and u don't know me. Send CHAT to 86688 now and let's find each other! Only 150p/Msg rcvd. HG/Suite342/2Lands/Row/W1J6HL LDN. 18 years or over.
+E0119,T0941,train,ham,1163,K. I will sent it again
+E0119,T4391,train,ham,5491,K. I will sent it again
+E0119,T4393,train,ham,5493,K. I will sent it again
+E0120,H0224,heldout,ham,1168,I am not having her number sir
+E0120,H0849,heldout,ham,4326,I am not having her number sir
+E0121,H0225,heldout,ham,1170,Ok . . now i am in bus. . If i come soon i will come otherwise tomorrow
+E0121,H0458,heldout,ham,2266,Ok . . now i am in bus. . If i come soon i will come otherwise tomorrow
+E0122,T0948,train,spam,1173,"Got what it takes 2 take part in the WRC Rally in Oz? U can with Lucozade Energy! Text RALLY LE to 61200 (25p), see packs or lucozade.co.uk/wrc & itcould be u!"
+E0122,T3947,train,spam,4931,"Got what it takes 2 take part in the WRC Rally in Oz? U can with Lucozade Energy! Text RALLY LE to 61200 (25p), see packs or lucozade.co.uk/wrc & itcould be u!"
+E0123,T0970,train,ham,1201,NEFT Transaction with reference number  &lt;#&gt;  for Rs. &lt;DECIMAL&gt;  has been credited to the beneficiary account on  &lt;#&gt;  at  &lt;TIME&gt; : &lt;#&gt;
+E0123,T2381,train,ham,2969,NEFT Transaction with reference number  &lt;#&gt;  for Rs. &lt;DECIMAL&gt;  has been credited to the beneficiary account on  &lt;#&gt;  at  &lt;TIME&gt; : &lt;#&gt;
+E0124,H0232,heldout,ham,1202,Otherwise had part time job na-tuition..
+E0124,H0769,heldout,ham,3900,Otherwise had part time job na-tuition..
+E0124,H1089,heldout,ham,5428,Otherwise had part time job na-tuition..
+E0125,T0974,train,spam,1206,WIN a year supply of CDs 4 a store of ur choice worth £500 & enter our £100 Weekly draw txt MUSIC to 87066 Ts&Cs www.Ldew.com.subs16+1win150ppmx3
+E0125,T1846,train,spam,2309,WIN a year supply of CDs 4 a store of ur choice worth £500 & enter our £100 Weekly draw txt MUSIC to 87066 Ts&Cs www.Ldew.com.subs16+1win150ppmx3
+E0126,T0981,train,ham,1213,Ok then i will come to ur home after half an hour
+E0126,T3301,train,ham,4104,Ok then i will come to ur home after half an hour
+E0127,T0986,train,spam,1218,You have 1 new voicemail. Please call 08719181513.
+E0127,T2631,train,spam,3273,You have 1 new voicemail. Please call 08719181513.
+E0128,T0988,train,ham,1220,K..k..i'm also fine:)when will you complete the course?
+E0128,T2060,train,ham,2565,K..k..i'm also fine:)when will you complete the course?
+E0129,T0990,train,spam,1222,No. 1 Nokia Tone 4 ur mob every week! Just txt NOK to 87021. 1st Tone FREE ! so get txtin now and tell ur friends. 150p/tone. 16 reply HL 4info
+E0129,T1112,train,spam,1381,No. 1 Nokia Tone 4 ur mob every week! Just txt NOK to 87021. 1st Tone FREE ! so get txtin now and tell ur friends. 150p/tone. 16 reply HL 4info
+E0130,T1020,train,ham,1261,"We have sent JD for Customer Service cum Accounts Executive to ur mail id, For details contact us"
+E0130,T4039,train,ham,5047,"We have sent JD for Customer Service cum Accounts Executive to ur mail id, For details contact us"
+E0131,T1025,train,ham,1266,I will see in half an hour
+E0131,T2415,train,ham,3005,I will see in half an hour
+E0132,T1032,train,ham,1274,Ok...
+E0132,T1065,train,ham,1320,Ok...
+E0132,T1146,train,ham,1428,Ok...
+E0132,T1192,train,ham,1484,Ok...
+E0132,T1364,train,ham,1701,Ok...
+E0132,T1858,train,ham,2323,Ok...
+E0132,T2017,train,ham,2510,Ok...
+E0132,T2137,train,ham,2661,Ok...
+E0132,T2539,train,ham,3157,Ok...
+E0132,T3892,train,ham,4860,Ok...
+E0133,T1037,train,ham,1282,Oh ho. Is this the first time u use these type of words
+E0133,T2666,train,ham,3312,Oh ho. Is this the first time u use these type of words
+E0133,T3719,train,ham,4639,Oh ho. Is this the first time u use these type of words
+E0134,T1038,train,ham,1284,"Ever green quote ever told by Jerry in cartoon ""A Person Who Irritates u Always Is the one Who Loves u Vry Much But Fails to Express It...!..!! :-) :-) gud nyt"
+E0134,T3329,train,ham,4141,"Ever green quote ever told by Jerry in cartoon ""A Person Who Irritates u Always Is the one Who Loves u Vry Much But Fails to Express It...!..!! :-) :-) gud nyt"
+E0135,T1041,train,ham,1288,"Night has ended for another day, morning has come in a special way. May you smile like the sunny rays and leaves your worries at the blue blue bay. Gud mrng"
+E0135,T2807,train,ham,3477,"Night has ended for another day, morning has come in a special way. May you smile like the sunny rays and leaves your worries at the blue blue bay. Gud mrng"
+E0135,T3496,train,ham,4353,"Night has ended for another day, morning has come in a special way. May you smile like the sunny rays and leaves your worries at the blue blue bay. Gud mrng"
+E0136,T1076,train,ham,1333,Good Morning plz call me sir
+E0136,T1519,train,ham,1895,Good Morning plz call me sir
+E0136,T1787,train,ham,2235,Good Morning plz call me sir
+E0137,T1089,train,spam,1351,"FREE2DAY sexy St George's Day pic of Jordan!Txt PIC to 89080 dont miss out, then every wk a saucy celeb!4 more pics c PocketBabe.co.uk 0870241182716 £3/wk"
+E0137,T1693,train,spam,2110,"FREE2DAY sexy St George's Day pic of Jordan!Txt PIC to 89080 dont miss out, then every wk a saucy celeb!4 more pics c PocketBabe.co.uk 0870241182716 £3/wk"
+E0138,H0266,heldout,spam,1367,"HOT LIVE FANTASIES call now 08707509020 Just 20p per min NTT Ltd, PO Box 1327 Croydon CR9 5WB 0870..k"
+E0138,H0620,heldout,spam,3168,"HOT LIVE FANTASIES call now 08707509020 Just 20p per min NTT Ltd, PO Box 1327 Croydon CR9 5WB 0870..k"
+E0139,T1107,train,ham,1374,"1) Go to write msg 2) Put on Dictionary mode 3)Cover the screen with hand, 4)Press  &lt;#&gt; . 5)Gently remove Ur hand.. Its interesting..:)"
+E0139,T1731,train,ham,2164,"1) Go to write msg 2) Put on Dictionary mode 3)Cover the screen with hand, 4)Press  &lt;#&gt; . 5)Gently remove Ur hand.. Its interesting..:)"
+E0139,T1876,train,ham,2345,"1) Go to write msg 2) Put on Dictionary mode 3)Cover the screen with hand, 4)Press  &lt;#&gt; . 5)Gently remove Ur hand.. Its interesting..:)"
+E0140,H0268,heldout,spam,1379,Double Mins & Double Txt & 1/2 price Linerental on Latest Orange Bluetooth mobiles. Call MobileUpd8 for the very latest offers. 08000839402 or call2optout/LF56
+E0140,H1010,heldout,spam,5056,Double Mins & Double Txt & 1/2 price Linerental on Latest Orange Bluetooth mobiles. Call MobileUpd8 for the very latest offers. 08000839402 or call2optout/LF56
+E0141,T1113,train,ham,1382,i dnt wnt to tlk wid u
+E0141,T1992,train,ham,2478,i dnt wnt to tlk wid u
+E0142,H0270,heldout,ham,1386,"Storming msg: Wen u lift d phne, u say ""HELLO"" Do u knw wt is d real meaning of HELLO?? . . . It's d name of a girl..! . . . Yes.. And u knw who is dat girl?? ""Margaret Hello"" She is d girlfrnd f Grahmbell who invnted telphone... . . . . Moral:One can 4get d name of a person, bt not his girlfrnd... G o o d n i g h t . . .@"
+E0142,H0881,heldout,ham,4457,"Storming msg: Wen u lift d phne, u say ""HELLO"" Do u knw wt is d real meaning of HELLO?? . . . It's d name of a girl..! . . . Yes.. And u knw who is dat girl?? ""Margaret Hello"" She is d girlfrnd f Grahmbell who invnted telphone... . . . . Moral:One can 4get d name of a person, bt not his girlfrnd... G o o d n i g h t . . .@"
+E0142,H1054,heldout,ham,5267,"Storming msg: Wen u lift d phne, u say ""HELLO"" Do u knw wt is d real meaning of HELLO?? . . . It's d name of a girl..! . . . Yes.. And u knw who is dat girl?? ""Margaret Hello"" She is d girlfrnd f Grahmbell who invnted telphone... . . . . Moral:One can 4get d name of a person, bt not his girlfrnd... G o o d n i g h t . . .@"
+E0143,T1126,train,ham,1401,You have registered Sinco as Payee. Log in at icicibank.com and enter URN  &lt;#&gt;  to confirm. Beware of frauds. Do NOT share or disclose URN to anyone.
+E0143,T1128,train,ham,1404,You have registered Sinco as Payee. Log in at icicibank.com and enter URN  &lt;#&gt;  to confirm. Beware of frauds. Do NOT share or disclose URN to anyone.
+E0144,T1135,train,ham,1413,somewhere out there beneath the pale moon light someone think in of u some where out there where dreams come true... goodnite &amp; sweet dreams
+E0144,T3222,train,ham,4005,somewhere out there beneath the pale moon light someone think in of u some where out there where dreams come true... goodnite &amp; sweet dreams
+E0145,T1169,train,ham,1455,Stupid.its not possible
+E0145,T2965,train,ham,3681,Stupid.its not possible
+E0145,T3615,train,ham,4505,Stupid.its not possible
+E0146,T1181,train,ham,1471,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear"
+E0146,T1428,train,ham,1780,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear"
+E0146,T2394,train,ham,2983,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear"
+E0146,T3653,train,ham,4557,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear"
+E0147,T1185,train,ham,1476,"Friendship is not a game to play, It is not a word to say, It doesn\'t start on March and ends on May, It is tomorrow, yesterday, today and e"
+E0147,T3208,train,ham,3988,"Friendship is not a game to play, It is not a word to say, It doesn\'t start on March and ends on May, It is tomorrow, yesterday, today and e"
+E0148,T1193,train,ham,1485,Purity of friendship between two is not about smiling after reading the forwarded message..Its about smiling just by seeing the name. Gud evng musthu
+E0148,T2254,train,ham,2800,Purity of friendship between two is not about smiling after reading the forwarded message..Its about smiling just by seeing the name. Gud evng musthu
+E0149,T1209,train,spam,1503,"HOT LIVE FANTASIES call now 08707509020 Just 20p per min NTT Ltd, PO Box 1327 Croydon CR9 5WB 0870 is a national rate call"
+E0149,T2403,train,spam,2993,"HOT LIVE FANTASIES call now 08707509020 Just 20p per min NTT Ltd, PO Box 1327 Croydon CR9 5WB 0870 is a national rate call"
+E0150,T1210,train,ham,1504,Don no da:)whats you plan?
+E0150,T3766,train,ham,4700,Don no da:)whats you plan?
+E0151,T1238,train,spam,1537,You have won a Nokia 7250i. This is what you get when you win our FREE auction. To take part send Nokia to 86021 now. HG/Suite342/2Lands Row/W1JHL 16+
+E0151,T1848,train,spam,2312,You have won a Nokia 7250i. This is what you get when you win our FREE auction. To take part send Nokia to 86021 now. HG/Suite342/2Lands Row/W1JHL 16+ 
+E0151,T2960,train,spam,3676,You have won a Nokia 7250i. This is what you get when you win our FREE auction. To take part send Nokia to 86021 now. HG/Suite342/2Lands Row/W1JHL 16+
+E0152,T1244,train,ham,1543,Do u konw waht is rael FRIENDSHIP Im gving yuo an exmpel: Jsut ese tihs msg.. Evrey splleing of tihs msg is wrnog.. Bt sitll yuo can raed it wihtuot ayn mitsake.. GOODNIGHT &amp; HAVE A NICE SLEEP..SWEET DREAMS..
+E0152,T4299,train,ham,5377,Do u konw waht is rael FRIENDSHIP Im gving yuo an exmpel: Jsut ese tihs msg.. Evrey splleing of tihs msg is wrnog.. Bt sitll yuo can raed it wihtuot ayn mitsake.. GOODNIGHT &amp; HAVE A NICE SLEEP..SWEET DREAMS..
+E0153,T1253,train,ham,1552,He says hi and to get your ass back to south tampa (preferably at a kegger)
+E0153,T2309,train,ham,2867,He says hi and to get your ass back to south tampa (preferably at a kegger)
+E0154,T1259,train,ham,1559,Wat r u doing?
+E0154,T3053,train,ham,3788,Wat r u doing?
+E0155,T1260,train,ham,1561,"Single line with a big meaning::::: ""Miss anything 4 ur ""Best Life"" but, don't miss ur best life for anything... Gud nyt..."
+E0155,T2863,train,ham,3550,"Single line with a big meaning::::: ""Miss anything 4 ur ""Best Life"" but, don't miss ur best life for anything... Gud nyt..."
+E0156,T1263,train,ham,1568,I am late. I will be there at
+E0156,T3427,train,ham,4260,I am late. I will be there at
+E0156,T4180,train,ham,5219,I am late. I will be there at
+E0157,T1267,train,ham,1572,No:-)i got rumour that you going to buy apartment in chennai:-)
+E0157,T2815,train,ham,3487,No:-)i got rumour that you going to buy apartment in chennai:-)
+E0158,T1279,train,ham,1589,"Dont search love, let love find U. Thats why its called falling in love, bcoz U dont force yourself, U just fall and U know there is smeone to hold U... BSLVYL"
+E0158,T1434,train,ham,1786,"Dont search love, let love find U. Thats why its called falling in love, bcoz U dont force yourself, U just fall and U know there is smeone to hold U... BSLVYL"
+E0159,T1286,train,ham,1596,Never blame a day in ur life. Good days give u happiness. Bad days give u experience. Both are essential in life! All are Gods blessings! good morning.:
+E0159,T3637,train,ham,4538,Never blame a day in ur life. Good days give u happiness. Bad days give u experience. Both are essential in life! All are Gods blessings! good morning.:
+E0160,H0311,heldout,spam,1599,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790121 from land line. Claim 3030. Valid 12hrs only 150ppm
+E0160,H0945,heldout,spam,4760,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790121 from land line. Claim 3030. Valid 12hrs only 150ppm
+E0161,T1293,train,ham,1606,"God picked up a flower and dippeditinaDEW, lovingly touched itwhichturnedinto u, and the he gifted tomeandsaid,THIS FRIEND IS 4U"
+E0161,T3276,train,ham,4077,"God picked up a flower and dippeditinaDEW, lovingly touched itwhichturnedinto u, and the he gifted tomeandsaid,THIS FRIEND IS 4U"
+E0162,H0316,heldout,spam,1624,U have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094599
+E0162,H0804,heldout,spam,4105,U have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094599
+E0163,T1311,train,ham,1627,Hi Dear Call me its urgnt. I don't know whats your problem. You don't want to work or if you have any other problem at least tell me. Wating for your reply.
+E0163,T3941,train,ham,4924,Hi Dear Call me its urgnt. I don't know whats your problem. You don't want to work or if you have any other problem at least tell me. Wating for your reply.
+E0164,T1319,train,spam,1636,"Eerie Nokia tones 4u, rply TONE TITLE to 8007 eg TONE DRACULA to 8007 Titles: GHOST, ADDAMSFA, MUNSTERS, EXORCIST, TWILIGHT www.getzed.co.uk POBox36504W45WQ 150p"
+E0164,H0412,heldout,spam,2071,"Eerie Nokia tones 4u, rply TONE TITLE to 8007 eg TONE DRACULA to 8007 Titles: GHOST, ADDAMSFA, MUNSTERS, EXORCIST, TWILIGHT www.getzed.co.uk POBox36504W45WQ 150p "
+E0165,T1330,train,ham,1652,I dont have any of your file in my bag..i was in work when you called me.i 'll tell you if i find anything in my room.
+E0165,T2788,train,ham,3456,I dont have any of your file in my bag..i was in work when you called me.i 'll tell you if i find anything in my room.
+E0166,T1349,train,ham,1680,"So many people seems to be special at first sight, But only very few will remain special to you till your last sight.. Maintain them till life ends.. Sh!jas"
+E0166,T3828,train,ham,4777,"So many people seems to be special at first sight, But only very few will remain special to you till your last sight.. Maintain them till life ends.. Sh!jas"
+E0167,T1356,train,spam,1689,Free Top ringtone -sub to weekly ringtone-get 1st week free-send SUBPOLY to 81618-?3 per week-stop sms-08718727870
+E0167,T2986,train,spam,3710,Free Top ringtone -sub to weekly ringtone-get 1st week free-send SUBPOLY to 81618-?3 per week-stop sms-08718727870
+E0168,T1359,train,ham,1695,Was gr8 to see that message. So when r u leaving? Congrats dear. What school and wat r ur plans.
+E0168,T3038,train,ham,3771,Was gr8 to see that message. So when r u leaving? Congrats dear. What school and wat r ur plans.
+E0169,T1376,train,spam,1715,Hard LIVE 121 chat just 60p/min. Choose your girl and connect LIVE. Call 09094646899 now! Cheap Chat UK's biggest live service. VU BCM1896WC1N3XX
+E0169,T2537,train,spam,3154,Hard LIVE 121 chat just 60p/min. Choose your girl and connect LIVE. Call 09094646899 now! Cheap Chat UK's biggest live service. VU BCM1896WC1N3XX
+E0170,T1386,train,ham,1729,I went to project centre
+E0170,T4409,train,ham,5513,I went to project centre
+E0171,H0344,heldout,ham,1730,As per your request 'Maangalyam (Alaipayuthe)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune
+E0171,H0706,heldout,ham,3650,As per your request 'Maangalyam (Alaipayuthe)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune
+E0172,H0346,heldout,ham,1738,I will come tomorrow di
+E0172,H0822,heldout,ham,4202,I will come tomorrow di
+E0173,T1394,train,spam,1742,UR GOING 2 BAHAMAS! CallFREEFONE 08081560665 and speak to a live operator to claim either Bahamas cruise of£2000 CASH 18+only. To opt out txt X to 07786200117
+E0173,T2557,train,spam,3177,UR GOING 2 BAHAMAS! CallFREEFONE 08081560665 and speak to a live operator to claim either Bahamas cruise of£2000 CASH 18+only. To opt out txt X to 07786200117
+E0174,T1414,train,ham,1765,Joy's father is John. Then John is the NAME of Joy's father. Mandan
+E0174,T2025,train,ham,2520,Joy's father is John. Then John is the NAME of Joy's father. Mandan
+E0175,T1415,train,spam,1766,Hi 07734396839 IBH Customer Loyalty Offer: The NEW NOKIA6600 Mobile from ONLY £10 at TXTAUCTION!Txt word:START to No:81151 & get Yours Now!4T&
+E0175,T2892,train,spam,3586,Hi 07734396839 IBH Customer Loyalty Offer: The NEW NOKIA6600 Mobile from ONLY £10 at TXTAUCTION!Txt word:START to No:81151 & get Yours Now!4T&
+E0176,T1422,train,ham,1773,Watching tv now. I got new job :)
+E0176,T1507,train,ham,1878,Watching tv now. I got new job :)
+E0177,T1427,train,spam,1779,Buy Space Invaders 4 a chance 2 win orig Arcade Game console. Press 0 for Games Arcade (std WAP charge) See o2.co.uk/games 4 Terms + settings. No purchase
+E0177,T3796,train,spam,4736,Buy Space Invaders 4 a chance 2 win orig Arcade Game console. Press 0 for Games Arcade (std WAP charge) See o2.co.uk/games 4 Terms + settings. No purchase
+E0178,T1432,train,ham,1784,My uncles in Atlanta. Wish you guys a great semester.
+E0178,T2516,train,ham,3126,My uncles in Atlanta. Wish you guys a great semester.
+E0178,T3783,train,ham,4720,My uncles in Atlanta. Wish you guys a great semester.
+E0179,T1436,train,ham,1788,"Do you know why god created gap between your fingers..? So that, One who is made for you comes &amp; fills those gaps by holding your hand with LOVE..!"
+E0179,T2305,train,ham,2861,"Do you know why god created gap between your fingers..? So that, One who is made for you comes &amp; fills those gaps by holding your hand with LOVE..!"
+E0179,T3523,train,ham,4392,"Do you know why god created gap between your fingers..? So that, One who is made for you comes &amp; fills those gaps by holding your hand with LOVE..!"
+E0180,T1437,train,ham,1790,Arun can u transfr me d amt
+E0180,T4365,train,ham,5460,Arun can u transfr me d amt
+E0181,T1441,train,spam,1794,"WIN: We have a winner! Mr. T. Foley won an iPod! More exciting prizes soon, so keep an eye on ur mobile or visit www.win-82050.co.uk"
+E0181,T3768,train,spam,4702,"WIN: We have a winner! Mr. T. Foley won an iPod! More exciting prizes soon, so keep an eye on ur mobile or visit www.win-82050.co.uk"
+E0182,H0359,heldout,ham,1826,Sent me ur email id soon
+E0182,H1061,heldout,ham,5287,Sent me ur email id soon
+E0183,T1493,train,ham,1858,"Say this slowly.? GOD,I LOVE YOU &amp; I NEED YOU,CLEAN MY HEART WITH YOUR BLOOD.Send this to Ten special people &amp; u c miracle tomorrow, do it,pls,pls do it..."
+E0183,T2031,train,ham,2527,"Say this slowly.? GOD,I LOVE YOU &amp; I NEED YOU,CLEAN MY HEART WITH YOUR BLOOD.Send this to Ten special people &amp; u c miracle tomorrow, do it,pls,pls do it..."
+E0183,T2223,train,ham,2765,"Say this slowly.? GOD,I LOVE YOU &amp; I NEED YOU,CLEAN MY HEART WITH YOUR BLOOD.Send this to Ten special people &amp; u c miracle tomorrow, do it,pls,pls do it..."
+E0183,T2266,train,ham,2814,"Say this slowly.? GOD,I LOVE YOU &amp; I NEED YOU,CLEAN MY HEART WITH YOUR BLOOD.Send this to Ten special people &amp; u c miracle tomorrow, do it,pls,pls do it..."
+E0184,T1510,train,ham,1884,"Sorry, I can't help you on this."
+E0184,T2614,train,ham,3251,"Sorry, I can't help you on this."
+E0184,T3498,train,ham,4357,"Sorry, I can't help you on this."
+E0185,T1513,train,spam,1888,Dear 0776xxxxxxx U've been invited to XCHAT. This is our final attempt to contact u! Txt CHAT to 86688 150p/MsgrcvdHG/Suite342/2Lands/Row/W1J6HL LDN 18yrs 
+E0185,T4019,train,spam,5019,Dear 0776xxxxxxx U've been invited to XCHAT. This is our final attempt to contact u! Txt CHAT to 86688 150p/MsgrcvdHG/Suite342/2Lands/Row/W1J6HL LDN 18yrs
+E0186,H0378,heldout,spam,1905,Free entry in 2 a weekly comp for a chance to win an ipod. Txt POD to 80182 to get entry (std txt rate) T&C's apply 08452810073 for details 18+
+E0186,H0610,heldout,spam,3124,Free entry in 2 a weekly comp for a chance to win an ipod. Txt POD to 80182 to get entry (std txt rate) T&C's apply 08452810073 for details 18+
+E0187,T1545,train,ham,1926,Ok
+E0187,T2453,train,ham,3052,Ok
+E0187,T3609,train,ham,4499,Ok
+E0187,T4284,train,ham,5360,Ok
+E0188,T1553,train,ham,1936,Hope you are having a great day.
+E0188,T3734,train,ham,4656,Hope you are having a great day.
+E0189,T1558,train,spam,1943,"WELL DONE! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TCs, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins"
+E0189,T3462,train,spam,4300,"WELL DONE! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TCs, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins"
+E0190,T1559,train,ham,1944,K...k:)why cant you come here and search job:)
+E0190,T1568,train,ham,1958,K...k:)why cant you come here and search job:)
+E0191,T1570,train,ham,1961,Howz that persons story
+E0191,T2282,train,ham,2832,Howz that persons story
+E0191,T2566,train,ham,3189,Howz that persons story
+E0192,T1575,train,ham,1966,"Honeybee Said: *I'm d Sweetest in d World* God Laughed &amp; Said: *Wait,U Havnt Met d Person Reading This Msg* MORAL: Even GOD Can Crack Jokes! GM+GN+GE+GN:)"
+E0192,T2656,train,ham,3301,"Honeybee Said: *I'm d Sweetest in d World* God Laughed &amp; Said: *Wait,U Havnt Met d Person Reading This Msg* MORAL: Even GOD Can Crack Jokes! GM+GN+GE+GN:)"
+E0192,T3661,train,ham,4567,"Honeybee Said: *I'm d Sweetest in d World* God Laughed &amp; Said: *Wait,U Havnt Met d Person Reading This Msg* MORAL: Even GOD Can Crack Jokes! GM+GN+GE+GN:)"
+E0193,T1612,train,ham,2014,"Beautiful Truth against Gravity.. Read carefully: ""Our heart feels light when someone is in it.. But it feels very heavy when someone leaves it.."" GOODMORNING"
+E0193,T2747,train,ham,3409,"Beautiful Truth against Gravity.. Read carefully: ""Our heart feels light when someone is in it.. But it feels very heavy when someone leaves it.."" GOODMORNING"
+E0194,H0403,heldout,spam,2015,Great News! Call FREEFONE 08006344447 to claim your guaranteed £1000 CASH or £2000 gift. Speak to a live operator NOW!
+E0194,H0987,heldout,spam,4949,Great News! Call FREEFONE 08006344447 to claim your guaranteed £1000 CASH or £2000 gift. Speak to a live operator NOW!
+E0195,T1661,train,ham,2073,Good night my dear.. Sleepwell&amp;Take care
+E0195,T2744,train,ham,3405,Good night my dear.. Sleepwell&amp;Take care
+E0196,T1675,train,spam,2090,Well done ENGLAND! Get the official poly ringtone or colour flag on yer mobile! text TONE or FLAG to 84199 NOW! Opt-out txt ENG STOP. Box39822 W111WX £1.50
+E0196,T3680,train,spam,4593,Well done ENGLAND! Get the official poly ringtone or colour flag on yer mobile! text TONE or FLAG to 84199 NOW! Opt-out txt ENG STOP. Box39822 W111WX £1.50
+E0197,T1680,train,spam,2095,"Final Chance! Claim ur £150 worth of discount vouchers today! Text YES to 85023 now! SavaMob, member offers mobile! T Cs SavaMob POBOX84, M263UZ. £3.00 Subs 16"
+E0197,T1988,train,spam,2474,"Final Chance! Claim ur £150 worth of discount vouchers today! Text YES to 85023 now! SavaMob, member offers mobile! T Cs SavaMob POBOX84, M263UZ. £3.00 Subs 16"
+E0198,T1697,train,spam,2116,"Sunshine Hols. To claim ur med holiday send a stamped self address envelope to Drinks on Us UK, PO Box 113, Bray, Wicklow, Eire. Quiz Starts Saturday! Unsub Stop"
+E0198,T1718,train,spam,2147,"Sunshine Hols. To claim ur med holiday send a stamped self address envelope to Drinks on Us UK, PO Box 113, Bray, Wicklow, Eire. Quiz Starts Saturday! Unsub Stop"
+E0199,H0422,heldout,spam,2120,"U can WIN £100 of Music Gift Vouchers every week starting NOW Txt the word DRAW to 87066 TsCs www.Idew.com SkillGame, 1Winaweek, age16. 150ppermessSubscription"
+E0199,H0829,heldout,spam,4238,"U can WIN £100 of Music Gift Vouchers every week starting NOW Txt the word DRAW to 87066 TsCs www.Idew.com SkillGame, 1Winaweek, age16. 150ppermessSubscription"
+E0200,H0423,heldout,ham,2129,Tessy..pls do me a favor. Pls convey my birthday wishes to Nimya..pls dnt forget it. Today is her birthday Shijas
+E0200,H0605,heldout,ham,3102,Tessy..pls do me a favor. Pls convey my birthday wishes to Nimya..pls dnt forget it. Today is her birthday Shijas
+E0200,H0933,heldout,ham,4695,Tessy..pls do me a favor. Pls convey my birthday wishes to Nimya..pls dnt forget it. Today is her birthday Shijas
+E0201,T1728,train,ham,2159,"Sad story of a Man - Last week was my b'day. My Wife did'nt wish me. My Parents forgot n so did my Kids . I went to work. Even my Colleagues did not wish. As I entered my cabin my PA said, '' Happy B'day Boss !!''. I felt special. She askd me 4 lunch. After lunch she invited me to her apartment. We went there. She said,'' do u mind if I go into the bedroom for a minute ? '' ''OK'', I sed in a sexy mood. She came out 5 minuts latr wid a cake...n My Wife, My Parents, My Kidz, My Friends n My Colleagues. All screaming.. SURPRISE !! and I was waiting on the sofa.. ... ..... ' NAKED...!"
+E0201,T2297,train,ham,2850,"Sad story of a Man - Last week was my b'day. My Wife did'nt wish me. My Parents forgot n so did my Kids . I went to work. Even my Colleagues did not wish. As I entered my cabin my PA said, '' Happy B'day Boss !!''. I felt special. She askd me 4 lunch. After lunch she invited me to her apartment. We went there. She said,'' do u mind if I go into the bedroom for a minute ? '' ''OK'', I sed in a sexy mood. She came out 5 minuts latr wid a cake...n My Wife, My Parents, My Kidz, My Friends n My Colleagues. All screaming.. SURPRISE !! and I was waiting on the sofa.. ... ..... ' NAKED...!"
+E0202,T1747,train,ham,2183,Ok.
+E0202,T2818,train,ham,3493,Ok.
+E0202,T3086,train,ham,3834,Ok.
+E0202,T3231,train,ham,4015,Ok.
+E0203,T1751,train,ham,2187,Purity of friendship between two is not about smiling after reading the forwarded message..Its about smiling just by seeing the name. Gud evng
+E0203,T3510,train,ham,4373,Purity of friendship between two is not about smiling after reading the forwarded message..Its about smiling just by seeing the name. Gud evng
+E0204,H0439,heldout,ham,2203,"A boy was late 2 home. His father: ""POWER OF FRNDSHIP"""
+E0204,H0990,heldout,ham,4979,"A boy was late 2 home. His father: ""POWER OF FRNDSHIP"""
+E0205,T1767,train,ham,2206,Raji..pls do me a favour. Pls convey my Birthday wishes to Nimya. Pls. Today is her birthday.
+E0205,T2440,train,ham,3037,Raji..pls do me a favour. Pls convey my Birthday wishes to Nimya. Pls. Today is her birthday.
+E0205,T4143,train,ham,5178,Raji..pls do me a favour. Pls convey my Birthday wishes to Nimya. Pls. Today is her birthday.
+E0206,H0440,heldout,spam,2210,"URGENT!! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins"
+E0206,H0815,heldout,spam,4155,"URGENT!! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins"
+E0207,H0455,heldout,ham,2260,Sad story of a Man - Last week was my b'day. My Wife did'nt wish me. My Parents forgot n so did my Kids . I went to work. Even my Colleagues did not wish.
+E0207,H0834,heldout,ham,4261,Sad story of a Man - Last week was my b'day. My Wife did'nt wish me. My Parents forgot n so did my Kids . I went to work. Even my Colleagues did not wish.
+E0207,H0871,heldout,ham,4415,Sad story of a Man - Last week was my b'day. My Wife did'nt wish me. My Parents forgot n so did my Kids . I went to work. Even my Colleagues did not wish.
+E0208,H0457,heldout,spam,2265,Not heard from U4 a while. Call 4 rude chat private line 01223585334 to cum. Wan 2C pics of me gettin shagged then text PIX to 8552. 2End send STOP 8552 SAM xxx
+E0208,H0618,heldout,spam,3156,Not heard from U4 a while. Call 4 rude chat private line 01223585334 to cum. Wan 2C pics of me gettin shagged then text PIX to 8552. 2End send STOP 8552 SAM xxx
+E0209,T1821,train,ham,2281,"Sorry, I'll call later in meeting"
+E0209,T3367,train,ham,4185,"Sorry, I'll call later in meeting"
+E0210,T1843,train,ham,2306,Friendship poem: Dear O Dear U R Not Near But I Can Hear Dont Get Fear Live With Cheer No More Tear U R Always my Dear. Gud ni8
+E0210,T2791,train,ham,3459,Friendship poem: Dear O Dear U R Not Near But I Can Hear Dont Get Fear Live With Cheer No More Tear U R Always my Dear. Gud ni8
+E0211,T1860,train,ham,2326,Ok lor.
+E0211,T4376,train,ham,5472,Ok lor.
+E0212,H0468,heldout,ham,2339,Tell your friends what you plan to do on Valentines day @ &lt;URL&gt;
+E0212,H0546,heldout,ham,2798,Tell your friends what you plan to do on Valentines day @ &lt;URL&gt;
+E0213,T1891,train,spam,2361,"Spook up your mob with a Halloween collection of a logo & pic message plus a free eerie tone, txt CARD SPOOK to 8007 zed 08701417012150p per logo/pic"
+E0213,T4162,train,spam,5199,"Spook up your mob with a Halloween collection of a logo & pic message plus a free eerie tone, txt CARD SPOOK to 8007 zed 08701417012150p per logo/pic "
+E0214,T1894,train,spam,2365,"Fantasy Football is back on your TV. Go to Sky Gamestar on Sky Active and play £250k Dream Team. Scoring starts on Saturday, so register now!SKY OPT OUT to 88088"
+E0214,T3096,train,spam,3849,"Fantasy Football is back on your TV. Go to Sky Gamestar on Sky Active and play £250k Dream Team. Scoring starts on Saturday, so register now!SKY OPT OUT to 88088"
+E0215,T1897,train,ham,2370,If you r @ home then come down within 5 min
+E0215,T2330,train,ham,2900,If you r @ home then come down within 5 min
+E0216,T1898,train,ham,2371,"A Boy loved a gal. He propsd bt she didnt mind. He gv lv lttrs, Bt her frnds threw thm. Again d boy decided 2 aproach d gal , dt time a truck was speeding towards d gal. Wn it was about 2 hit d girl,d boy ran like hell n saved her. She asked 'hw cn u run so fast?' D boy replied ""Boost is d secret of my energy"" n instantly d girl shouted ""our energy"" n Thy lived happily 2gthr drinking boost evrydy Moral of d story:- I hv free msgs:D;): gud ni8"
+E0216,T4082,train,ham,5107,"A Boy loved a gal. He propsd bt she didnt mind. He gv lv lttrs, Bt her frnds threw thm. Again d boy decided 2 aproach d gal , dt time a truck was speeding towards d gal. Wn it was about 2 hit d girl,d boy ran like hell n saved her. She asked 'hw cn u run so fast?' D boy replied ""Boost is d secret of my energy"" n instantly d girl shouted ""our energy"" n Thy lived happily 2gthr drinking boost evrydy Moral of d story:- I hv free msgs:D;): gud ni8"
+E0217,T1905,train,spam,2379,YES! The only place in town to meet exciting adult singles is now in the UK. Txt CHAT to 86688 now! 150p/Msg.
+E0217,T3027,train,spam,3759,YES! The only place in town to meet exciting adult singles is now in the UK. Txt CHAT to 86688 now! 150p/Msg.
+E0218,H0475,heldout,ham,2380,"Hi, Mobile no.  &lt;#&gt;  has added you in their contact list on www.fullonsms.com It s a great place to send free sms to people For more visit fullonsms.com"
+E0218,H0949,heldout,ham,4774,"Hi, Mobile no.  &lt;#&gt;  has added you in their contact list on www.fullonsms.com It s a great place to send free sms to people For more visit fullonsms.com"
+E0219,H0477,heldout,ham,2388,No message..no responce..what happend?
+E0219,H0581,heldout,ham,2945,No message..no responce..what happend?
+E0219,H0701,heldout,ham,3626,No message..no responce..what happend?
+E0220,T1913,train,ham,2390,"wiskey Brandy Rum Gin Beer Vodka Scotch Shampain Wine ""KUDI""yarasu dhina vaazhthukkal. .."
+E0220,T2780,train,ham,3447,"wiskey Brandy Rum Gin Beer Vodka Scotch Shampain Wine ""KUDI""yarasu dhina vaazhthukkal. .."
+E0221,T1919,train,ham,2396,I don't run away frm u... I walk slowly &amp; it kills me that u don't care enough to stop me...
+E0221,T2709,train,ham,3360,I don't run away frm u... I walk slowly &amp; it kills me that u don't care enough to stop me...
+E0222,T1932,train,ham,2409,"Solve d Case : A Man Was Found Murdered On  &lt;DECIMAL&gt; . &lt;#&gt;  AfterNoon. 1,His wife called Police. 2,Police questioned everyone. 3,Wife: Sir,I was sleeping, when the murder took place. 4.Cook: I was cooking. 5.Gardener: I was picking vegetables. 6.House-Maid: I went 2 d post office. 7.Children: We went 2 play. 8.Neighbour: We went 2 a marriage. Police arrested d murderer Immediately. Who's It? Reply With Reason, If U r Brilliant."
+E0222,T2154,train,ham,2682,"Solve d Case : A Man Was Found Murdered On  &lt;DECIMAL&gt; . &lt;#&gt;  AfterNoon. 1,His wife called Police. 2,Police questioned everyone. 3,Wife: Sir,I was sleeping, when the murder took place. 4.Cook: I was cooking. 5.Gardener: I was picking vegetables. 6.House-Maid: I went 2 d post office. 7.Children: We went 2 play. 8.Neighbour: We went 2 a marriage. Police arrested d murderer Immediately. Who's It? Reply With Reason, If U r Brilliant."
+E0222,T2638,train,ham,3281,"Solve d Case : A Man Was Found Murdered On  &lt;DECIMAL&gt; . &lt;#&gt;  AfterNoon. 1,His wife called Police. 2,Police questioned everyone. 3,Wife: Sir,I was sleeping, when the murder took place. 4.Cook: I was cooking. 5.Gardener: I was picking vegetables. 6.House-Maid: I went 2 d post office. 7.Children: We went 2 play. 8.Neighbour: We went 2 a marriage. Police arrested d murderer Immediately. Who's It? Reply With Reason, If U r Brilliant."
+E0223,T1984,train,ham,2469,Is there coming friday is leave for pongal?do you get any news from your work place.
+E0223,T4029,train,ham,5032,Is there coming friday is leave for pongal?do you get any news from your work place.
+E0224,T2000,train,ham,2488,I dont thnk its a wrong calling between us
+E0224,T2222,train,ham,2762,I dont thnk its a wrong calling between us
+E0224,T3322,train,ham,4130,I dont thnk its a wrong calling between us
+E0225,T2035,train,ham,2534,Yup ok...
+E0225,T3977,train,ham,4964,Yup ok...
+E0226,T2046,train,ham,2548,Company is very good.environment is terrific and food is really nice:)
+E0226,T4144,train,ham,5179,Company is very good.environment is terrific and food is really nice:)
+E0227,H0508,heldout,spam,2575,"Congrats 2 mobile 3G Videophones R yours. call 09063458130 now! videochat wid ur mates, play java games, Dload polypH music, noline rentl. bx420. ip4. 5we. 150p"
+E0227,H1033,heldout,spam,5167,"Congrats 2 mobile 3G Videophones R yours. call 09063458130 now! videochat wid ur mates, play java games, Dload polypH music, noline rentl. bx420. ip4. 5we. 150p"
+E0228,T2087,train,ham,2602,"As usual..iam fine, happy &amp; doing well..:)"
+E0228,T2096,train,ham,2612,"As usual..iam fine, happy &amp; doing well..:)"
+E0228,T4209,train,ham,5260,"As usual..iam fine, happy &amp; doing well..:)"
+E0229,T2088,train,ham,2603,Okie
+E0229,T2161,train,ham,2689,Okie
+E0229,T3132,train,ham,3902,Okie
+E0229,T4155,train,ham,5191,Okie
+E0230,T2106,train,ham,2624,Ok lor...
+E0230,T2190,train,ham,2722,Ok lor...
+E0230,T2278,train,ham,2828,Ok lor...
+E0231,T2140,train,ham,2666,He remains a bro amongst bros
+E0231,T2752,train,ham,3417,He remains a bro amongst bros
+E0232,T2156,train,ham,2684,I got a call from a landline number. . . I am asked to come to anna nagar . . . I will go in the afternoon
+E0232,T3170,train,ham,3945,I got a call from a landline number. . . I am asked to come to anna nagar . . . I will go in the afternoon
+E0233,T2174,train,ham,2702,"Feb  &lt;#&gt;  is ""I LOVE U"" day. Send dis to all ur ""VALUED FRNDS"" evn me. If 3 comes back u'll gt married d person u luv! If u ignore dis u will lose ur luv 4 Evr"
+E0233,T3063,train,ham,3800,"Feb  &lt;#&gt;  is ""I LOVE U"" day. Send dis to all ur ""VALUED FRNDS"" evn me. If 3 comes back u'll gt married d person u luv! If u ignore dis u will lose ur luv 4 Evr"
+E0234,T2180,train,spam,2709,Great NEW Offer - DOUBLE Mins & DOUBLE Txt on best Orange tariffs AND get latest camera phones 4 FREE! Call MobileUpd8 free on 08000839402 NOW! or 2stoptxt T&Cs
+E0234,T3199,train,spam,3979,Great NEW Offer - DOUBLE Mins & DOUBLE Txt on best Orange tariffs AND get latest camera phones 4 FREE! Call MobileUpd8 free on 08000839402 NOW! or 2stoptxt T&Cs
+E0235,T2188,train,ham,2718,"House-Maid is the murderer, coz the man was murdered on  &lt;#&gt; th January.. As public holiday all govt.instituitions are closed,including post office..understand?"
+E0235,T2311,train,ham,2871,"House-Maid is the murderer, coz the man was murdered on  &lt;#&gt; th January.. As public holiday all govt.instituitions are closed,including post office..understand?"
+E0235,T3563,train,ham,4438,"House-Maid is the murderer, coz the man was murdered on  &lt;#&gt; th January.. As public holiday all govt.instituitions are closed,including post office..understand?"
+E0236,T2193,train,ham,2728,No i am not having not any movies in my laptop
+E0236,T2974,train,ham,3694,No i am not having not any movies in my laptop
+E0237,T2228,train,ham,2770,I am on the way to ur home
+E0237,T3213,train,ham,3993,I am on the way to ur home
+E0238,T2285,train,spam,2835,"You've won tkts to the EURO2004 CUP FINAL or £800 CASH, to collect CALL 09058099801 b4190604, POBOX 7876150ppm"
+E0238,T2416,train,spam,3006,"You've won tkts to the EURO2004 CUP FINAL or £800 CASH, to collect CALL 09058099801 b4190604, POBOX 7876150ppm"
+E0239,T2288,train,ham,2838,Nice.nice.how is it working?
+E0239,T2579,train,ham,3203,Nice.nice.how is it working?
+E0240,H0551,heldout,ham,2843,Ok thanx...
+E0240,H0660,heldout,ham,3395,Ok thanx...
+E0241,H0556,heldout,ham,2858,"Japanese Proverb: If one Can do it, U too Can do it, If none Can do it,U must do it Indian version: If one Can do it, LET HIM DO it.. If none Can do it,LEAVE it!! And finally Kerala version: If one can do it, Stop him doing it.. If none can do it, Make a strike against it ..."
+E0241,H0977,heldout,ham,4891,"Japanese Proverb: If one Can do it, U too Can do it, If none Can do it,U must do it Indian version: If one Can do it, LET HIM DO it.. If none Can do it,LEAVE it!! And finally Kerala version: If one can do it, Stop him doing it.. If none can do it, Make a strike against it ..."
+E0242,T2336,train,ham,2908,"Helloooo... Wake up..! ""Sweet"" ""morning"" ""welcomes"" ""You"" ""Enjoy"" ""This Day"" ""with full of joy"".. ""GUD MRNG""."
+E0242,T4224,train,ham,5282,"Helloooo... Wake up..! ""Sweet"" ""morning"" ""welcomes"" ""You"" ""Enjoy"" ""This Day"" ""with full of joy"".. ""GUD MRNG""."
+E0243,T2402,train,spam,2991,No 1 POLYPHONIC tone 4 ur mob every week! Just txt PT2 to 87575. 1st Tone FREE ! so get txtin now and tell ur friends. 150p/tone. 16 reply HL 4info
+E0243,T3907,train,spam,4880,No 1 POLYPHONIC tone 4 ur mob every week! Just txt PT2 to 87575. 1st Tone FREE ! so get txtin now and tell ur friends. 150p/tone. 16 reply HL 4info
+E0244,T2562,train,ham,3184,"My Parents, My Kidz, My Friends n My Colleagues. All screaming.. SURPRISE !! and I was waiting on the sofa.. ... ..... ' NAKED...!"
+E0244,T4274,train,ham,5349,"My Parents, My Kidz, My Friends n My Colleagues. All screaming.. SURPRISE !! and I was waiting on the sofa.. ... ..... ' NAKED...!"
+E0245,H0624,heldout,spam,3190,"This is the 2nd time we have tried 2 contact u. U have won the 750 Pound prize. 2 claim is easy, call 08712101358 NOW! Only 10p per min. BT-national-rate"
+E0245,H0983,heldout,spam,4919,"This is the 2nd time we have tried 2 contact u. U have won the 750 Pound prize. 2 claim is easy, call 08712101358 NOW! Only 10p per min. BT-national-rate"
+E0246,H0627,heldout,ham,3212,"She said,'' do u mind if I go into the bedroom for a minute ? '' ''OK'', I sed in a sexy mood. She came out 5 minuts latr wid a cake...n My Wife,"
+E0246,H0648,heldout,ham,3325,"She said,'' do u mind if I go into the bedroom for a minute ? '' ''OK'', I sed in a sexy mood. She came out 5 minuts latr wid a cake...n My Wife,"
+E0246,H0883,heldout,ham,4469,"She said,'' do u mind if I go into the bedroom for a minute ? '' ''OK'', I sed in a sexy mood. She came out 5 minuts latr wid a cake...n My Wife,"
+E0247,T2595,train,ham,3228,"Rose for red,red for blood,blood for heart,heart for u. But u for me.... Send tis to all ur friends.. Including me.. If u like me.. If u get back, 1-u r poor in relation! 2-u need some 1 to support 3-u r frnd 2 many 4-some1 luvs u 5+- some1 is praying god to marry u.:-) try it...."
+E0247,T4103,train,ham,5132,"Rose for red,red for blood,blood for heart,heart for u. But u for me.... Send tis to all ur friends.. Including me.. If u like me.. If u get back, 1-u r poor in relation! 2-u need some 1 to support 3-u r frnd 2 many 4-some1 luvs u 5+- some1 is praying god to marry u.:-) try it...."
+E0248,T2694,train,ham,3343,Still i have not checked it da. . .
+E0248,T2816,train,ham,3490,Still i have not checked it da. . .
+E0249,T2696,train,ham,3347,Reverse is cheating. That is not mathematics.
+E0249,T3848,train,ham,4804,Reverse is cheating. That is not mathematics.
+E0250,T2719,train,ham,3373,Tomorrow i am not going to theatre. . . So i can come wherever u call me. . . Tell me where and when to come tomorrow
+E0250,T3679,train,ham,4592,Tomorrow i am not going to theatre. . . So i can come wherever u call me. . . Tell me where and when to come tomorrow
+E0251,H0664,heldout,ham,3412,Joy's father is John. Then John is the ____ of Joy's father. If u ans ths you hav  &lt;#&gt;  IQ. Tis s IAS question try to answer.
+E0251,H0698,heldout,ham,3611,Joy's father is John. Then John is the ____ of Joy's father. If u ans ths you hav  &lt;#&gt;  IQ. Tis s IAS question try to answer.
+E0252,T2769,train,spam,3434,Camera - You are awarded a SiPix Digital Camera! call 09061221066 fromm landline. Delivery within 28 days.
+E0252,T3805,train,spam,4747,Camera - You are awarded a SiPix Digital Camera! call 09061221066 fromm landline. Delivery within 28 days.
+E0252,T4291,train,spam,5368,Camera - You are awarded a SiPix Digital Camera! call 09061221066 fromm landline. Delivery within 28 days.
+E0253,T2796,train,spam,3464,Bloomberg -Message center +447797706009 Why wait? Apply for your future http://careers. bloomberg.com
+E0253,T3026,train,spam,3756,Bloomberg -Message center +447797706009 Why wait? Apply for your future http://careers. bloomberg.com
+E0254,T2805,train,ham,3473,Heart is empty without love.. Mind is empty without wisdom.. Eyes r empty without dreams &amp; Life is empty without frnds.. So Alwys Be In Touch. Good night &amp; sweet dreams
+E0254,T2893,train,ham,3587,Heart is empty without love.. Mind is empty without wisdom.. Eyes r empty without dreams &amp; Life is empty without frnds.. So Alwys Be In Touch. Good night &amp; sweet dreams
+E0255,T2821,train,spam,3497,"Wan2 win a Meet+Greet with Westlife 4 U or a m8? They are currently on what tour? 1)Unbreakable, 2)Untamed, 3)Unkempt. Text 1,2 or 3 to 83049. Cost 50p +std text"
+E0255,T3229,train,spam,4012,"Wan2 win a Meet+Greet with Westlife 4 U or a m8? They are currently on what tour? 1)Unbreakable, 2)Untamed, 3)Unkempt. Text 1,2 or 3 to 83049. Cost 50p +std text"
+E0256,T2852,train,ham,3537,I'm at home. Please call
+E0256,T3006,train,ham,3731,I'm at home. Please call
+E0256,T3406,train,ham,4234,I'm at home. Please call
+E0257,T2870,train,ham,3560,No da. . Vijay going to talk in jaya tv
+E0257,T3014,train,ham,3742,No da. . Vijay going to talk in jaya tv
+E0258,T2874,train,ham,3564,Still chance there. If you search hard you will get it..let have a try :)
+E0258,T2928,train,ham,3629,Still chance there. If you search hard you will get it..let have a try :)
+E0259,T2882,train,spam,3575,You won't believe it but it's true. It's Incredible Txts! Reply G now to learn truly amazing things that will blow your mind. From O2FWD only 18p/txt
+E0259,T4033,train,spam,5038,You won't believe it but it's true. It's Incredible Txts! Reply G now to learn truly amazing things that will blow your mind. From O2FWD only 18p/txt
+E0260,T2885,train,ham,3578,"The sign of maturity is not when we start saying big things.. But actually it is, when we start understanding small things... *HAVE A NICE EVENING* BSLVYL"
+E0260,T4086,train,ham,5111,"The sign of maturity is not when we start saying big things.. But actually it is, when we start understanding small things... *HAVE A NICE EVENING* BSLVYL"
+E0261,T2897,train,ham,3592,I am in escape theatre now. . Going to watch KAVALAN in a few minutes
+E0261,T3882,train,ham,4849,I am in escape theatre now. . Going to watch KAVALAN in a few minutes
+E0262,T2930,train,spam,3632,Get the official ENGLAND poly ringtone or colour flag on yer mobile for tonights game! Text TONE or FLAG to 84199. Optout txt ENG STOP Box39822 W111WX £1.50
+E0262,T4251,train,spam,5317,Get the official ENGLAND poly ringtone or colour flag on yer mobile for tonights game! Text TONE or FLAG to 84199. Optout txt ENG STOP Box39822 W111WX £1.50
+E0263,H0712,heldout,ham,3662,I will reach ur home in  &lt;#&gt;  minutes
+E0263,H1039,heldout,ham,5209,I will reach ur home in  &lt;#&gt;  minutes
+E0264,T3011,train,ham,3739,"Plz note: if anyone calling from a mobile Co. &amp; asks u to type # &lt;#&gt;  or # &lt;#&gt; . Do not do so. Disconnect the call,coz it iz an attempt of 'terrorist' to make use of the sim card no. Itz confirmd by nokia n motorola n has been verified by CNN IBN."
+E0264,T3398,train,ham,4223,"Plz note: if anyone calling from a mobile Co. &amp; asks u to type # &lt;#&gt;  or # &lt;#&gt; . Do not do so. Disconnect the call,coz it iz an attempt of 'terrorist' to make use of the sim card no. Itz confirmd by nokia n motorola n has been verified by CNN IBN."
+E0265,T3022,train,ham,3750,"A bit of Ur smile is my hppnss, a drop of Ur tear is my sorrow, a part of Ur heart is my life, a heart like mine wil care for U, forevr as my GOODFRIEND"
+E0265,T3976,train,ham,4963,"A bit of Ur smile is my hppnss, a drop of Ur tear is my sorrow, a part of Ur heart is my life, a heart like mine wil care for U, forevr as my GOODFRIEND"
+E0266,H0735,heldout,spam,3779,"Mila, age23, blonde, new in UK. I look sex with UK guys. if u like fun with me. Text MTALK to 69866.18 . 30pp/txt 1st 5free. £1.50 increments. Help08718728876"
+E0266,H0912,heldout,spam,4588,"Mila, age23, blonde, new in UK. I look sex with UK guys. if u like fun with me. Text MTALK to 69866.18 . 30pp/txt 1st 5free. £1.50 increments. Help08718728876"
+E0267,T3055,train,spam,3790,"Want to funk up ur fone with a weekly new tone reply TONES2U 2 this text. www.ringtones.co.uk, the original n best. Tones 3GBP network operator rates apply"
+E0267,T3379,train,spam,4200,"Want to funk up ur fone with a weekly new tone reply TONES2U 2 this text. www.ringtones.co.uk, the original n best. Tones 3GBP network operator rates apply"
+E0268,T3059,train,ham,3796,"Short But Cute: ""Be a good person, but dont try to prove it.."" .Gud noon...."
+E0268,T3121,train,ham,3884,"Short But Cute: ""Be a good person, but dont try to prove it.."" .Gud noon...."
+E0269,T3078,train,ham,3825,"Please protect yourself from e-threats. SIB never asks for sensitive information like Passwords,ATM/SMS PIN thru email. Never share your password with anybody."
+E0269,T3730,train,ham,4651,"Please protect yourself from e-threats. SIB never asks for sensitive information like Passwords,ATM/SMS PIN thru email. Never share your password with anybody."
+E0270,H0754,heldout,ham,3850,Can you plz tell me the ans. BSLVYL sent via fullonsms.com
+E0270,H0763,heldout,ham,3883,Can you plz tell me the ans. BSLVYL sent via fullonsms.com
+E0271,T3189,train,spam,3969,YOU HAVE WON! As a valued Vodafone customer our computer has picked YOU to win a £150 prize. To collect is easy. Just call 09061743386
+E0271,T3880,train,spam,4846,YOU HAVE WON! As a valued Vodafone customer our computer has picked YOU to win a £150 prize. To collect is easy. Just call 09061743386 
+E0272,T3217,train,spam,3999,Bored housewives! Chat n date now! 0871750.77.11! BT-national rate 10p/min only from landlines!
+E0272,T3897,train,spam,4865,Bored housewives! Chat n date now! 0871750.77.11! BT-national rate 10p/min only from landlines!
+E0273,T3248,train,spam,4037,YOU ARE CHOSEN TO RECEIVE A £350 AWARD! Pls call claim number 09066364311 to collect your award which you are selected to receive as a valued mobile customer.
+E0273,T4193,train,spam,5235,YOU ARE CHOSEN TO RECEIVE A £350 AWARD! Pls call claim number 09066364311 to collect your award which you are selected to receive as a valued mobile customer.
+E0274,T3433,train,ham,4268,The greatest test of courage on earth is to bear defeat without losing heart....gn tc
+E0274,T3524,train,ham,4393,The greatest test of courage on earth is to bear defeat without losing heart....gn tc
+E0275,T3438,train,spam,4273,Natalja (25/F) is inviting you to be her friend. Reply YES-440 or NO-440 See her: www.SMS.ac/u/nat27081980 STOP? Send STOP FRND to 62468
+E0275,T4178,train,spam,5217,Natalja (25/F) is inviting you to be her friend. Reply YES-440 or NO-440 See her: www.SMS.ac/u/nat27081980 STOP? Send STOP FRND to 62468
+E0276,T3472,train,ham,4314,I keep ten rs in my shelf:) buy two egg.
+E0276,T4179,train,ham,5218,I keep ten rs in my shelf:) buy two egg.
+E0277,T3480,train,spam,4330,"Congrats! 2 mobile 3G Videophones R yours. call 09061744553 now! videochat wid ur mates, play java games, Dload polyH music, noline rentl. bx420. ip4. 5we. 150pm"
+E0277,T3622,train,spam,4518,"Congrats! 2 mobile 3G Videophones R yours. call 09061744553 now! videochat wid ur mates, play java games, Dload polyH music, noline rentl. bx420. ip4. 5we. 150pm"
+E0278,T3490,train,ham,4342,I want to sent  &lt;#&gt; mesages today. Thats y. Sorry if i hurts
+E0278,T4061,train,ham,5076,I want to sent  &lt;#&gt; mesages today. Thats y. Sorry if i hurts
+E0279,T3512,train,ham,4375,Me fine..absolutly fine
+E0279,T4168,train,ham,5206,Me fine..absolutly fine
+E0280,T3515,train,spam,4378,"If you don't, your prize will go to another customer. T&C at www.t-c.biz 18+ 150p/min Polo Ltd Suite 373 London W1J 6HL Please call back if busy"
+E0280,T4216,train,spam,5272,"If you don't, your prize will go to another customer. T&C at www.t-c.biz 18+ 150p/min Polo Ltd Suite 373 London W1J 6HL Please call back if busy "
+E0281,T3572,train,ham,4450,I sent them. Do you like?
+E0281,T4149,train,ham,5185,I sent them. Do you like?
+E0282,T3611,train,spam,4501,"SMS SERVICES. for your inclusive text credits, pls goto www.comuk.net login= 3qxj9 unsubscribe with STOP, no extra charge. help 08702840625.COMUK. 220-CM2 9AE"
+E0282,T4400,train,spam,5500,"SMS SERVICES. for your inclusive text credits, pls goto www.comuk.net login= 3qxj9 unsubscribe with STOP, no extra charge. help 08702840625.COMUK. 220-CM2 9AE"
+E0283,T3654,train,ham,4559,I am in hospital da. . I will return home in evening
+E0283,T3803,train,ham,4745,I am in hospital da. . I will return home in evening
+E0284,T3665,train,ham,4571,At WHAT TIME should i come tomorrow
+E0284,T4241,train,ham,5304,At WHAT TIME should i come tomorrow
+E0285,H0922,heldout,spam,4653,A £400 XMAS REWARD IS WAITING FOR YOU! Our computer has randomly picked you from our loyal mobile customers to receive a £400 reward. Just call 09066380611 
+E0285,T4292,train,spam,5369,A £400 XMAS REWARD IS WAITING FOR YOU! Our computer has randomly picked you from our loyal mobile customers to receive a £400 reward. Just call 09066380611
+E0286,H0996,heldout,ham,5009,Oh k. . I will come tomorrow
+E0286,H1035,heldout,ham,5174,Oh k. . I will come tomorrow
+E0287,T4060,train,ham,5075,Gud ni8 dear..slp well..take care..swt dreams..Muah..
+E0287,T4202,train,ham,5250,Gud ni8 dear..slp well..take care..swt dreams..Muah..
+E0288,H1030,heldout,spam,5140,"YOU VE WON! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins"
+E0288,H1038,heldout,spam,5204,"YOU VE WON! Your 4* Costa Del Sol Holiday or £5000 await collection. Call 09050090044 Now toClaim. SAE, TC s, POBox334, Stockport, SK38xh, Cost£1.50/pm, Max10mins"
+E0289,T4118,train,spam,5150,Get your garden ready for summer with a FREE selection of summer bulbs and seeds worth £33:50 only with The Scotsman this Saturday. To stop go2 notxt.co.uk
+E0289,T4374,train,spam,5470,Get your garden ready for summer with a FREE selection of summer bulbs and seeds worth £33:50 only with The Scotsman this Saturday. To stop go2 notxt.co.uk
+E0290,T4173,train,ham,5212,"I know you are thinkin malaria. But relax, children cant handle malaria. She would have been worse and its gastroenteritis. If she takes enough to replace her loss her temp will reduce. And if you give her malaria meds now she will just vomit. Its a self limiting illness she has which means in a few days it will completely stop"
+E0290,T4429,train,ham,5538,"I know you are thinkin malaria. But relax, children cant handle malaria. She would have been worse and its gastroenteritis. If she takes enough to replace her loss her temp will reduce. And if you give her malaria meds now she will just vomit. Its a self limiting illness she has which means in a few days it will completely stop"

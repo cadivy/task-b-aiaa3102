@@ -1,138 +1,43 @@
-# Final Report Outline
+# Final Report Content Map
 
-This outline is a writing contract for `report.pdf`. Sections marked “results pending” must not be turned into factual claims until their source tables exist.
+The generated 12-page `report.pdf` is the authoritative project report. This file maps each report section to its reproducible sources.
 
-## Title and abstract
+| Report section | Main evidence |
+|---|---|
+| Executive Summary | `baseline_metrics.csv`, `leakage_metrics.csv`, ranked-audit counts |
+| Dataset and Research Questions | `data_provenance.json`, `data_validation.json`, `profile_summary.csv` |
+| Methodology | Scripts and `starter/configs/audit_protocol.json` |
+| Dataset Profile and Baseline | `baseline_metrics.csv`, profile figures |
+| Duplicate and Leakage Findings | exact clusters, near candidates, threshold sensitivity |
+| Leakage-Aware Evaluation | `leakage_cases.csv`, `leakage_metrics.csv` |
+| Likely Label Errors and Ambiguity | label evidence, manual review config, adjudication memo |
+| Shortcut Features | shortcut metrics, coefficients and example predictions |
+| Data-Intervention Results | intervention metrics and predictions |
+| Difficulties and Solutions | validation evidence, false-positive cases and execution log |
+| Conclusions and Recommendations | Cross-section synthesis |
+| AI usage declaration | `logs/chat.md` and memo review status |
 
-The abstract should state the dataset, six audit targets, main methods, two interventions and the most important evidence-backed conclusion. Avoid listing every tool or every candidate.
+## Required content confirmed
 
-## 1. Introduction
+The final report contains:
 
-- Explain why data failure can make a strong classifier misleading.
-- State the distinction between model performance and evaluation credibility.
-- Present the research questions.
-- Summarize contributions: reproducible audit pipeline, calibrated findings, adjudication and intervention analysis.
+- methodology for all six audit targets;
+- ranked and calibrated findings;
+- accepted and rejected near-duplicate candidates;
+- baseline and class-specific metrics;
+- at least two data interventions;
+- explicit held-out-label protection;
+- five concrete Difficulties and Solutions;
+- limitations of AI-assisted policy judgment;
+- dataset, handout and software references;
+- exact reproduction command.
 
-## 2. Dataset and audit protocol
+## Generation and visual verification
 
-- Cite the UCI SMS Spam Collection.
-- Explain 1-based raw-row mapping and fixed course split.
-- Report verified sample counts and class distributions.
-- State that original and held-out labels remain unchanged.
-- Summarize the public strict-check rules.
+Run:
 
-## 3. Methodology
-
-### 3.1 Data construction and profiling
-
-Describe parsing, join assertions and derived features.
-
-### 3.2 Text baselines
-
-Describe word and character TF-IDF models, OOF predictions and evaluation metrics.
-
-### 3.3 Duplicate and leakage search
-
-State the exact normalization, 0.92 near-duplicate threshold, cluster construction and manual rejection procedure.
-
-### 3.4 Label-noise signals
-
-Explain the two-independent-signal rule and why model errors alone are insufficient.
-
-### 3.5 Shortcut probes
-
-Describe shallow features, majority reference, masking and row-order probes.
-
-### 3.6 Ambiguity and adjudication
-
-Explain the working annotation policy, blind dual review, confidence calibration and third-person arbitration.
-
-## 4. Results
-
-### 4.1 Dataset profile and baseline
-
-Results pending. Include only decision-relevant plots and a complete metric table.
-
-### 4.2 Exact and near duplicates
-
-Results pending. Report cluster counts, conflicts, representative pairs and rejected false positives.
-
-### 4.3 Cross-split leakage
-
-Results pending. Report affected held-out cases and leakage-aware evaluation.
-
-### 4.4 Likely label errors
-
-Results pending. Show independent evidence and both accepted and rejected candidates.
-
-### 4.5 Shortcut features
-
-Results pending. Compare shallow-only, full-text, row-order and masked-text conditions.
-
-### 4.6 Ambiguous examples
-
-Results pending. Explain policy boundaries and reviewer agreement without presenting ambiguity as proven error.
-
-## 5. Data-intervention impact
-
-- Compare at least two interventions under fixed settings.
-- Report sample-count and metric changes.
-- Explain why score decreases can indicate a more honest evaluation.
-- Separate observed results from causal speculation.
-
-## 6. Discussion
-
-- Which findings most threaten validity?
-- Which are local quality issues rather than evaluation-wide threats?
-- How should the headline baseline score be interpreted after the audit?
-- What would a better future data-collection and split policy look like?
-- What cannot be concluded from this audit?
-
-## 7. Difficulties and Solutions
-
-Include at least three concrete, verifiable challenges. Each entry follows:
-
-```text
-Difficulty: specific observed problem and evidence
-Why it mattered: effect on validity or reproducibility
-Solution: action taken
-Verification: file, test or result confirming the solution
-Remaining limitation: what is still unresolved
+```powershell
+python scripts/generate_report.py
 ```
 
-Likely legitimate topics, if actually encountered, include:
-
-- preserving tabs and 1-based row alignment during parsing;
-- controlling false positives around the near-duplicate threshold;
-- separating label errors from ambiguous policy cases;
-- avoiding held-out-guided threshold selection;
-- maintaining consistent human judgments among three reviewers.
-
-Do not claim a difficulty unless the project log contains evidence that it occurred.
-
-## 8. AI usage declaration
-
-State:
-
-- which AI tools were used;
-- which tasks they assisted with;
-- which outputs could affect scientific conclusions;
-- how each class of output was verified;
-- that final sample adjudication and numerical claims were checked by team members.
-
-Suggested structure:
-
-> AI tools were used to help interpret the project specification, organize the repository, review code, suggest diagnostic analyses, and improve wording. AI-generated suggestions were treated as untrusted drafts. Dataset mappings were checked with programmatic assertions, numerical claims were regenerated by scripts, and sample-level judgments were reviewed by team members against the original text and recorded evidence. AI was not treated as a source of ground-truth labels.
-
-Adapt this paragraph to the actual usage recorded in `logs/chat.md`.
-
-## 9. Conclusion
-
-Answer the research questions directly in one short section. State the most important validity threat, the most defensible intervention and the remaining uncertainty.
-
-## References and appendices
-
-- Cite the dataset, software and any methods or public analyses used.
-- Put long candidate tables and extended examples in appendices or repository files.
-- Do not expose unnecessary personal information from message texts.
-
+The script generates `output/pdf/report.pdf` and an identical root `report.pdf`. The final PDF was rendered at 120 DPI to 12 PNG pages. The first render exposed an incorrect page-template transition that made body pages dark; the template was corrected, the PDF was regenerated, and all pages were visually rechecked for clipping, contrast, table fit, chart legibility, page numbering and section transitions.

@@ -22,6 +22,7 @@ data/heldout.csv
 # Generated model artifacts and temporary output
 models/
 results/tmp/
+tmp/
 *.joblib
 *.pkl
 
@@ -30,4 +31,3 @@ results/tmp/
 *.log
 *.out
 *.toc
-

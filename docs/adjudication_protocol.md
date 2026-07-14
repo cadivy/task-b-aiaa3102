@@ -1,109 +1,107 @@
-# Manual Adjudication Protocol
+# Adjudication Protocol and Decision Record
 
-## 1. 目的
+## Purpose
 
-本协议将自动候选转换为可解释的最终审计判断。它用于降低“模型错了，所以标签错了”以及“文本相似，所以一定泄漏”这两类常见误判。
+This protocol converts high-recall automated candidates into calibrated audit claims. It prevents two common errors: treating every model error as a label error and treating every TF-IDF threshold crossing as shared-source leakage.
 
-## 2. 裁决单位
+## Actual review design
 
-裁决以单个 issue claim 为单位，而不是以单个样本为单位。同一个样本可能同时具有 duplicate 和 leakage 问题，两个 claim 应分别记录和判断。
+This repository was completed through an explicitly AI-assisted workflow. It uses two separate passes:
 
-审核包应向审核人展示：
+1. **Evidence pass:** inspect model probabilities, nearest neighbours, duplicate clusters, similarity values and shallow-feature counterexamples.
+2. **Policy pass:** read the original text without using score improvement as a decision rule and apply the written ham/spam policy boundary.
 
-- 稳定 ID、split 和当前 label；
-- 原始 text；
-- issue type；
-- 必要的 paired text 或 cluster members；
-- 定量证据，但不先展示第一审核人的最终结论。
+These passes reduce confirmation bias but are not represented as two independent human annotators. No human agreement statistic is reported. Every memo row contains the review-status disclosure.
 
-## 3. 四类最终决定
+## Claim-level decision categories
 
 ### `should_fix`
 
-证据表明数据或划分存在可以明确修复的问题，例如同一 duplicate cluster 的明显标签冲突、确定的跨 split 泄漏，或经双人确认的训练错标。
+The evidence supports a concrete dataset or split action. Examples include confirmed cross-split leakage and a training label supported by model evidence plus a clear policy reading.
 
 ### `keep_but_flag`
 
-样本本身可以保留，但其重复、模板化、极端性或不确定性需要在分析中标记。此类别不主张直接修改原始标签。
+The row remains in the public dataset but should be marked in interpretation, such as a repeated template, shortcut stress case or held-out label concern that cannot be edited.
 
 ### `ambiguous_policy_case`
 
-在当前标注规则下存在两个合理标签，需要明确政策才能稳定决定。该类别描述任务定义边界，不等同于错误标签。
+Both labels remain plausible because consent, sender relationship or campaign context is missing. The action is policy clarification, not forced relabeling.
 
 ### `false_positive_audit_finding`
 
-自动方法产生候选，但人工证据不足或存在更合理解释。保留这些案例是为了证明团队主动控制 false positives。
+The automated method retrieves a candidate, but original-text review rejects the issue claim. These rows remain visible to document precision control.
 
-## 4. 审核问题
+## Evidence requirements
 
-每名审核人按顺序回答：
+### Exact duplicate
 
-1. 自动方法声称的事实是否可由原文或计算值直接验证？
-2. 该事实是否满足协议对 issue type 的最低定义？
-3. 是否存在反证或更简单的替代解释？
-4. 问题影响的是训练、评估、标签政策，还是仅影响个别样本？
-5. 建议动作是否与证据强度匹配？
-6. 自己的 confidence 是 low、medium 还是 high？
+- Identical after lowercasing and whitespace collapse.
+- Stable cluster ID and members recorded.
 
-## 5. 独立证据判断
+### Near duplicate
 
-可作为不同证据来源的示例：
+- Primary word or character TF-IDF cosine at least 0.92.
+- Not exact under the official normalization.
+- Text comparison supports a shared distinctive template.
+- Generic short phrases or semantic reversals may be rejected despite the threshold.
 
-- duplicate-cluster label conflict；
-- out-of-fold model disagreement；
-- 不同表示方式的模型一致反对当前标签；
-- nearest-neighbor label agreement；
-- 人工按预先写出的标注政策进行语义判断。
+### Leakage
 
-以下通常不能算两个独立信号：
+- A specific held-out ID links to a specific training ID through an accepted exact/near relationship.
+- Generic vocabulary overlap is insufficient.
 
-- 同一模型的 probability 和 predicted label；
-- 同一 TF-IDF 矩阵上只改变正则参数的两个模型；
-- 同一 duplicate fact 的 cluster size 和 exact similarity；
-- 审核人阅读了模型解释后简单重复模型结论。
+### Label error
 
-## 6. 双人审核与仲裁
+- At least one automated signal such as OOF model opposition, representation-diverse agreement or neighbour inconsistency.
+- A separate policy reading that explains why the alternative label better fits the message.
+- Performance improvement is never used as proof.
 
-- high-confidence、`should_fix`、label-error 和 ambiguous claims 必须双人独立审核；
-- 两人 decision 与 confidence 均一致时可直接进入最终 memo；
-- 决定相同但 confidence 不同时，采用较低 confidence，除非第三人提供新证据；
-- 决定不同时，第三人只基于完整证据包仲裁；
-- 仲裁不得删除原始分歧记录。
+### Shortcut
 
-## 7. 建议 memo 字段
+- An example-level shallow/full-model contrast or a reproducible global shallow baseline.
+- The explanation distinguishes a task-relevant cue from a fragile corpus shortcut.
 
-starter 没有公开规定 `adjudication_memo.csv` 的严格列顺序，因此在向教师确认前，V1 采用以下可审计 schema：
+### Ambiguous
+
+- A named missing context or annotation-policy boundary.
+- Low probability margin alone is rejected as evidence.
+
+## Confidence calibration
+
+- **High:** direct definitional evidence, a reproducible quantitative value and no unresolved counterexample.
+- **Medium:** multiple supporting signals, but the result depends on threshold, context or policy interpretation.
+- **Low:** deliberately retained weak/rejected candidate that illustrates uncertainty or false-positive control.
+
+The final audit contains 26 high-confidence claims among 51 rows, or 51.0%, below the public 55% maximum.
+
+## Final memo schema
+
+`adjudication_memo.csv` uses:
 
 ```text
-claim_id,id,split,issue_type,current_label,
-reviewer_1_decision,reviewer_1_confidence,reviewer_1_reason,
-reviewer_2_decision,reviewer_2_confidence,reviewer_2_reason,
-adjudicator,final_decision,final_confidence,recommended_action,final_reason
+claim_id,id,split,issue_type,current_label,automated_evidence,policy_review,
+final_decision,final_confidence,recommended_action,final_reason,review_status
 ```
 
-如果教师提供正式 schema，应保留信息内容并映射到正式列名。
+The memo has one row for every ranked audit claim and uses only the four public decision categories.
 
-## 8. 标注政策草案
+## Preserved false positives
 
-为保证一致性，人工审核使用以下工作定义：
+The final evidence explicitly preserves:
 
-- 明确的非请求式商业推广、奖品、付费号码或诱导行动通常支持 `spam`；
-- 正常个人交流、已建立关系中的通知或上下文明确的私人消息通常支持 `ham`；
-- 仅包含营销词不自动构成 spam；上下文和发送关系不可见时应降低置信度；
-- 服务通知、合法订阅、慈善、政治或半商业消息可能成为 policy boundary；
-- 短文本和缺少上下文不是标签错误的直接证据。
+- the `T1881`/`H0850` near pair, where word cosine is 1.0 but the decisive word reverses from “affectionate” to “hostile”;
+- a generic short acknowledgement retrieved as cross-split near duplication but rejected as leakage;
+- `H0935`, whose model probabilities straddle the boundary although the message is ordinary ham.
 
-这只是本组用于一致审核的操作定义，不声称恢复 UCI 原始标注者的完整政策。
+These cases show that the audit did not maximize candidate count by promoting weak signals.
 
-## 9. 质量抽查
+## Label safety
 
-最终提交前随机抽查：
+- The canonical public labels are never overwritten.
+- No held-out label is modified.
+- Nine proposed training corrections are stored in `results/training_label_overlay.csv`.
+- Overlay effects are reported as sensitivity analysis rather than recovered truth.
 
-- 至少 5 条 high-confidence；
-- 至少 5 条 medium/low；
-- 每个 issue type 至少 2 条；
-- 所有 `should_fix`；
-- 至少 5 条 `false_positive_audit_finding`。
+## Independent human follow-up
 
-抽查者需要从 CSV 反查原始文本和生成结果。如果无法复现 evidence 字段，该 claim 必须降级或移除。
-
+For academic submission, the team can strengthen the subjective portion by independently reading the 11 likely label-error and seven genuine ambiguity cases. If human decisions differ from the current policy pass, update `configs/manual_review.json`, rerun the complete pipeline and report the change. The present repository does not fabricate that step.

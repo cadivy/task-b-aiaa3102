@@ -1,97 +1,44 @@
 # Shortcut-Feature Audit
 
-## Status
+## Method
 
-**V1 method specification — shallow baselines and ablations are pending.**
+The shallow models use only message shape, digits, contact markers, currency cues, promotional-token counts and optionally normalized UCI row position. They never receive the raw word sequence. All conditions use the fixed train/held-out split.
 
-## Audit question
+## Performance
 
-Can simple surface features or corpus artifacts explain an unexpectedly large share of spam-classification performance, and are those cues stable enough to support the intended evaluation claim?
-
-## Feature groups
-
-### Message shape
-
-- character count and token count;
-- average token length;
-- uppercase ratio;
-- punctuation and exclamation counts.
-
-### Numeric and contact cues
-
-- digit count and digit ratio;
-- phone-like token indicator;
-- URL indicator;
-- currency symbol indicator;
-- short-code or long-number indicator.
-
-### Promotional lexicon
-
-- counts or indicators for terms such as `free`, `win`, `prize`, `claim`, `call`, `urgent` and `reply`;
-- lexicon must be declared before evaluating the held-out result.
-
-### Corpus metadata
-
-- normalized `uci_row_number`;
-- coarse row-position bins;
-- split indicator is never used as a model feature and is tested only as an audit target.
-
-## Models and comparisons
-
-Use an interpretable shallow model, such as standardized Logistic Regression or a small decision tree, with the same train/held-out split.
-
-| Condition | Purpose |
-|---|---|
-| Full-text TF-IDF | Main performance reference |
-| Shape-only | Tests length and punctuation |
-| Contact/promotion-only | Tests overt spam markers |
-| All shallow features | Public shortcut warning check |
-| Row-position-only | Tests corpus-order artifact |
-| Text after promotion-token masking | Measures dependence on obvious lexicon |
-
-## Warning rule
-
-The public protocol triggers a shortcut warning when the shallow-only model reaches accuracy >= 0.70 or explains many errors. Because class imbalance can make accuracy misleading, the analysis must also compare against majority-class accuracy and report spam Recall, F1 and macro-F1.
-
-## Result table to complete
-
-| Feature condition | Accuracy | Spam precision | Spam recall | Spam F1 | Macro-F1 |
+| Condition | Accuracy | Spam precision | Spam recall | Spam F1 | Macro-F1 |
 |---|---:|---:|---:|---:|---:|
-| Majority reference | TBD | TBD | TBD | TBD | TBD |
-| Full text | TBD | TBD | TBD | TBD | TBD |
-| Shape only | TBD | TBD | TBD | TBD | TBD |
-| Contact/promotion only | TBD | TBD | TBD | TBD | TBD |
-| All shallow | TBD | TBD | TBD | TBD | TBD |
-| Row position only | TBD | TBD | TBD | TBD | TBD |
-| Masked text | TBD | TBD | TBD | TBD | TBD |
+| Majority ham | 86.62% | 0.00% | 0.00% | 0.00% | 46.42% |
+| Shape only | 88.96% | 66.25% | 35.57% | 46.29% | 70.07% |
+| Contact/promotion only | 98.11% | 95.07% | 90.60% | 92.78% | 95.85% |
+| All shallow | 98.20% | 95.10% | 91.28% | 93.15% | 96.06% |
+| Row position only | 86.62% | 0.00% | 0.00% | 0.00% | 46.42% |
+| Masked promotional tokens | 98.92% | 97.90% | 93.96% | 95.89% | 97.64% |
+| Full text | 99.10% | 99.29% | 93.96% | 96.55% | 98.02% |
 
-## Interpretation framework
+The public shortcut warning threshold is 70% accuracy, but the majority baseline already reaches 86.62%. The meaningful finding is not threshold crossing alone: contact/promotion features add high spam discrimination and reach 98.11% accuracy with a 92.78% spam F1.
 
-A predictive feature is not automatically an illegitimate shortcut. The final report distinguishes:
+Standardized coefficients for the all-shallow Logistic Regression are led by digit count (2.434), promotional-token count (1.671), average token length (0.740), URL presence (0.666) and currency count (0.636). Row position adds no measurable value.
 
-- **task-relevant surface cue**: genuine spam often contains contact and promotional language;
-- **fragile shortcut**: a cue works in this corpus but can easily change in deployment;
-- **collection artifact**: row order or source formatting reflects dataset construction rather than message meaning;
-- **direct leakage**: a field exposes the label or split itself.
+## Example-level stress cases
 
-The strongest shortcut claim requires both predictive evidence and a reason the feature is unreliable or unrelated to the intended decision rule.
+- `H0946` is public ham discussing prices. The shallow model gives spam probability 0.991 while the text model gives 0.028: monetary cues produce a clear false positive.
+- `H0044` is a ringtone-club solicitation. The shallow model gives 0.088 while the text model gives 0.961: spam without usual digits can evade the cue set.
+- `H0287` and `H0318` are premium adult-chat lures. Shallow probabilities are approximately 0.997 and 1.000 while the full text model misses both at the 0.5 threshold.
+- `H0491` is a recruitment message labelled ham. Contact details push the shallow spam probability to 0.900, exposing a policy-sensitive boundary.
+- `H0896` is a likely label-noise case with almost no shallow spam markers, showing that shortcut errors and label errors interact.
 
-## Example-level findings
+## Interpretation
 
-The `shortcut` rows in `suspicious_examples.csv` should identify representative messages where a shallow cue dominates the prediction, not duplicate a global model-level claim across hundreds of rows. Each row should reference the cue and an ablation or counterfactual result.
+Digits, phone numbers, price and promotional language are genuinely relevant to SMS spam, so predictive power is not direct leakage. They are nevertheless fragile shortcuts: legitimate price discussions generate false positives, and service promotions without numeric markers generate false negatives.
 
-## False-positive controls
+Promotional-token masking reduces held-out accuracy by only 0.18 percentage points and does not change spam Recall. The full model therefore does not depend on the small hand-built lexicon alone. Broader surface structure and character patterns still carry substantial signal.
 
-- Compare shallow accuracy with majority-class accuracy.
-- Check precision/recall rather than using accuracy alone.
-- Confirm lexicon features were not selected after inspecting held-out labels.
-- Test train versus held-out feature prevalence.
-- Avoid calling all promotional language leakage.
-- Record examples where the same cue appears in both ham and spam.
+## Reproducible evidence
 
-## Limitations
-
-- Masking tokens changes message meaning as well as shortcut availability.
-- A small hand-built lexicon may underestimate broader semantic shortcuts.
-- Feature importance is associative and does not prove causal reliance for every prediction.
+- `results/shortcut_metrics.csv`
+- `results/shortcut_coefficients.csv`
+- `results/shortcut_predictions.csv`
+- `results/figures/shallow_feature_prevalence.png`
+- `results/figures/shortcut_metrics.png`
 

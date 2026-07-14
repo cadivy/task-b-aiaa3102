@@ -1,4 +1,4 @@
-"""Validate the V1 documentation contract without requiring the raw dataset."""
+"""Validate the documentation contract without requiring the raw dataset."""
 
 from __future__ import annotations
 
@@ -83,4 +83,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

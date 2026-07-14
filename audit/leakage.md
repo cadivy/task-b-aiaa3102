@@ -1,83 +1,52 @@
 # Cross-Split Leakage Audit
 
-## Status
+## Definition and procedure
 
-**V1 method specification — leakage cases and corrected evaluation are pending.**
+A held-out row is counted as leakage when it is exact under the public normalization or is an accepted near duplicate of a training row. Generic vocabulary overlap is not enough. Each case retains a concrete training ID, match type, similarity and review reason.
 
-## Definition
+## Findings
 
-A leakage claim is made when a held-out message is an exact or accepted near duplicate of a training message, or when a metadata artifact directly exposes the label or split. General vocabulary overlap is not sufficient.
+| Finding | Result |
+|---|---:|
+| Unique held-out rows in cross-split exact clusters | 5 |
+| Unique held-out rows in accepted near matches | 59 |
+| Unique held-out rows affected by exact or near leakage | 62 |
+| Rejected cross-split near candidates | 6 |
 
-## Threat model
+The combined count is 62 rather than 64 because two held-out rows are represented by both exact and near relationships.
 
-The held-out set is intended to measure generalization to unseen examples. If the same underlying message template appears in training, the model can succeed through memorization. The resulting score may be numerically correct for the fixed file but optimistic for the intended generalization claim.
-
-## Detection procedure
-
-1. Build exact clusters across the full corpus without using labels.
-2. Flag each cluster containing both train and held-out IDs.
-3. For every held-out row, retrieve the most similar training rows.
-4. Retain non-exact pairs meeting the near-duplicate rule and manual review.
-5. Test whether row position or another metadata field directly predicts split or label.
-6. Link every leakage row to a concrete training source ID.
-
-Required output fields:
-
-```text
-heldout_id,train_id,match_type,similarity,heldout_label,train_label,
-cluster_id,manual_decision,evaluation_action
-```
-
-## Severity categories
-
-### High
-
-Exact cross-split match or a near-identical message with only substituted contact/entity fields, supported by direct text comparison.
-
-### Medium
-
-Similarity meets the threshold and likely shares a template, but independent generation remains plausible.
-
-### Low
-
-Threshold-boundary candidate or suspected metadata artifact requiring more evidence.
+The strongest exact examples are `H0548`, `H0909`, `H0412` and `H0922`, all spam templates already present in training. Strong near examples include substituted premium-rate numbers, prize claim codes and minor punctuation or character changes. These patterns are especially easy for n-gram models to memorize.
 
 ## Evaluation impact
 
-Run the same fitted-model evaluation on:
+The trained word TF-IDF model was kept fixed while confirmed leakage rows were excluded from sensitivity subsets.
 
-1. the original held-out set;
-2. held-out rows excluding confirmed cross-split exact matches;
-3. held-out rows excluding confirmed exact and near matches;
-4. an optional cluster-aware rebuilt split.
-
-| Evaluation set | N | Accuracy | Spam precision | Spam recall | Spam F1 | Macro-F1 |
+| Evaluation set | N | Excluded | Accuracy | Spam recall | Spam F1 | Macro-F1 |
 |---|---:|---:|---:|---:|---:|---:|
-| Original held-out | TBD | TBD | TBD | TBD | TBD | TBD |
-| Excluding exact leakage | TBD | TBD | TBD | TBD | TBD | TBD |
-| Excluding exact + near leakage | TBD | TBD | TBD | TBD | TBD | TBD |
-| Cluster-aware split | TBD | TBD | TBD | TBD | TBD | TBD |
+| Original held-out | 1114 | 0 | 99.10% | 93.96% | 96.55% | 98.02% |
+| Excluding exact leakage | 1109 | 5 | 99.10% | 93.79% | 96.45% | 97.97% |
+| Excluding exact and accepted near leakage | 1052 | 62 | 99.05% | 90.91% | 94.74% | 97.11% |
 
-The primary interpretation is not “cleaning improves the score.” If the score decreases after removing leakage, that is evidence that the original evaluation was easier and potentially optimistic.
+Removing exact duplicates alone changes little because only five rows are affected. Removing exact and accepted near matches lowers spam recall by 3.05 percentage points and spam F1 by 1.81 points. Overall accuracy moves only 0.05 points because the dataset is dominated by ham.
 
-## Evidence to show
+This result changes the meaning of the score. The model does not materially collapse, but its strongest headline metric hides a larger change in minority-class generalization. The lower leakage-aware spam recall is a stricter and more credible estimate for novel templates.
 
-- number and class composition of affected held-out rows;
-- representative high-confidence train/held-out pairs;
-- performance contribution of leaked versus non-leaked subsets;
-- false-positive near matches rejected during manual review;
-- whether leakage changes model ranking or only absolute scores.
+## Rejected evidence
 
-## Recommended actions
+The `T1881`/`H0850` semantic reversal and five generic short-message pairs remain in `near_duplicate_adjudication.csv` with `rejected_false_positive`. They are not removed from the leakage-aware subset.
 
-- Do not silently delete held-out cases from the official score.
-- Report the official score and a leakage-aware sensitivity score side by side.
-- For a rebuilt experiment, group exact/near duplicate clusters before splitting.
-- Preserve the original IDs and mapping so every removal is auditable.
+## Recommended action
 
-## Limitations
+1. Keep the official 1114-row score for comparability.
+2. Present the 1052-row leakage-aware sensitivity score beside it.
+3. Rebuild future splits by duplicate/template cluster rather than individual row.
+4. Never describe the current held-out set as fully unseen without this qualification.
 
-- Removing detected leakage only addresses leakage visible to the chosen similarity method.
-- A cluster-aware split may change class composition and sample size.
-- A near-duplicate relationship can represent a realistic recurring production template; its treatment depends on the intended deployment claim.
+## Reproducible evidence
+
+- `results/leakage_cases.csv`
+- `results/leakage_metrics.csv`
+- `results/cross_split_exact_clusters.csv`
+- `results/cross_split_near_candidates.csv`
+- `results/near_duplicate_adjudication.csv`
 

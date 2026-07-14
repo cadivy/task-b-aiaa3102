@@ -1,0 +1,6 @@
+threshold,candidate_pairs,cross_split_pairs,label_conflict_pairs
+0.88,443,129,0
+0.9,401,108,0
+0.92,361,90,0
+0.94,309,56,0
+0.96,271,46,0

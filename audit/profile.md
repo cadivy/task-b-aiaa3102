@@ -1,81 +1,69 @@
 # Dataset Profile and Baseline
 
-## Status
+## Data integrity
 
-**V1 method specification — results not yet generated.** All numerical result fields below must be filled by the reproducible profiling script; no value should be copied manually from an exploratory notebook.
+The official UCI archive was downloaded from the URL in the starter package. Its SHA-256 is `1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3`; the extracted `SMSSpamCollection` SHA-256 is `7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d`.
 
-## Objective
+The raw file decoded as UTF-8 and contained 5574 rows. A one-to-one join against the fixed 1-based manifest produced 5574 unique course IDs with no empty texts, missing joins, prefix errors, or unexpected labels.
 
-Establish whether the downloaded corpus is correctly aligned with the fixed course split, describe the distributions that matter for later audits, and create an interpretable text-classification baseline.
+| Split | Ham | Spam | Total | Spam share |
+|---|---:|---:|---:|---:|
+| Train | 3862 | 598 | 4460 | 13.41% |
+| Held-out | 965 | 149 | 1114 | 13.38% |
+| All | 4827 | 747 | 5574 | 13.40% |
 
-## Data integrity checks
+The near-identical class proportions mean the fixed split is not materially shifted in its label prior.
 
-The build pipeline must verify:
+## Message profile
 
-- 5574 raw rows and 5574 manifest rows;
-- 4460 `train` and 1114 `heldout` rows;
-- unique `uci_row_number` and course `id`;
-- a one-to-one join without missing rows;
-- labels restricted to `ham` and `spam`;
-- split and ID prefix agreement;
-- no empty text after parsing.
+Spam messages are substantially longer and contain much stronger numeric/contact cues.
 
-These checks establish mapping integrity only. They do not imply that the public labels are correct.
+| Quantity | Ham | Spam |
+|---|---:|---:|
+| Median characters | 52 | 149 |
+| Median tokens | 11 | 27 |
+| Median digits | 0 | 16 |
+| Contains URL | 0.29% | 18.47% |
+| Contains phone-like number | 0.10% | 60.78% |
+| Contains currency cue | 0.62% | 38.15% |
+| Mean promotional-token count | 0.10 | 2.14 |
 
-## Descriptive profile
+The original-row spam rate ranges from 11.67% to 15.80% across position deciles. This fluctuation does not make row position useful by itself: the row-position-only classifier predicts the majority class for every held-out row.
 
-The final version will report the following by split and label:
+Whitespace-collapse and lowercasing leave 5159 unique normalized texts, so 415 rows beyond the first occurrence are repetitions. This motivated cluster-aware analysis before interpreting the high baseline score.
 
-| Quantity | Why it matters | Result source |
-|---|---|---|
-| Number and class percentage | Measures imbalance and split comparability | `results/profile_summary.csv` |
-| Character and token length | Potential shortcut and distribution shift | `results/profile_summary.csv` |
-| Digit, URL and phone prevalence | Potential commercial/contact shortcut | `results/profile_summary.csv` |
-| Currency and promotion-token prevalence | Potential shallow label cue | `results/profile_summary.csv` |
-| Normalized unique-text count | Starting point for duplication audit | `results/profile_summary.csv` |
-| Spam rate by row-position bin | Tests corpus-order artifact | `results/profile_summary.csv` |
+## Baseline models
 
-Plots should be limited to those used in the argument: class distribution, text-length distribution, shallow-feature prevalence, and spam rate by row-position bin.
+The primary model is word TF-IDF over unigrams and bigrams followed by Logistic Regression. The secondary model uses character TF-IDF 3-5-grams. Training results are five-fold out-of-fold (OOF); held-out results use models fitted on all 4460 training rows.
 
-## Baseline model
-
-Primary model:
-
-```text
-word TF-IDF (1,2)-grams + Logistic Regression
-```
-
-Secondary diagnostic model:
-
-```text
-character TF-IDF n-grams + Logistic Regression
-```
-
-The training set will produce out-of-fold predictions for audit signals. A final model fitted on all training rows will produce held-out predictions. The held-out split will not be used to choose the model or tune audit thresholds.
-
-## Metrics to report
-
-| Model | Accuracy | Spam precision | Spam recall | Spam F1 | Macro-F1 |
+| Condition | Accuracy | Spam precision | Spam recall | Spam F1 | Macro-F1 |
 |---|---:|---:|---:|---:|---:|
-| Word TF-IDF | TBD | TBD | TBD | TBD | TBD |
-| Character TF-IDF | TBD | TBD | TBD | TBD | TBD |
-| Shallow-only diagnostic | TBD | TBD | TBD | TBD | TBD |
+| Word TF-IDF, train OOF | 98.21% | 99.24% | 87.29% | 92.88% | 95.93% |
+| Character TF-IDF, train OOF | 98.27% | 99.43% | 87.63% | 93.16% | 96.08% |
+| Word TF-IDF, held-out | 99.10% | 99.29% | 93.96% | 96.55% | 98.02% |
+| Character TF-IDF, held-out | 98.74% | 99.27% | 91.28% | 95.10% | 97.19% |
 
-The final version will also include confusion matrices and counts, not only normalized rates. Accuracy will not be interpreted in isolation because spam is the minority class.
+The word baseline makes 10 held-out errors: nine public spam rows predicted ham and one public ham row predicted spam. Two of those ten errors (`H0143` and `H0896`) are independently flagged as likely label-policy errors, showing why raw accuracy alone is not an adequate quality measure.
 
-## Required observations after execution
+## Interpretation
 
-The result narrative must answer:
+The raw 99.10% held-out accuracy is a strong file-level result, but three findings limit its interpretation:
 
-1. Are train and held-out class proportions materially different?
-2. Which shallow distributions most strongly separate labels?
-3. Does a character model disagree systematically with the word model?
-4. Which error type dominates: false positives or false negatives?
-5. Does the raw held-out score remain similar after removing leakage cases?
+1. held-out messages are not all independent of training because exact and near templates cross the split;
+2. shallow contact and promotional features alone reach 98.20% accuracy;
+3. several errors lie on annotation-policy boundaries or are likely public-label errors.
 
-## Limitations
+The appropriate claim is therefore not “the task is solved.” It is that a simple text model scores highly on this fixed corpus, while audit-aware analyses are necessary to estimate how much of that score reflects robust generalization.
 
-- The fixed split is part of the course design and may not represent temporal or deployment shift.
-- Strong baseline performance does not validate the labels or split.
-- Prediction confidence is a model property, not a direct probability that a label is wrong.
+## Reproducible evidence
+
+- `results/data_provenance.json`
+- `results/data_validation.json`
+- `results/profile_summary.csv`
+- `results/shallow_features.csv`
+- `results/baseline_metrics.csv`
+- `results/oof_predictions.csv`
+- `results/heldout_predictions.csv`
+- `results/figures/class_distribution.png`
+- `results/figures/length_distribution.png`
 

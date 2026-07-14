@@ -1,0 +1,10 @@
+id,original_label,proposed_label,confidence,evidence_summary,review_status
+T2378,spam,ham,high,"A standalone observational driving joke contains no solicitation, charge, contact instruction, or commercial intent; both OOF models and ham neighbours oppose the spam label.",AI-assisted policy review; no held-out labels changed
+T0059,spam,ham,high,The Divorce Barbie line is a self-contained joke with no spam action; both OOF text models strongly predict ham.,AI-assisted policy review; no held-out labels changed
+T2232,spam,ham,high,The child-versus-teenager line is a conversational joke with no commercial or contact mechanism; both OOF models strongly predict ham.,AI-assisted policy review; no held-out labels changed
+T4358,spam,ham,high,The stolen-toilet line is a one-line joke rather than a solicitation; both OOF models strongly oppose the spam label.,AI-assisted policy review; no held-out labels changed
+T1149,spam,ham,high,The Arsenal dartboard line is a joke with no transaction details or response route; both OOF models strongly predict ham.,AI-assisted policy review; no held-out labels changed
+T1798,spam,ham,medium,"The sender warns the recipient about a scam and says not to respond; the spam-like terms are quoted as safety context, and both OOF models predict ham.",AI-assisted policy review; no held-out labels changed
+T4296,spam,ham,medium,"The message asks whether received dating texts are connected to a prior action; it discusses spam rather than soliciting the recipient, and both OOF models predict ham.",AI-assisted policy review; no held-out labels changed
+T3272,spam,ham,medium,"This is a named personal debt-collection update thanking the recipient for information, not an offer; both OOF models strongly predict ham.",AI-assisted policy review; no held-out labels changed
+T3791,ham,spam,high,An unsolicited contact-platform invitation promotes free SMS and supplies an opt-out command; both OOF models predict spam.,AI-assisted policy review; no held-out labels changed
