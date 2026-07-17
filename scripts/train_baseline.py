@@ -25,7 +25,7 @@ from common import (
 )
 
 
-SEED = 6767
+SEED = 42
 
 
 def word_pipeline() -> Pipeline:
