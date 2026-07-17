@@ -1,0 +1,78 @@
+[
+  {
+    "n": 4460,
+    "accuracy": 0.9820627802690582,
+    "spam_precision": 0.9923954372623575,
+    "spam_recall": 0.8729096989966555,
+    "spam_f1": 0.9288256227758007,
+    "macro_f1": 0.9592819750615792,
+    "confusion_matrix_ham_spam": [
+      [
+        3858,
+        4
+      ],
+      [
+        76,
+        522
+      ]
+    ],
+    "condition": "word_oof"
+  },
+  {
+    "n": 4460,
+    "accuracy": 0.9827354260089686,
+    "spam_precision": 0.9943074003795066,
+    "spam_recall": 0.8762541806020067,
+    "spam_f1": 0.9315555555555556,
+    "macro_f1": 0.9608387142755328,
+    "confusion_matrix_ham_spam": [
+      [
+        3859,
+        3
+      ],
+      [
+        74,
+        524
+      ]
+    ],
+    "condition": "char_oof"
+  },
+  {
+    "n": 1114,
+    "accuracy": 0.9910233393177738,
+    "spam_precision": 0.9929078014184397,
+    "spam_recall": 0.9395973154362416,
+    "spam_f1": 0.9655172413793104,
+    "macro_f1": 0.9801786413294901,
+    "confusion_matrix_ham_spam": [
+      [
+        964,
+        1
+      ],
+      [
+        9,
+        140
+      ]
+    ],
+    "condition": "word_heldout"
+  },
+  {
+    "n": 1114,
+    "accuracy": 0.9874326750448833,
+    "spam_precision": 0.9927007299270073,
+    "spam_recall": 0.912751677852349,
+    "spam_f1": 0.951048951048951,
+    "macro_f1": 0.9719199441135589,
+    "confusion_matrix_ham_spam": [
+      [
+        964,
+        1
+      ],
+      [
+        13,
+        136
+      ]
+    ],
+    "condition": "char_heldout"
+  }
+]

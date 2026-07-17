@@ -1,204 +1,283 @@
-# Topic B: Dataset Forensics and Label Audit
+# Topic B — 数据集取证与标签审计 · 团队 README
 
-This repository contains a complete, reproducible audit of the UCI SMS Spam Collection for AIAA3102 Final Project Topic B.
+> 这份文档是**队员上手指南**。提交前需要按 handout 第 VIII 节补上 `exact commands` 和
+> `software versions`（本文第 1、2 节的内容可以直接复用）。
 
-The project does not treat high classifier accuracy as sufficient evidence of a trustworthy benchmark. It audits exact duplicates, near duplicates, cross-split leakage, likely label errors, shortcut features and annotation ambiguity, then measures how data interventions change evaluation.
+---
 
-## Final status
+## 0. 现在 repo 里有什么
 
-All required project artifacts have been generated from the official public data and fixed course manifest.
-
-| Artifact | Status |
-|---|---|
-| Public data download and checksum record | Complete |
-| Canonical 5574-row table and split validation | Complete |
-| Dataset profile and two text baselines | Complete |
-| Six required audit targets | Complete |
-| Ranked `suspicious_examples.csv` | 51 claims, all six issue types |
-| `adjudication_memo.csv` | 51 evidence-linked decisions |
-| Controlled data interventions | Five training/evaluation conditions plus baseline |
-| Final report | 12-page rendered and visually inspected PDF |
-| Strict submission validation | Passing |
-
-The final report is [report.pdf](report.pdf).
-
-## Main findings
-
-- The fixed split contains 4460 training rows and 1114 held-out rows. Spam shares are 13.41% and 13.38%, respectively.
-- The word TF-IDF baseline reaches 99.10% held-out Accuracy, 93.96% spam Recall and 96.55% spam F1.
-- There are 290 exact-duplicate clusters containing 705 rows. Five exact clusters cross train and held-out.
-- At the public 0.92 TF-IDF cosine threshold, 361 non-exact candidate pairs remain and 90 cross the split.
-- Evidence review accepts 84 cross-split near-template pairs and rejects six false-positive traps. Accepted exact/near relationships affect 62 unique held-out rows.
-- Excluding those 62 rows changes Accuracy only from 99.10% to 99.05%, but spam Recall falls from 93.96% to 90.91%.
-- Contact and promotional features alone reach 98.20% Accuracy and 93.15% spam F1, demonstrating strong but fragile shallow cues.
-- Eleven likely label errors are included: nine training rows represented in an overlay and two held-out rows that remain unchanged.
-- The final ranked audit contains 51 claims. High-confidence claims account for 51.0%, below the public 55% cap.
-
-The central conclusion is that the classifier is genuinely strong on this file, but the raw Accuracy overstates how confidently we can claim minority-class generalization to novel templates.
-
-## Data source and integrity
-
-Dataset: UCI SMS Spam Collection.
-
-- Dataset page: <https://archive.ics.uci.edu/dataset/228/sms+spam+collection>
-- Archive: <https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip>
-- DOI: <https://doi.org/10.24432/C5CC84>
-- License: CC BY 4.0
-
-Verified download hashes for this run:
-
-```text
-archive SHA-256: 1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3
-raw file SHA-256: 7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d
+```
+project/
+├── scripts/              ← 公共底座（已就位，见第 2 节）
+│   ├── common.py             共享工具库【冻结】
+│   ├── download_data.py      下载 UCI 原始语料
+│   ├── build_dataset.py      对齐 manifest → 标准工作表
+│   └── train_baseline.py     训练基准/信号模型
+├── starter/              ← 老师给的起始包（只读，别改）
+│   ├── data/split_manifest.csv       固定的 train/heldout 划分
+│   ├── configs/audit_protocol.json   六类问题定义 + 阈值
+│   └── examples/                     提交格式样例
+├── CODEX/                ← 上一版完整实现（参考用，勿直接抄）
+├── requirements.txt
+└── topic-b-handout-zh.md ← 需求文档，先读这个
 ```
 
-The raw file is parsed using a 1-based line number and joined one-to-one with `starter/data/split_manifest.csv`. The build stops on any row-count, ID, split-prefix, label-domain, empty-text or join failure. The canonical table contains:
+**还没有的**（这是我们要做的）：`audit/`、`results/`、`suspicious_examples.csv`、
+`adjudication_memo.csv`、`impact_analysis.md`、`report.pdf`。
 
-```text
-id,split,uci_row_number,text,label
-```
+---
 
-The fixed split is never regenerated. Public held-out labels are never modified. Proposed training corrections are stored separately in `results/training_label_overlay.csv`.
+## 1. 环境（第一步，必做）
 
-## Environment
-
-The verified environment used:
-
-```text
-Python 3.13.2
-pandas 3.0.2
-numpy 2.4.4
-scipy 1.17.1
-scikit-learn 1.8.0
-matplotlib 3.10.8
-reportlab 5.0.0
-pdfplumber 0.11.10
-pypdf 6.14.2
-```
-
-Install the pinned Python dependencies with:
+**用 `ai2` conda 环境**：
 
 ```powershell
-python -m pip install -r requirements.txt
+conda activate ai2
 ```
 
-## Reproduce the entire project
+⚠️ **不要用裸 `python` / `pip`**。这台机器上它们指向不同环境，且都没装 scikit-learn：
 
-From the repository root, run:
+```
+python  →  D:\pYthon\python.exe        (无 sklearn)
+pip     →  D:\Anaconda\envs\ftec\...   (无 sklearn)   ← 甚至不是同一个环境
+```
+
+VS Code 里记得把解释器切到 `ai2`（`Ctrl+Shift+P` → Python: Select Interpreter →
+`D:\Anaconda\envs\ai2\python.exe`）。
+
+### 已验证的版本（2026-07-17 实测跑通）
+
+| 包                     | `ai2` 实际     | `requirements.txt` 的 pin |
+| ---------------------- | ---------------- | --------------------------- |
+| Python                 | 3.12.11          | —                          |
+| **scikit-learn** | **1.8.0**  | 1.8.0 ✅                    |
+| **matplotlib**   | **3.10.8** | 3.10.8 ✅                   |
+| pandas                 | 2.2.3            | 3.0.2 ⚠️                  |
+| numpy                  | 2.2.6            | 2.4.4 ⚠️                  |
+| scipy                  | 1.16.0           | 1.17.1 ⚠️                 |
+| joblib                 | 1.5.3            | —                          |
+
+> pandas/numpy/scipy 比 pin 的旧，但**已实测：结果逐位复现**（word heldout 99.1023%）。
+> 决定数值结果的是 scikit-learn，而它正好对上。
+> **提交前记得把 `requirements.txt` 改成实际用的版本**——handout 要求写明 software versions。
+
+---
+
+## 2. 跑通公共底座（一次性，约 10 秒）
+
+**严格按这个顺序**，后一步依赖前一步：
 
 ```powershell
-python scripts/run_all.py
+conda activate ai2
+python scripts\download_data.py     # 1. 下载原始语料   (~2s，需要联网)
+python scripts\build_dataset.py     # 2. 建标准工作表   (~1s)
+python scripts\train_baseline.py    # 3. 训练基准模型   (~8s)
 ```
 
-This performs the following verified sequence:
+> ⚠️ 必须用 `python scripts\xxx.py` 这种形式跑。**不要**用 `python -m scripts.xxx`——
+> 脚本内部是 `from common import ...`，靠 Python 把 `scripts/` 放进 `sys.path[0]` 才能找到。
+
+每步都有硬断言，**跑通了就等于数据是对的**：
+
+| 步骤                  | 校验了什么                                                                |
+| --------------------- | ------------------------------------------------------------------------- |
+| `download_data.py`  | 原始文件恰好 5574 行；记录 SHA-256 到`results/data_provenance.json`     |
+| `build_dataset.py`  | 5574 行 / train 4460 / heldout 1114 / id 唯一 / 前缀 T·H 正确 / 无空文本 |
+| `train_baseline.py` | 输出四行指标，对照下表                                                    |
+
+### 实测基准值（跑出来应该完全一致）
+
+```
+   n  accuracy  spam_precision  spam_recall  spam_f1  macro_f1    condition
+4460  0.982063        0.992395     0.872910 0.928826  0.959282     word_oof
+4460  0.982735        0.994307     0.876254 0.931556  0.960839     char_oof
+1114  0.991023        0.992908     0.939597 0.965517  0.980179 word_heldout   ← 官方基线 99.10%
+1114  0.987433        0.992701     0.912752 0.951049  0.971920 char_heldout
+```
+
+其他实测数：原始语料 SHA-256 开头 `1587ea43…`，归一化后唯一文本 **5159** 条
+（→ 5574−5159 = **415 行**参与精确重复，这是 A 的起点参考）。
+
+如果哪个断言炸了或数字对不上，**先别往下做**，八成是数据没对齐或环境不对。
+
+---
+
+## 3. 底座产出了什么
+
+### 数据（`.gitignore` 里，不进 git，每人本地生成）
+
+| 文件                                      | 内容                                                                     |
+| ----------------------------------------- | ------------------------------------------------------------------------ |
+| `raw/SMSSpamCollection`                 | UCI 原始语料，TAB 分隔无表头                                             |
+| **`data/canonical_sms.csv`**      | **标准工作表 5574 行**：`id, split, uci_row_number, text, label` |
+| `data/train.csv` / `data/heldout.csv` | 按 split 切好的两份                                                      |
+
+> 数据不进 git 但**完全可复现**——manifest 固定 + 断言 + SHA-256，每人生成的都逐字节相同。
+
+### 模型信号（进 git，**别各自重训**）
+
+| 文件                                          | 内容                          | 谁要用            |
+| --------------------------------------------- | ----------------------------- | ----------------- |
+| **`results/all_predictions.csv`**     | 全部 5574 行的 word/char 概率 | **B [4,6]** |
+| **`results/heldout_predictions.csv`** | heldout 1114 行的概率         | **C [5]**   |
+| `results/oof_predictions.csv`               | train 4460 行的 OOF 概率      | —                |
+| `results/baseline_metrics.csv/json`         | 基线性能                      | 报告              |
+| `results/baseline_top_features.csv`         | 词模型 top40 spam/ham 特征词  | 报告              |
+
+关键列：`word_p_spam` `word_pred` `char_p_spam` `char_pred` `prediction_source`
+
+**为什么训两个模型？**
+
+- `word` = **正牌 baseline**（TF-IDF 词/bigram + 逻辑回归）。官方分 99.10% 就是它，T5 的 `full_text`
+  对照、干预实验全用它。
+- `char` = **辅助信号源**（字符 3-5gram）。存在的唯一理由是满足协议对 label_error 的
+  「**至少两个独立信号**」要求，顺便抓 `fr33` `w1n` 这类混淆写法。
+
+**为什么训练集用 OOF（5折）？**
+如果用全训练集训练再预测训练集自己，模型已经背下了每条的标签——那「模型反对这个标签」
+这个信号就废了。OOF 保证给每条打分的模型**从没见过这条**。这是 T4 能成立的前提。
+
+---
+
+## 4. 公共契约：这些**不要改**
+
+`common.py` 里有三块是**约定，不是算法**。算法各写各的没关系，约定必须只有一份：
+
+| 组件                                             | 是什么                                                                              | 谁用                   | 改了会怎样                                        |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------- |
+| **`normalize_text`**                     | 精确重复的官方规则（小写 + 空白折叠），就是`audit_protocol.json` 里那句定义的实现 | **A + B**        | A 建的重复簇和 B 排除的近邻对不上号，数字互相矛盾 |
+| **`load_canonical`** / `load_protocol` | 唯一数据真相源入口；阈值(0.92)从 protocol 读，**不硬编码**                    | **A + C**        | 用错数据，或阈值散落各处                          |
+| **`classification_metrics`**             | 统一指标口径，**`pos_label="spam"`**                                        | **A + C + 干预** | 各人数字没法横向比                                |
+
+> **为什么盯 spam 而不是 accuracy**：spam 只占 13.4%，全猜 ham 就有 86.62%。
+> 干预实验里剔除泄漏后总准确率只掉 0.05 个点，但 **spam recall 掉了 3 个点**——
+> 总准确率会把真相藏起来。
+
+### 可以搬走的部分
+
+`common.py` 里这些**只有 C [5] 用**，C 可以直接剪切进自己的 `audit_shortcuts.py`：
+
+- `PROMO_TOKENS`（15 个促销词表）
+- `URL_RE` / `PHONE_RE` / `CURRENCY_RE` / `TOKEN_RE`
+- `shallow_features()`（12 个手工特征）
+- `mask_promotional_tokens()`
+
+搬走前在群里说一声即可，不影响 A 和 B。
+
+### 改 `common.py` 的规矩
+
+要加函数 → 群里说 + 走 PR，**不要三个人同时改这个文件**（必冲突）。
+
+---
+
+## 5. 三人分工：你从哪开始
+
+前提：第 1、2 节跑完。
+
+### A — [目标 1,2,3] 重复 + 泄漏
+
+- **读**：`data/canonical_sms.csv`（`load_canonical()`）
+- **不需要** baseline 预测
+- **写**：`scripts/audit_duplicates.py`、`scripts/audit_leakage.py` → `audit/duplicates.md`、`audit/leakage.md`
+- **要点**：
+  - 精确重复 = `groupby(normalize_text)`，簇内查 label / split 冲突
+  - 近重复 = TF-IDF 余弦 ≥ **0.92**（从 `load_protocol()` 读，别硬编码），**要做阈值敏感度分析**并说明为什么是 0.92
+  - 泄漏 = 把上面两个**跨 split 做**；另外查 `uci_row_number` 位置有没有暴露标签
+
+### B — [目标 4,6] 标错 + 模糊
+
+- **读**：`results/all_predictions.csv`（**不要自己重训模型**）
+- **写**：`scripts/audit_label_noise.py` → `audit/label_noise.md`、`audit/ambiguity.md`
+- **要点**：
+  - 标错需 **≥2 个独立信号**（word 反对 / char 反对 / 近邻反对）。
+    **单靠模型判错绝不能定案**——必须叠人工策略复核。
+  - 模糊 ≠ 低置信度。要**主动保留假阳性案例**（概率骑在 0.5 但内容就是普通 ham），
+    证明「模型不确定」不等于「语义模糊」。
+  - 用 `normalize_text` 排除完全相同文本的近邻，否则重复副本会自我污染证据。
+
+### C — [目标 5] 捷径
+
+- **读**：`data/canonical_sms.csv` + `results/heldout_predictions.csv`（当 `full_text` 对照组）
+- **写**：`scripts/audit_shortcuts.py` → `audit/shortcut_features.md`
+- **要点**：
+  - 浅层模型**只喂手工特征，绝不给原始词序**
+  - 对照组必须**同算法（逻辑回归）**，唯一变量是特征——否则混淆了变量
+  - 注意协议的 70% 阈值形同虚设（多数类已 86.62%），别只报「过阈值」
+  - 逻辑回归的**标准化系数**要导出，这是「具体是哪个捷径」的证据
+
+### ⚠️ 还没人认领的
+
+- **[目标 7] data intervention**——handout 明确要求「比较至少两种」（重标 overlay /
+  按簇去重 / 删可疑训练行 / 按簇重建 split）
+- **收尾集成**——`build_audit_outputs.py`（汇总大家的 findings → `suspicious_examples.csv`）、
+  `generate_report.py`、`validate_submission.py`
+- **`report.pdf`**、`impact_analysis.md`、`logs/chat.md`、AI 使用声明
+
+建议配给谁负责跑底座的那位（底座 + 干预 + 集成 ≈ 一人份）。
+
+---
+
+## 6. 输出格式契约（现在就说好，最后才拼得起来）
+
+每人往 `suspicious_examples.csv` 写行时用**同一个 9 列 schema**（见 `audit_protocol.json`）：
+
+```
+id, split, issue_type, rank, confidence, evidence_1, evidence_2, recommended_action, short_explanation
+```
+
+`issue_type` 只能是：`exact_duplicate` `near_duplicate` `leakage` `label_error` `shortcut` `ambiguous`
+`confidence` 只能是：`low` `medium` `high`
+
+**协议的硬约束**（`validate_submission.py` 会查）：
+
+| 规则                                    | 值             | 含义                                            |
+| --------------------------------------- | -------------- | ----------------------------------------------- |
+| `strict_submission_min_rows`          | 35             | 至少 35 行                                      |
+| `strict_submission_min_issue_types`   | 6              | 六类**都要**覆盖                          |
+| `strict_high_confidence_max_fraction` | **0.55** | high 最多占 55%——**逼你做不确定性校准** |
+
+> 评分用的是老师手里的 **hidden audit key**，里面埋了 **false-positive trap**。
+> 乱报 high 会扣分。宁可少报、把「被拒候选」写清楚。
+
+---
+
+## 7. 已知的坑
+
+### 🟡 `keep_default_na=False` 不能删
+
+`load_canonical()` 里读 CSV 带了这个参数。默认 pandas 会把 `"NA"` `"null"` `"nan"`
+这些**字符串**转成 NaN——短信里真的有人发 "NA"，那条数据就被悄悄破坏了。
+
+### 🟡 别自己重训 baseline
+
+B 和 C 直接读 `results/*.csv`。各自重训会导致 `word_pred` 不一致，
+T5 报告里的 `full_text` 对照组和 T4 用的信号**对不上号**，交叉引用直接崩。
+
+### 🟡 seed 固定不能动
+
+`SEED = 42` 在 `train_baseline.py` 里。handout 要求 README 写明「重生成 artifacts 的
+exact commands」——改了 seed 就没法复现了。
+
+### 🟡 别改 heldout 标签
+
+handout 硬规定。测试重标只能用 **overlay 文件**表示（`results/training_label_overlay.csv`），
+不覆盖原始标签。heldout 的疑似标错**只做标记，不改**---
+
+## 8. 快速自检
+
+确认底座就绪（在 `project/` 目录下跑）：
 
 ```powershell
-python scripts/download_data.py
-python scripts/build_dataset.py
-python scripts/profile_data.py
-python scripts/train_baseline.py
-python scripts/audit_duplicates.py
-python scripts/audit_leakage.py
-python scripts/audit_shortcuts.py
-python scripts/audit_label_noise.py
-python scripts/build_audit_outputs.py
-python scripts/run_interventions.py
-python scripts/generate_report.py
-python scripts/validate_submission.py
+conda activate ai2
+python -c "import sys; sys.path.insert(0,'scripts'); from common import load_canonical; import pandas as pd; df=load_canonical(); p=pd.read_csv('results/all_predictions.csv',keep_default_na=False); h=p[p.split=='heldout']; print('canonical:',len(df),df['split'].value_counts().to_dict()); print('baseline heldout acc:',round((h.word_pred==h.label).mean(),6))"
 ```
 
-The full pipeline is CPU-friendly and uses deterministic model/split seeds where randomness is involved.
+应输出：
 
-## Submission validation
-
-The final command verifies:
-
-- canonical data counts and stable IDs;
-- the exact `suspicious_examples.csv` schema;
-- at least 35 audit rows and all six issue types;
-- allowed split, confidence and decision values;
-- unique continuous ranks;
-- high-confidence fraction no greater than 55%;
-- evidence fields and stable-ID/split agreement;
-- training-only label overlays;
-- finite, in-range metrics;
-- matching root and output PDF copies;
-- 12 report pages and required report sections;
-- absence of unfinished result placeholders in final deliverables.
-
-Expected result:
-
-```text
-Submission validation: PASS
-Canonical rows: 5574
-Suspicious claims: 51
-Issue types: 6
-High-confidence fraction: 0.510
-Adjudication rows: 51
-Report pages: 12
+```
+canonical: 5574 {'train': 4460, 'heldout': 1114}
+baseline heldout acc: 0.991023
 ```
 
-## Audit outputs
-
-The six target-specific reports are:
-
-- [Dataset profile and baseline](audit/profile.md)
-- [Exact and near duplicates](audit/duplicates.md)
-- [Cross-split leakage](audit/leakage.md)
-- [Likely label errors](audit/label_noise.md)
-- [Shortcut features](audit/shortcut_features.md)
-- [Ambiguity and policy boundaries](audit/ambiguity.md)
-
-The intervention comparison is [impact_analysis.md](impact_analysis.md).
-
-The public-format ranked output is [suspicious_examples.csv](suspicious_examples.csv), and the claim-level decision trace is [adjudication_memo.csv](adjudication_memo.csv).
-
-## Repository structure
-
-```text
-.
-|-- audit/                         # Six completed audit reports
-|-- configs/
-|   `-- manual_review.json         # Explicit selected policy judgments
-|-- data/                          # Reproducible canonical tables, ignored by Git
-|-- docs/                          # Research design, workflow and protocols
-|-- logs/
-|   `-- chat.md                    # AI usage and verification log
-|-- models/                        # Reproducible fitted models, ignored by Git
-|-- output/pdf/report.pdf          # Final PDF copy required by PDF workflow
-|-- raw/                           # Downloaded UCI archive and text, ignored by Git
-|-- results/                       # Tracked tables and figures supporting claims
-|-- scripts/                       # Complete reproducible analysis pipeline
-|-- starter/                       # Course manifest, protocol and format example
-|-- adjudication_memo.csv
-|-- impact_analysis.md
-|-- report.pdf
-|-- requirements.txt
-`-- suspicious_examples.csv
-```
-
-## Public protocol compliance
-
-The project follows `starter/configs/audit_protocol.json`:
-
-| Rule | Implemented result |
-|---|---|
-| Near-duplicate threshold | 0.92 primary TF-IDF cosine |
-| Shortcut warning threshold | 0.70 Accuracy; compared against 0.866 majority baseline |
-| Label-error evidence | Model/neighbor signal plus policy review |
-| Minimum ranked rows | 51 versus required 35 |
-| Issue types | All six represented |
-| High-confidence limit | 51.0% versus maximum 55% |
-| Maximum highlighted impact examples | No more than 30 |
-
-False-positive control is explicit. The output includes rejected near-duplicate and ambiguity candidates rather than turning every retrieval into a high-confidence finding.
-
-## AI usage and review limitation
-
-OpenAI Codex was used to implement and execute the pipeline, generate candidate evidence, perform an explicitly AI-assisted evidence and policy pass, draft the documentation and create the PDF. Numerical claims are regenerated from saved results, mappings are protected by assertions, and the final report was rendered page-by-page for visual verification.
-
-No claim of two independent human reviewers or fabricated agreement statistics is made. AI is not presented as a source of ground-truth labels. The exact disclosure is recorded in [logs/chat.md](logs/chat.md) and in the report. Independent team reading remains advisable before academic submission, especially for subjective label-error and ambiguity decisions.
-
-## Citation
-
-Almeida, T. and Hidalgo, J. (2011). *SMS Spam Collection*. UCI Machine Learning Repository. DOI: `10.24432/C5CC84`.
+对上了就可以开工。对不上就回第 1、2 节。

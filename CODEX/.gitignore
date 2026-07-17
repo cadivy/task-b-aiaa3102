@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Editors and operating system
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Downloaded and reproducible data
+raw/
+data/canonical_sms.csv
+data/train.csv
+data/heldout.csv
+
+# Generated model artifacts and temporary output
+models/
+results/tmp/
+tmp/
+*.joblib
+*.pkl
+
+# Generated report intermediates (the final report.pdf remains tracked)
+*.aux
+*.log
+*.out
+*.toc
