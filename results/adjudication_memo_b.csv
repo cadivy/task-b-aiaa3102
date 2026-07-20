@@ -1,0 +1,81 @@
+id,split,public_label,proposed_label,decision,confidence,signal_count,opposition_strength,reason
+T2378,train,spam,ham,should_fix,high,3,0.9915,"Standalone observational joke about driving; no solicitation, contact channel, or charge."
+H0143,heldout,spam,ham,should_fix,high,2,0.9821,"One-line joke about tattoos; no solicitation. Held-out row, flagged only."
+T0059,train,spam,ham,should_fix,high,2,0.9652,Divorce Barbie joke; self-contained punchline with no commercial mechanism.
+T2232,train,spam,ham,should_fix,high,2,0.9628,"Child-versus-teenager joke; conversational, no action requested."
+H0896,heldout,spam,ham,should_fix,high,3,0.916,"Recipient asking what to do after a prize message; a victim query, not a solicitation. Held-out row, flagged only."
+T3272,train,spam,ham,should_fix,medium,2,0.9128,Personal reply from a named sender about a debt collector; no solicitation.
+T1149,train,spam,ham,should_fix,medium,2,0.9058,British joke: a dartboard with no doubles or trebles is useless. No real transaction intent or contact detail.
+T4358,train,spam,ham,should_fix,medium,2,0.8715,Stolen police toilet pun; no commercial content.
+T4296,train,spam,ham,should_fix,medium,2,0.8565,Personal question about having received dating spam; discussing spam is not sending it.
+T4433,train,spam,ham,should_fix,medium,2,0.7434,"Personal rant about a disputed mobile bill; complaint, not solicitation."
+T1798,train,spam,ham,should_fix,medium,2,0.9298,"Quotes a scam opener in order to warn the recipient about it; meta-warning, not the scam."
+T2172,train,spam,ham,should_fix,medium,2,0.8129,Reads as the user reporting money lost to shortcode 88066 and asking for help.
+T1811,train,spam,ham,should_fix,medium,2,0.8272,Near-duplicate of T2172; same help request about shortcode 88066.
+T1322,train,spam,ham,should_fix,medium,2,0.7971,Commentary on network billing responsibility; no solicitation. The 0A$NETWORKS prefix remains unexplained.
+T1174,train,spam,ham,should_fix,low,1,0.5705,Complaint about receiving paid ringtone texts. Only one automated signal opposes; retained on policy reading and consistency with T1798 and T4296.
+T2139,train,spam,spam,ambiguous_policy_case,medium,3,0.9868,"Flirtatious opener with no price, shortcode, or premium number. Personal message and adult-chat lure are both consistent with the text."
+T2710,train,spam,spam,ambiguous_policy_case,medium,3,0.9513,070 number with no tariff disclosure. UK 070 is both a personal follow-me range and a range abused by premium redirect scams; judged on the same standard as T3390.
+T3390,train,spam,spam,ambiguous_policy_case,medium,3,0.7718,Missed-call alert quoting a 070 number without tariff disclosure; same standard as T2710.
+H0550,heldout,spam,spam,ambiguous_policy_case,medium,3,0.9279,The ROMCAPspam prefix may be residue of a real horoscope campaign or a corpus annotation artifact; the body itself is ordinary warm chat.
+T0774,train,spam,spam,ambiguous_policy_case,medium,3,0.7981,"Truncated text implying adult content, but no tariff, number, or shortcode survives in the row."
+T0702,train,spam,spam,ambiguous_policy_case,medium,2,0.9531,Requests address and date of birth for a product trial. Genuine recruitment by an acquaintance and cold data collection are both readable.
+T2847,train,spam,spam,ambiguous_policy_case,medium,2,0.7985,Club ticket notice; spam status depends on whether the recipient is a member who opted into club messages.
+T3981,train,spam,spam,ambiguous_policy_case,medium,2,0.7174,"UNICEF disaster appeal. Charity solicitation is a genuine policy carve-out question, not a commercial broadcast."
+T1951,train,spam,spam,ambiguous_policy_case,medium,2,0.7956,"Personal web page shared with a request for opinions. Depends on sender relationship; no charge or commercial mechanism. The 1/1 marker indicates a single-part message, not a chain."
+T3461,train,spam,spam,ambiguous_policy_case,medium,2,0.6879,Meta commentary demonstrating an anonymous SMS service to the recipient; sender intent cannot be recovered.
+T2758,train,spam,spam,ambiguous_policy_case,medium,1,0.494,Service onboarding prompt asking for age and gender. Cannot distinguish a subscription the user initiated from a cold enrolment lure.
+T2658,train,spam,spam,ambiguous_policy_case,low,1,0.526,Truncated fragment that reads as a personal thank-you; too little text survives to decide.
+T3123,train,spam,spam,ambiguous_policy_case,medium,1,0.4431,Picture link with no tariff. A legitimate photo-sharing notification and a marketing link are both consistent.
+H0030,heldout,spam,spam,ambiguous_policy_case,medium,1,0.4336,"Teaser campaign with a URL but no price, number, or reply keyword; commercial intent is implied rather than evidenced."
+H0935,heldout,ham,ham,false_positive_audit_finding,low,1,0.4809,"""I liked the new mobile"" is ordinary ham. Word and character probabilities straddle 0.5 and neighbours are mixed, but predictive uncertainty alone is neither label error nor semantic ambiguity."
+T0470,train,ham,ham,false_positive_audit_finding,low,1,0.5185,"""Waiting for your call."" is ordinary ham. The word model scores it 0.689 on shallow lexical overlap with call-to-action spam; no neighbour opposes the label."
+T2755,train,spam,spam,keep_but_flag,medium,2,0.9533,"The affectionate wording is packaging; ""one gbp/sms"" is an explicit per-message charge."
+H0814,heldout,spam,spam,keep_but_flag,medium,2,0.9545,"Quiz requiring a keyword reply follows the corpus premium-quiz pattern, though no price is shown."
+T2055,train,spam,spam,keep_but_flag,medium,3,0.8778,"""brought to you by GMW Ltd."" is a bulk-advertising footer, although the row is truncated."
+T0592,train,spam,spam,keep_but_flag,medium,3,0.7412,"Prescription-drug advert disguised as an email alert; ""call 123"" carries no tariff."
+T2229,train,spam,spam,keep_but_flag,medium,2,0.8258,Burger King promotion. A lawful advertiser still sends unsolicited commercial broadcast; there is no consent story available.
+T2273,train,spam,spam,keep_but_flag,medium,2,0.7438,Interflora order deadline promotion with an 0800 number; unsolicited commercial broadcast.
+H0330,heldout,spam,spam,keep_but_flag,medium,3,0.7379,WAP password notice bound to a subscription service at mobsi.com.
+T1505,train,spam,spam,keep_but_flag,low,2,0.9515,Explicit adult-image solicitation.
+T3105,train,spam,spam,keep_but_flag,low,2,0.9103,"""cst std ntwk chg"" plus GBP1.50 is a tariff disclosure."
+T2793,train,spam,spam,keep_but_flag,medium,2,0.9629,"Explicit content with a number and the Nikiyu4.net domain implying a commercial adult service, though no price is stated."
+T3963,train,spam,spam,keep_but_flag,medium,2,0.8933,Promises later access to adult parties; solicitation without tariff disclosure.
+T1926,train,spam,spam,keep_but_flag,low,2,0.8972,"""Txt XXX SLO(4msgs)"" is a standard paid adult-SMS instruction."
+T2521,train,spam,spam,keep_but_flag,low,2,0.7904,Charge confirmation plus an upsell to send more paid content.
+T3864,train,spam,spam,keep_but_flag,medium,2,0.8117,Adult site with credentials; content evidence is clear but no price is quoted.
+T3947,train,spam,spam,keep_but_flag,low,2,0.7235,Lucozade competition with a shortcode and 25p tariff.
+T0948,train,spam,spam,keep_but_flag,low,2,0.7235,Exact duplicate text of T3947.
+T3015,train,spam,spam,keep_but_flag,low,2,0.9003,Fragment 2/2 with a 150p tariff token; text is unreadable but all five neighbours are spam.
+T1557,train,spam,spam,keep_but_flag,low,2,0.7228,Dogging solicitation with a premium number and per-minute tariff.
+T0006,train,spam,spam,keep_but_flag,low,2,0.7265,Flirtatious packaging with explicit send and receive charges.
+T3202,train,spam,spam,keep_but_flag,medium,2,0.8279,Ringtone shortcode fragment; all five neighbours are spam.
+T3926,train,spam,spam,keep_but_flag,medium,2,0.6639,Cinema promotion with a shortcode and a reply keyword for more offers.
+T0935,train,spam,spam,keep_but_flag,low,1,0.5074,Explicit solicitation with shortcode and per-message tariff.
+T3511,train,spam,spam,keep_but_flag,low,1,0.5024,Premium quiz format with a reply shortcode.
+T0660,train,spam,spam,keep_but_flag,low,1,0.5189,Auction outbid notification with an opt-out keyword; standard bulk service spam.
+H0146,heldout,spam,spam,keep_but_flag,low,1,0.4773,Travel promotion with price and booking number.
+T0712,train,spam,spam,keep_but_flag,medium,1,0.5155,Paid-content reminder; automated bulk service message.
+H0151,heldout,spam,spam,keep_but_flag,low,1,0.5352,Dating enrolment with a 100p per SMS tariff.
+T2259,train,spam,spam,keep_but_flag,low,1,0.4484,Ringtone advertisement fragment with a reply keyword.
+H0181,heldout,spam,spam,keep_but_flag,low,2,0.4654,Same enrolment pattern as H0151 with a 150p tariff.
+H0944,heldout,spam,spam,keep_but_flag,medium,1,0.5055,Weekly ringtone subscription notification.
+H1024,heldout,spam,spam,keep_but_flag,medium,1,0.4796,Bulk content promotion with a download link.
+H0801,heldout,spam,spam,keep_but_flag,medium,1,0.4902,Loan advertisement with a company name and phone number.
+T3592,train,spam,spam,keep_but_flag,low,1,0.5289,Explicit adult line with a per-minute tariff.
+T1363,train,spam,spam,keep_but_flag,medium,1,0.3928,Subscription top-up notice; automated bulk message.
+T0433,train,spam,spam,keep_but_flag,medium,1,0.5471,Ringtone delivery confirmation with terms-and-conditions pointer.
+T3811,train,spam,spam,keep_but_flag,low,1,0.4636,Cash giveaway promotion with a site address.
+T4301,train,spam,spam,keep_but_flag,medium,1,0.6017,Auction bid notice with an opt-out keyword and customer-care number.
+T1427,train,spam,spam,keep_but_flag,medium,1,0.4168,WAP game promotion with charge notice and terms.
+T3796,train,spam,spam,keep_but_flag,medium,1,0.4168,Exact duplicate text of T1427.
+T1884,train,spam,spam,keep_but_flag,medium,1,0.6396,Ringtone subscription advert with a shortcode and GBP3 charge.
+T2824,train,spam,spam,keep_but_flag,low,1,0.5361,Stock pump-and-dump promotion.
+T4097,train,spam,spam,keep_but_flag,low,1,0.5134,"""PRIVATE! Your account statement"" is a standard spam opener."
+T0047,train,spam,spam,keep_but_flag,medium,2,0.5145,Sports quiz subscription with a reply keyword.
+T0845,train,spam,spam,keep_but_flag,low,1,0.5253,Premium-number secret-admirer scam with a 150p tariff.
+T4033,train,spam,spam,keep_but_flag,low,1,0.4742,Subscription advert with an 18p per text charge.
+T0341,train,spam,spam,keep_but_flag,low,1,0.4718,Dating line with a premium number.
+H0287,heldout,spam,spam,keep_but_flag,low,1,0.5411,Adult chat line with an explicit per-minute tariff.
+T4431,train,spam,spam,keep_but_flag,low,1,0.3764,Same explicit adult line as T3592 with a PO box added.
+T0255,train,spam,spam,keep_but_flag,medium,2,0.5246,Blind-date service broadcast with an opt-out keyword. The two models did not disagree; only the neighbourhood was mixed.

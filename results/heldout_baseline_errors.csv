@@ -1,0 +1,11 @@
+id,label,word_pred,audit_status,text
+H0143,spam,ham,likely_label_error,"Do you realize that in about 40 years, we'll have thousands of old ladies running around with tattoos?"
+H0287,spam,ham,model_error,CLAIRE here am havin borin time & am now alone U wanna cum over 2nite? Chat now 09099725823 hope 2 C U Luv CLAIRE xx Calls£1/minmoremobsEMSPOBox45PO139WA
+H0318,spam,ham,model_error,FreeMsg:Feelin kinda lnly hope u like 2 keep me company! Jst got a cam moby wanna c my pic?Txt or reply DATE to 82242 Msg150p 2rcv Hlp 08712317606 stop to 82242
+H0330,spam,ham,model_error,Monthly password for wap. mobsi.com is 391784. Use your wap phone not PC.
+H0461,ham,spam,model_error,Dont you have message offer
+H0550,spam,ham,ambiguous_policy_case,ROMCAPspam Everyone around should be responding well to your presence since you are so warm and outgoing. You are bringing in a real breath of sunshine.
+H0814,spam,ham,model_error,"In The Simpsons Movie released in July 2007 name the band that died at the start of the film? A-Green Day, B-Blue Day, C-Red Day. (Send A, B or C)"
+H0896,spam,ham,likely_label_error,Money i have won wining number 946 wot do i do next
+H0903,spam,ham,model_error,FreeMsg Hi baby wow just got a new cam moby. Wanna C a hot pic? or Fancy a chat?Im w8in 4uTxt / rply CHAT to 82242 Hlp 08712317606 Msg150p 2rcv
+H0927,spam,ham,model_error,"Hi babe its Chloe, how r u? I was smashed on saturday night, it was great! How was your weekend? U been missing me? SP visionsms.com Text stop to stop 150p/text"

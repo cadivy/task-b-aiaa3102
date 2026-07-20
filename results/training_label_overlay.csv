@@ -1,0 +1,14 @@
+id,public_label,overlay_label,confidence,reason
+T2378,spam,ham,high,"Standalone observational joke about driving; no solicitation, contact channel, or charge."
+T0059,spam,ham,high,Divorce Barbie joke; self-contained punchline with no commercial mechanism.
+T2232,spam,ham,high,"Child-versus-teenager joke; conversational, no action requested."
+T3272,spam,ham,medium,Personal reply from a named sender about a debt collector; no solicitation.
+T1149,spam,ham,medium,British joke: a dartboard with no doubles or trebles is useless. No real transaction intent or contact detail.
+T4358,spam,ham,medium,Stolen police toilet pun; no commercial content.
+T4296,spam,ham,medium,Personal question about having received dating spam; discussing spam is not sending it.
+T4433,spam,ham,medium,"Personal rant about a disputed mobile bill; complaint, not solicitation."
+T1798,spam,ham,medium,"Quotes a scam opener in order to warn the recipient about it; meta-warning, not the scam."
+T2172,spam,ham,medium,Reads as the user reporting money lost to shortcode 88066 and asking for help.
+T1811,spam,ham,medium,Near-duplicate of T2172; same help request about shortcode 88066.
+T1322,spam,ham,medium,Commentary on network billing responsibility; no solicitation. The 0A$NETWORKS prefix remains unexplained.
+T1174,spam,ham,low,Complaint about receiving paid ringtone texts. Only one automated signal opposes; retained on policy reading and consistency with T1798 and T4296.

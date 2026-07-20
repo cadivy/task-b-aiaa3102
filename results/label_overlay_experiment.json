@@ -1,0 +1,47 @@
+{
+  "seed": 42,
+  "overlay_rows_applied": 13,
+  "heldout_baseline": {
+    "n": 1114,
+    "accuracy": 0.9910233393177738,
+    "spam_precision": 0.9929078014184397,
+    "spam_recall": 0.9395973154362416,
+    "spam_f1": 0.9655172413793104,
+    "macro_f1": 0.9801786413294901,
+    "confusion_matrix_ham_spam": [
+      [
+        964,
+        1
+      ],
+      [
+        9,
+        140
+      ]
+    ]
+  },
+  "heldout_with_overlay": {
+    "n": 1114,
+    "accuracy": 0.9892280071813285,
+    "spam_precision": 0.9928057553956835,
+    "spam_recall": 0.9261744966442953,
+    "spam_f1": 0.9583333333333334,
+    "macro_f1": 0.9760738831615121,
+    "confusion_matrix_ham_spam": [
+      [
+        964,
+        1
+      ],
+      [
+        11,
+        138
+      ]
+    ]
+  },
+  "heldout_predictions_changed": 2,
+  "heldout_baseline_errors": 10,
+  "heldout_error_breakdown": {
+    "model_error": 7,
+    "likely_label_error": 2,
+    "ambiguous_policy_case": 1
+  }
+}
