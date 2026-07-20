@@ -1,0 +1,26 @@
+{
+  "source_script": "scripts/profile_data.py",
+  "inputs": [
+    "data/canonical_sms.csv",
+    "results/data_provenance.json",
+    "results/data_validation.json"
+  ],
+  "outputs": [
+    "profile.md",
+    "results/profile/profile_summary.csv",
+    "results/profile/split_comparison.csv",
+    "results/profile/encoding_artifact_summary.csv",
+    "results/profile/row_position_spam_rate.csv",
+    "results/profile/shallow_features.csv",
+    "results/figures/class_distribution.png",
+    "results/figures/length_distribution.png",
+    "results/figures/shallow_feature_prevalence.png",
+    "results/figures/row_position_spam_rate.png"
+  ],
+  "uses_common_helpers": [
+    "load_canonical",
+    "shallow_features",
+    "normalize_text",
+    "write_json"
+  ]
+}
