@@ -1,0 +1,6 @@
+threshold,candidate_pairs,cross_split_pairs,label_conflict_pairs,unique_heldout_ids_in_cross_split,retention_vs_088
+0.88,445,129,0,82,1.0
+0.9,403,108,0,75,0.9056179775280899
+0.92,363,90,0,65,0.8157303370786517
+0.94,311,56,0,45,0.698876404494382
+0.96,273,46,0,38,0.6134831460674157

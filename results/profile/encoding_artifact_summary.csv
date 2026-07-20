@@ -1,0 +1,5 @@
+artifact_type,n,rate,example_ids
+html_escape,309,0.05543595263724435,T0026|H0007|T0044|T0048|T0067
+replacement_character,0,0.0,
+mojibake_marker,0,0.0,
+non_ascii,483,0.08665231431646932,T0006|T0009|T0013|T0019|T0020

@@ -1,0 +1,53 @@
+{
+  "source_script": "scripts/audit_leakage.py",
+  "method_version": "leakage-audit-v1.1",
+  "scope": "leakage check only; no retraining, data intervention, or new manual review",
+  "inputs": {
+    "exact_duplicate_clusters": "results/duplicate/exact_duplicate_clusters.csv",
+    "exact_duplicate_members": "results/duplicate/exact_duplicate_members.csv",
+    "near_duplicate_review_queue": "results/duplicate/near_duplicate_review_queue.csv",
+    "near_duplicate_review_summary": "results/duplicate/near_duplicate_review_summary.json",
+    "heldout_predictions": "results/heldout_predictions.csv"
+  },
+  "outputs": {
+    "leakage_cases": "results/leakage/leakage_cases.csv",
+    "leakage_heldout_rows": "results/leakage/leakage_heldout_rows.csv",
+    "leakage_metrics": "results/leakage/leakage_metrics.csv",
+    "leakage_representative_examples": "results/leakage/leakage_representative_examples.csv",
+    "leakage_summary": "results/leakage/leakage_summary.json",
+    "leakage_heldout_by_type_figure": "results/figures/leakage_heldout_by_type.png",
+    "leakage_heldout_by_label_figure": "results/figures/leakage_heldout_by_label.png",
+    "leakage_metric_sensitivity_figure": "results/figures/leakage_metric_sensitivity.png",
+    "report": "leakage.md"
+  },
+  "review_dependency": {
+    "source_script": "scripts/review_near_duplicates.py",
+    "review_version": "near-duplicate-review-v1.2-manual-ledger",
+    "remaining_needs_review_pairs": 0
+  },
+  "exact_cross_split_cases": 6,
+  "exact_unique_heldout_ids": 5,
+  "near_reviewed_accepted_cross_split_cases": 85,
+  "near_reviewed_accepted_unique_heldout_ids": 60,
+  "all_leakage_unique_heldout_ids": 63,
+  "heldout_rows_by_leakage_type": {
+    "exact": 3,
+    "exact_and_near_reviewed_accepted": 2,
+    "near_reviewed_accepted": 58
+  },
+  "heldout_rows_by_severity": {
+    "high": 5,
+    "medium": 12,
+    "medium_high": 46
+  },
+  "heldout_rows_by_label": {
+    "ham": 13,
+    "spam": 50
+  },
+  "case_rows_by_match_type": {
+    "exact": 6,
+    "near_reviewed_accepted": 85
+  },
+  "representative_examples": 3,
+  "metrics_rows": 6
+}

@@ -1,0 +1,39 @@
+{
+  "source_script": "scripts/review_near_duplicates.py",
+  "review_version": "near-duplicate-review-v1.3-manual-ledger",
+  "review_policy_version": "near-duplicate-review-policy-v1.0",
+  "review_policy_summary": [
+    "Exact duplicates are retained whenever the normalized strings are identical, even if the text is a common short reply.",
+    "Near duplicates are accepted only when manual review finds evidence of the same message, template, spam campaign, forwarded content, embedded content, or specific personalized variant.",
+    "Near-duplicate candidates that only share generic short conversational wording are rejected unless they contain a specific content anchor beyond the common phrase.",
+    "Lexically similar pairs with material semantic changes are rejected as false positives."
+  ],
+  "input": "results\\duplicate\\near_duplicate_review_queue.csv",
+  "manual_review_ledger": "results\\duplicate\\near_duplicate_manual_review_decisions.csv",
+  "reviewed_queue": "results\\duplicate\\near_duplicate_review_queue.csv",
+  "reviewed_rows": 346,
+  "accepted_pairs": 200,
+  "rejected_false_positive_pairs": 146,
+  "remaining_needs_review_pairs": 0,
+  "accepted_cross_split_pairs": 85,
+  "rejected_cross_split_false_positive_pairs": 5,
+  "accepted_train_train_pairs": 115,
+  "accepted_unique_heldout_ids": 60,
+  "decision_counts": {
+    "accepted": 200,
+    "rejected_false_positive": 146
+  },
+  "category_counts": {
+    "same_spam_campaign_template": 156,
+    "minor_personalization_change": 22,
+    "generic_short_text": 143,
+    "semantic_change": 3,
+    "embedded_or_transcript_variant": 8,
+    "same_forwarded_or_template_ham": 14
+  },
+  "split_pair_counts": {
+    "heldout-train": 41,
+    "train-heldout": 49,
+    "train-train": 256
+  }
+}
