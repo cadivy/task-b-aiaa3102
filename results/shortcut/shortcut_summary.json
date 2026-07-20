@@ -1,0 +1,18 @@
+{
+  "source_script": "scripts/audit_shortcuts.py",
+  "method_version": "shortcut-audit-v1.0",
+  "protocol_version": "1.1-calibrated",
+  "random_seed": 42,
+  "shared_baseline_retrained": false,
+  "warning_threshold": 0.7,
+  "majority_accuracy": 0.8662477558348295,
+  "all_shallow_accuracy": 0.9820466786355476,
+  "all_shallow_spam_f1": 0.9315068493150684,
+  "full_text_accuracy": 0.9910233393177738,
+  "full_text_spam_f1": 0.9655172413793104,
+  "review_queue_rows": 25,
+  "manual_review_rows": 16,
+  "included_findings": 8,
+  "rejected_candidates": 8,
+  "report": "shortcut_features.md"
+}

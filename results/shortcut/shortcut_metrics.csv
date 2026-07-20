@@ -1,0 +1,9 @@
+condition,model_family,feature_set,n,accuracy,spam_precision,spam_recall,spam_f1,macro_f1,tn,fp,fn,tp,warning_threshold,above_warning_threshold
+majority_ham,constant,training majority label only,1114,0.8662477558348295,0.0,0.0,0.0,0.46416546416546417,965,0,149,0,0.7,True
+shape_only,standardized logistic regression,char_count;token_count;avg_token_length;uppercase_ratio;exclamation_count,1114,0.8949730700179533,0.7,0.37583892617449666,0.4890829694323144,0.7152768523999992,941,24,93,56,0.7,True
+contact_promo_only,standardized logistic regression,digit_count;digit_ratio;currency_count;has_url;has_phone;promo_token_count,1114,0.981149012567325,0.9507042253521126,0.9060402684563759,0.9278350515463918,0.9584967720302945,958,7,14,135,0.7,True
+all_shallow,standardized logistic regression,char_count;token_count;avg_token_length;uppercase_ratio;exclamation_count;digit_count;digit_ratio;currency_count;has_url;has_phone;promo_token_count,1114,0.9820466786355476,0.951048951048951,0.912751677852349,0.9315068493150684,0.9605881354013359,958,7,13,136,0.7,True
+row_position_only,standardized logistic regression,row_position,1114,0.8662477558348295,0.0,0.0,0.0,0.46416546416546417,965,0,149,0,0.7,True
+all_shallow_plus_position,standardized logistic regression,char_count;token_count;avg_token_length;uppercase_ratio;exclamation_count;digit_count;digit_ratio;currency_count;has_url;has_phone;promo_token_count;row_position,1114,0.9820466786355476,0.951048951048951,0.912751677852349,0.9315068493150684,0.9605881354013359,958,7,13,136,0.7,True
+masked_text,TF-IDF word/bigram logistic regression,raw text with 15 promotional tokens replaced,1114,0.9892280071813285,0.9790209790209791,0.9395973154362416,0.958904109589041,0.9763528812408016,962,3,9,140,0.7,True
+full_text,frozen TF-IDF word/bigram logistic regression,results/heldout_predictions.csv,1114,0.9910233393177738,0.9929078014184397,0.9395973154362416,0.9655172413793104,0.9801786413294901,964,1,9,140,0.7,True
