@@ -90,46 +90,64 @@ def build_leakage_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]
 
 
 def build_exact_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) -> None:
-    path = RESULTS_DIR / "duplicate" / "reviewed_duplicate_samples.csv"
-    samples = pd.read_csv(path, keep_default_na=False)
-    exact = samples[samples["n_exact_duplicate_clusters"].astype(int) > 0].copy()
-    exact["n_exact_duplicate_partner_samples"] = exact["n_exact_duplicate_partner_samples"].astype(int)
-    exact["cross_split_sort"] = bool_series(exact["cross_split_duplicate"])
-    exact = exact.sort_values(
-        ["cross_split_sort", "n_exact_duplicate_partner_samples", "sample_id"],
+    # Report exact duplicates by CLUSTER (one representative row each), not by
+    # member. 290 clusters cover 705 rows; dumping every member would be bulk
+    # over-reporting. Only the 5 cross-split clusters threaten evaluation
+    # integrity, so those are high; the rest are ordinary dedup housekeeping.
+    clusters = pd.read_csv(
+        RESULTS_DIR / "duplicate" / "exact_duplicate_clusters.csv", keep_default_na=False
+    )
+    members = pd.read_csv(
+        RESULTS_DIR / "duplicate" / "exact_duplicate_members.csv", keep_default_na=False
+    )
+    split_by_id = dict(zip(members["id"], members["split"]))
+
+    clusters["cross_split_sort"] = bool_series(clusters["cross_split"])
+    clusters["cluster_size"] = clusters["cluster_size"].astype(int)
+    clusters = clusters.sort_values(
+        ["cross_split_sort", "cluster_size", "cluster_id"],
         ascending=[False, False, True],
     )
 
-    for _, item in exact.iterrows():
-        action = "should_fix" if str(item["split"]) == "heldout" and bool(item["cross_split_sort"]) else "keep_but_flag"
+    for _, item in clusters.iterrows():
+        cross_split = bool(item["cross_split_sort"])
+        rep_id = item["representative_id"]
+        confidence = "high" if cross_split else "low"
+        action = "rebuild_split_by_cluster" if cross_split else "dedupe_by_cluster"
         add_row(
             rows,
             seen,
             {
-                "id": item["sample_id"],
-                "split": item["split"],
+                "id": rep_id,
+                "split": split_by_id.get(rep_id, item["splits"]),
                 "issue_type": "exact_duplicate",
                 "rank": 0,
-                "confidence": "high",
+                "confidence": confidence,
                 "evidence_1": clip(
-                    f"Exact duplicate cluster(s) {item['exact_cluster_ids']} after lowercase and whitespace normalization"
+                    f"Exact duplicate cluster {item['cluster_id']} of size {item['cluster_size']} "
+                    f"after lowercase and whitespace normalization; splits={item['splits']}"
                 ),
                 "evidence_2": clip(
-                    f"{item['n_exact_duplicate_partner_samples']} duplicate partner sample(s): {item['partner_ids']}; cross_split={item['cross_split_duplicate']}"
+                    f"member_ids={item['member_ids']}; cross_split={item['cross_split']}; "
+                    f"label_conflict={item['label_conflict']}"
                 ),
                 "recommended_action": action,
                 "short_explanation": clip(
-                    "This row belongs to an objective exact duplicate cluster; common short SMS phrases are still exact duplicates under the audit rule."
+                    "Cross-split exact duplicate: a held-out row is byte-identical to training text, "
+                    "so evaluation should rebuild the split by cluster."
+                    if cross_split
+                    else "Objective within-split exact duplicate cluster; dedupe by cluster before training."
                 ),
             },
         )
 
 
-def near_confidence(categories: str, max_similarity: float) -> str:
-    category_set = set(filter(None, str(categories).split("|")))
-    if "same_spam_campaign_template" in category_set or max_similarity >= 0.98:
-        return "high"
-    return "medium"
+def near_confidence(cross_split: bool) -> str:
+    # Near duplicates are a weaker, higher-false-positive signal than exact
+    # matches, and the high-confidence leakage claims are already carried by the
+    # leakage issue_type. So cross-split near pairs are medium (leakage-relevant
+    # but not exact) and within-split ones are low.
+    return "medium" if cross_split else "low"
 
 
 def build_near_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) -> None:
@@ -145,7 +163,7 @@ def build_near_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) -
     )
 
     for _, item in near.iterrows():
-        confidence = near_confidence(item["review_categories"], float(item["max_near_similarity"]))
+        confidence = near_confidence(bool(item["cross_split_sort"]))
         partner_ids = item["cross_split_partner_ids"] or item["partner_ids"]
         action = "should_fix" if str(item["split"]) == "heldout" and bool(item["cross_split_sort"]) else "keep_but_flag"
         add_row(
