@@ -1,0 +1,27 @@
+{
+  "source_script": "scripts/run_impact_interventions.py",
+  "impact_model": "word TF-IDF + Logistic Regression from scripts/train_baseline.py::word_pipeline",
+  "random_seed": 42,
+  "canonical_rows": 5574,
+  "train_rows": 4460,
+  "heldout_rows": 1114,
+  "source_files": {
+    "canonical": "data/canonical_sms.csv",
+    "duplicates_exact": "results/duplicate/exact_duplicate_members.csv",
+    "duplicates_near_review": "results/duplicate/near_duplicate_manual_review_decisions.csv",
+    "leakage": "results/leakage/leakage_heldout_rows.csv",
+    "label_overlay": "results/training_label_overlay.csv if present, otherwise configs/manual_review.json",
+    "manual_review": "configs\\manual_review.json"
+  },
+  "leaked_heldout_rows": 63,
+  "leakage_train_partner_rows_removed": 71,
+  "label_overlay_rows": 13,
+  "ambiguous_training_rows_excluded": 12,
+  "duplicate_training_rows_removed": 417,
+  "combined_training_rows_removed_before_overlay": 478,
+  "outputs": [
+    "results/impact/intervention_metrics.csv",
+    "results/impact/intervention_summary.json",
+    "impact_analysis.md"
+  ]
+}
