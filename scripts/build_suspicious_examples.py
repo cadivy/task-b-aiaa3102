@@ -64,7 +64,10 @@ def build_leakage_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]
     )
 
     for _, item in leakage.iterrows():
-        confidence = "high" if item["severity"] == "high" else "medium"
+        # Certainty follows the evidence type: a byte-identical training match is
+        # a fact, while near-duplicate-based leakage inherits the inference risk
+        # of the near-duplicate judgement. Severity drives rank, not confidence.
+        confidence = "high" if "exact" in str(item["leakage_type"]) else "medium"
         duplicate_ref = item["exact_cluster_ids"] or item["near_pair_ids"]
         add_row(
             rows,
@@ -112,7 +115,10 @@ def build_exact_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) 
     for _, item in clusters.iterrows():
         cross_split = bool(item["cross_split_sort"])
         rep_id = item["representative_id"]
-        confidence = "high" if cross_split else "low"
+        # Exact duplication is a deterministic string rule, so certainty that the
+        # issue holds is high for every cluster. Severity lives in rank order and
+        # in recommended_action, not in the confidence column.
+        confidence = "high"
         action = "rebuild_split_by_cluster" if cross_split else "dedupe_by_cluster"
         add_row(
             rows,
@@ -142,12 +148,11 @@ def build_exact_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) 
         )
 
 
-def near_confidence(cross_split: bool) -> str:
-    # Near duplicates are a weaker, higher-false-positive signal than exact
-    # matches, and the high-confidence leakage claims are already carried by the
-    # leakage issue_type. So cross-split near pairs are medium (leakage-relevant
-    # but not exact) and within-split ones are low.
-    return "medium" if cross_split else "low"
+def near_confidence(max_similarity: float) -> str:
+    # Unlike an exact match, a near-duplicate claim is an inference from a cosine
+    # threshold plus manual review, so it never reaches high certainty. Evidence
+    # strength is the similarity itself, not how severe the consequence is.
+    return "medium" if max_similarity >= 0.98 else "low"
 
 
 def build_near_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) -> None:
@@ -163,7 +168,7 @@ def build_near_rows(rows: list[dict[str, object]], seen: set[tuple[str, str]]) -
     )
 
     for _, item in near.iterrows():
-        confidence = near_confidence(bool(item["cross_split_sort"]))
+        confidence = near_confidence(float(item["max_near_similarity"]))
         partner_ids = item["cross_split_partner_ids"] or item["partner_ids"]
         action = "should_fix" if str(item["split"]) == "heldout" and bool(item["cross_split_sort"]) else "keep_but_flag"
         add_row(
