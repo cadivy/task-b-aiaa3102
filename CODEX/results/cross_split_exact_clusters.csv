@@ -1,6 +1,0 @@
-cluster_id,cluster_size,member_ids,splits,labels,is_cross_split,has_label_conflict,normalized_text,match_type
-E0009,2,H0009|T3705,heldout|train,ham,True,False,"sorry, i'll call later in meeting.",exact
-E0049,3,T0266|H0548|T4368,heldout|train,spam,True,False,december only! had your mobile 11mths+? you are entitled to update to the latest colour camera mobile for free! call the mobile update co free on 08002986906,exact
-E0091,2,T0683|H0909,heldout|train,spam,True,False,"urgent! call 09066350750 from your landline. your complimentary 4* ibiza holiday or 10,000 cash await collection sae t&cs po box 434 sk3 8wp 150 ppm 18+",exact
-E0164,2,T1319|H0412,heldout|train,spam,True,False,"eerie nokia tones 4u, rply tone title to 8007 eg tone dracula to 8007 titles: ghost, addamsfa, munsters, exorcist, twilight www.getzed.co.uk pobox36504w45wq 150p",exact
-E0285,2,H0922|T4292,heldout|train,spam,True,False,a £400 xmas reward is waiting for you! our computer has randomly picked you from our loyal mobile customers to receive a £400 reward. just call 09066380611,exact
