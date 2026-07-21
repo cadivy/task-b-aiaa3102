@@ -21,6 +21,16 @@ h1 {
   border-bottom: 2px solid #1a1a1a;
 }
 
+/* Document title block emitted by pandoc from the title metadata. This is
+   the only h1 in the document; the report body starts at h2. */
+#title-block-header {
+  margin-bottom: 1.1rem;
+}
+
+#title-block-header .title {
+  margin-bottom: 0;
+}
+
 h2 {
   font-size: 1.28rem;
   margin: 1.8rem 0 0.7rem;

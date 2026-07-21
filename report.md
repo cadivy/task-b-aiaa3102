@@ -1,5 +1,3 @@
-# Dataset Forensics and Label Audit
-
 **Topic B — Final Project Report**
 
 **Dataset**: UCI SMS Spam Collection, 5,574 English text messages, split by the fixed course manifest into 4,460 training rows and 1,114 held-out rows
