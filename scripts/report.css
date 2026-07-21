@@ -1,0 +1,121 @@
+@page {
+  size: A4;
+  margin: 18mm 16mm 18mm 16mm;
+}
+
+html { font-size: 10.5pt; }
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+  color: #1a1a1a;
+  max-width: none;
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.9rem;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+h2 {
+  font-size: 1.28rem;
+  margin: 1.8rem 0 0.7rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #c8c8c8;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 1.06rem;
+  margin: 1.3rem 0 0.5rem;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 0.98rem;
+  margin: 1rem 0 0.4rem;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+p { margin: 0 0 0.65rem; orphans: 3; widows: 3; }
+
+ul, ol { margin: 0 0 0.7rem; padding-left: 1.5rem; }
+li { margin-bottom: 0.3rem; }
+
+strong { font-weight: 600; }
+
+/* Tables ---------------------------------------------------------------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.7rem 0 1rem;
+  font-size: 0.86rem;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+thead { background: #f0f0f0; }
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 4px 7px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th { font-weight: 600; }
+
+tbody tr:nth-child(even) { background: #fafafa; }
+
+/* Code ------------------------------------------------------------------ */
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.86em;
+  background: #f2f2f2;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+pre {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-left: 3px solid #666;
+  padding: 8px 11px;
+  overflow-x: auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* Blockquotes ----------------------------------------------------------- */
+blockquote {
+  margin: 0.7rem 0;
+  padding: 0.5rem 0.9rem;
+  border-left: 3px solid #999;
+  background: #f7f7f7;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+blockquote p:last-child { margin-bottom: 0; }
+
+/* Horizontal rules become section separators ---------------------------- */
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 1.4rem 0;
+}

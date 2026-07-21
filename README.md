@@ -141,7 +141,14 @@ python scripts\run_impact_interventions.py # → impact_analysis.md
 # 汇总提交文件
 python scripts\build_suspicious_examples.py  # → suspicious_examples_dup_leak.csv
 python scripts\build_submission_outputs.py   # → suspicious_examples.csv、adjudication_memo.csv
+
+# 最终报告
+python scripts\build_report_pdf.py           # report.md → report.pdf
 ```
+
+> `build_report_pdf.py` 需要 PATH 上有 **pandoc**（实测 3.1.2）以及已安装的
+> **Edge 或 Chrome**（走 headless print-to-pdf）。这条链路避开了 LaTeX 依赖——
+> 本项目机器上没有任何 TeX 引擎。
 
 最后一步会打印协议硬校验结果（≥35 行 / 六类全覆盖 / high ≤55% / schema 匹配），
 四项断言全过才算通过。
@@ -259,10 +266,8 @@ python scripts\build_submission_outputs.py   # → suspicious_examples.csv、adj
   `suspicious_examples.csv`（670 行）、`adjudication_memo.csv`（444 行），
   并内置协议硬校验
 
-### ⚠️ 还没做的
-
-- **`report.pdf`** —— 最终报告
-- **`logs/chat.md`** —— AI 使用记录与声明
+- **报告** —— `report.md`（英文，656 行）→ `report.pdf`（22 页），
+  由 `build_report_pdf.py` 生成；`report_zh_draft_new.md` 为中文工作稿
 
 ---
 
