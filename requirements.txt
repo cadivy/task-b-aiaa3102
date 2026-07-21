@@ -1,8 +1,10 @@
-pandas==3.0.2
-numpy==2.4.4
-scipy==1.17.1
+# Verified versions from the `ai2` conda environment (Python 3.12.11) that
+# produced every tracked artifact under results/ and audit/.
+# scikit-learn determines the numeric results; the baseline reproduces
+# bit-for-bit at word held-out accuracy 99.1023%.
+pandas==2.2.3
+numpy==2.2.6
+scipy==1.16.0
 scikit-learn==1.8.0
 matplotlib==3.10.8
-reportlab==5.0.0
-pdfplumber==0.11.10
-pypdf==6.14.2
+joblib==1.5.3

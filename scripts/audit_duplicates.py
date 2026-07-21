@@ -408,7 +408,7 @@ Representative highest-scoring initial review candidates before adjudication:
 - `results/duplicate/duplicate_summary.json`
 - `results/figures/exact_cluster_sizes.png`
 """
-    (ROOT / "duplicates.md").write_text(report, encoding="utf-8")
+    (ROOT / "audit" / "duplicates.md").write_text(report, encoding="utf-8")
 
 
 def main() -> None:

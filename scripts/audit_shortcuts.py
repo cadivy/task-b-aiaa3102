@@ -38,7 +38,7 @@ from common import (
 SEED = 42
 SHORTCUT_RESULTS_DIR = RESULTS_DIR / "shortcut"
 REVIEW_LEDGER_PATH = ROOT / "configs" / "shortcut_manual_review.csv"
-REPORT_PATH = ROOT / "shortcut_features.md"
+REPORT_PATH = ROOT / "audit" / "shortcut_features.md"
 
 SHAPE_FEATURES = [
     "char_count",
@@ -741,7 +741,7 @@ def main() -> None:
             "rejected_candidates": int((ledger["decision"] == "exclude").sum())
             if not ledger.empty
             else 0,
-            "report": "shortcut_features.md",
+            "report": "audit/shortcut_features.md",
         },
     )
 

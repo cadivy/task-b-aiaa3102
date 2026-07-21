@@ -44,7 +44,7 @@ LEAKAGE_HELDOUT_ROWS_PATH = LEAKAGE_RESULTS_DIR / "leakage_heldout_rows.csv"
 LEAKAGE_METRICS_PATH = LEAKAGE_RESULTS_DIR / "leakage_metrics.csv"
 LEAKAGE_EXAMPLES_PATH = LEAKAGE_RESULTS_DIR / "leakage_representative_examples.csv"
 LEAKAGE_SUMMARY_PATH = LEAKAGE_RESULTS_DIR / "leakage_summary.json"
-REPORT_PATH = ROOT / "leakage.md"
+REPORT_PATH = ROOT / "audit" / "leakage.md"
 
 LEAKAGE_TYPE_FIGURE_PATH = FIGURES_DIR / "leakage_heldout_by_type.png"
 LEAKAGE_LABEL_FIGURE_PATH = FIGURES_DIR / "leakage_heldout_by_label.png"

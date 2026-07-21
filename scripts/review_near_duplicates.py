@@ -27,7 +27,7 @@ SUMMARY_CSV_PATH = DUPLICATE_RESULTS_DIR / "near_duplicate_review_summary.csv"
 SUMMARY_JSON_PATH = DUPLICATE_RESULTS_DIR / "near_duplicate_review_summary.json"
 SAMPLE_SUMMARY_PATH = DUPLICATE_RESULTS_DIR / "reviewed_duplicate_samples.csv"
 DUPLICATE_SUMMARY_PATH = DUPLICATE_RESULTS_DIR / "duplicate_summary.json"
-REPORT_PATH = ROOT / "duplicates.md"
+REPORT_PATH = ROOT / "audit" / "duplicates.md"
 
 REVIEW_COLUMNS = [
     "review_decision",

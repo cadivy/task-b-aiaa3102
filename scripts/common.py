@@ -24,6 +24,7 @@ DATA_DIR = ROOT / "data"
 RESULTS_DIR = ROOT / "results"
 FIGURES_DIR = RESULTS_DIR / "figures"
 MODELS_DIR = ROOT / "models"
+AUDIT_DIR = ROOT / "audit"
 
 CANONICAL_PATH = DATA_DIR / "canonical_sms.csv"
 TRAIN_PATH = DATA_DIR / "train.csv"
@@ -56,7 +57,7 @@ TOKEN_RE = re.compile(r"\b\w+\b", re.UNICODE)
 
 
 def ensure_dirs() -> None:
-    for path in (RAW_DIR, DATA_DIR, RESULTS_DIR, FIGURES_DIR, MODELS_DIR):
+    for path in (RAW_DIR, DATA_DIR, RESULTS_DIR, FIGURES_DIR, MODELS_DIR, AUDIT_DIR):
         path.mkdir(parents=True, exist_ok=True)
 
 

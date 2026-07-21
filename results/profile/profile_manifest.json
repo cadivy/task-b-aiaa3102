@@ -6,7 +6,7 @@
     "results/data_validation.json"
   ],
   "outputs": [
-    "profile.md",
+    "audit/profile.md",
     "results/profile/profile_summary.csv",
     "results/profile/split_comparison.csv",
     "results/profile/encoding_artifact_summary.csv",

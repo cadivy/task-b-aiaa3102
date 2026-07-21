@@ -422,7 +422,7 @@ def main() -> None:
             "source_script": "scripts/profile_data.py",
             "inputs": ["data/canonical_sms.csv", "results/data_provenance.json", "results/data_validation.json"],
             "outputs": [
-                "profile.md",
+                "audit/profile.md",
                 "results/profile/profile_summary.csv",
                 "results/profile/split_comparison.csv",
                 "results/profile/encoding_artifact_summary.csv",
@@ -441,7 +441,7 @@ def main() -> None:
     profile_text = generate_markdown(
         enriched, summary, split_comparison, duplicate_overview, row_rates, artifact_summary
     )
-    (ROOT / "profile.md").write_text(profile_text, encoding="utf-8")
+    (ROOT / "audit" / "profile.md").write_text(profile_text, encoding="utf-8")
 
     print(summary.to_string(index=False))
     print(f"Wrote {(ROOT / 'profile.md')}")
