@@ -265,13 +265,19 @@ def write_report(metrics: pd.DataFrame, summary: dict[str, object]) -> None:
     shortcut = by_condition.loc["shortcut_cue_masking"]
     dedup = by_condition.loc["duplicate_deduplication"]
     combined = by_condition.loc["combined_training_view"]
+    adjudication_path = RESULTS_DIR / "intervention_ambiguity_eval.json"
+    adjudication = (
+        json.loads(adjudication_path.read_text(encoding="utf-8"))
+        if adjudication_path.exists()
+        else None
+    )
 
     lines = [
         "# Impact Analysis",
         "",
         "## Scope",
         "",
-        "The experiments compare five data interventions: leakage handling, training-label overlay, ambiguous-row handling, shortcut masking, and duplicate de-duplication. Canonical data and held-out labels are not edited; each condition is an experimental view produced by `scripts/run_impact_interventions.py`.",
+        "The unified experiment compares five data-intervention families: leakage handling, training-label overlay, ambiguous-row handling, shortcut masking, and duplicate de-duplication. A separate adjudication-aware evaluation is produced by `scripts/intervention_ambiguity_eval.py`. Canonical data and held-out labels are never edited.",
         "",
         "The impact model is the shared word TF-IDF + Logistic Regression baseline from `scripts/train_baseline.py` (`word_pipeline`: unigram/bigram TF-IDF, `C=4.0`, `solver='liblinear'`, `random_state=42`). Each condition retrains the same pipeline on the relevant intervention view.",
         "",
@@ -284,6 +290,17 @@ def write_report(metrics: pd.DataFrame, summary: dict[str, object]) -> None:
         lines.append(
             f"| `{row.condition}` | {row.intervention_family} | {row.train_rows} | {row.heldout_rows} | "
             f"{row.accuracy} | {row.spam_precision} | {row.spam_recall} | {row.spam_f1} | {row.macro_f1} | {row.notes} |"
+        )
+    if adjudication is not None:
+        final_adjudication = adjudication["conditions"][
+            "exclude_ambiguous_and_suspected_label_errors"
+        ]
+        lines.append(
+            "| `adjudication_aware_evaluation` | adjudication_aware_evaluation | 4460 | "
+            f"{final_adjudication['n']} | {pct(final_adjudication['accuracy'])} | "
+            f"{pct(final_adjudication['spam_precision'])} | {pct(final_adjudication['spam_recall'])} | "
+            f"{pct(final_adjudication['spam_f1'])} | {pct(final_adjudication['macro_f1'])} | "
+            "Frozen baseline after excluding two policy-ambiguous and two suspected-label-error held-out rows. |"
         )
 
     lines.extend(
@@ -307,6 +324,14 @@ def write_report(metrics: pd.DataFrame, summary: dict[str, object]) -> None:
             "",
             f"Ambiguous-row handling excludes {summary['ambiguous_training_rows_excluded']} policy-ambiguous training rows and retrains on {int(ambiguous['train_rows'])} rows, again reaching {pct(ambiguous['accuracy'])} accuracy and {pct(ambiguous['spam_f1'])} spam F1. The stable score should not be read as ambiguity being irrelevant. Instead, it means the ambiguous set is small enough not to move this particular aggregate metric, while still lowering confidence in row-level adjudication and in any strict claim that the public label policy is perfectly consistent.",
             "",
+            "### Adjudication-Aware Evaluation",
+            "",
+            (
+                f"The separate frozen-model evaluation removes two policy-ambiguous held-out rows and two suspected held-out label errors, leaving {adjudication['conditions']['exclude_ambiguous_and_suspected_label_errors']['n']} rows. Accuracy becomes {pct(adjudication['conditions']['exclude_ambiguous_and_suspected_label_errors']['accuracy'])} and spam recall becomes {pct(adjudication['conditions']['exclude_ambiguous_and_suspected_label_errors']['spam_recall'])}. This increase must be interpreted cautiously: the two suspected label errors were retrieved because model signals oppose their labels, so removing them is partly circular. The ambiguity-only step is more informative because those rows were selected by policy reading rather than by model failure."
+                if adjudication is not None
+                else "Run `scripts/intervention_ambiguity_eval.py` to produce the adjudication-aware evaluation."
+            ),
+            "",
             "### Shortcut Masking",
             "",
             f"Shortcut cue masking replaces URLs, phone-like strings, money/rate markers, digit runs, and fixed promotional words before both training and evaluation. It reaches {pct(shortcut['accuracy'])} accuracy and {pct(shortcut['spam_f1'])} spam F1. The model still performs well, so the task is not solved only by one obvious token family; however, the lower precision and F1 show that shallow artifacts are part of the learned signal. This affects data-quality interpretation because strong shortcut cues can inflate apparent generalization while hiding weaker semantic robustness.",
@@ -324,6 +349,7 @@ def write_report(metrics: pd.DataFrame, summary: dict[str, object]) -> None:
             "- `scripts/run_impact_interventions.py`: builds all intervention views and rewrites this report.",
             "- `results/impact/intervention_metrics.csv`: one row per condition with metrics and confusion counts.",
             "- `results/impact/intervention_summary.json`: row counts, seed, and source files used by the interventions.",
+            "- `scripts/intervention_ambiguity_eval.py` and `results/intervention_ambiguity_eval.json`: adjudication-aware frozen-model evaluation.",
             "- `impact_analysis.md`: narrative interpretation of the intervention comparison.",
         ]
     )
