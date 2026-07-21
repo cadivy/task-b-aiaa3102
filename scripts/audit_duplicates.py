@@ -324,7 +324,13 @@ def write_report(
 
     near_examples = []
     if not near_review.empty:
-        for _, row in near_review.sort_values("max_cosine", ascending=False).head(8).iterrows():
+        # Many candidate pairs tie at max_cosine == 1.0000, so break ties on the
+        # content-stable pair key; otherwise which eight rows are shown here
+        # depends on incoming order rather than on the data.
+        top_near = near_review.sort_values(
+            ["max_cosine", "id_a", "id_b"], ascending=[False, True, True]
+        ).head(8)
+        for _, row in top_near.iterrows():
             near_examples.append(
                 [
                     row["pair_id"],

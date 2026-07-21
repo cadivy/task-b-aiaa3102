@@ -62,8 +62,8 @@ Representative highest-scoring initial review candidates before adjudication:
 | N0150 | T0388 / T3131 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
 | N0327 | T1847 / T3265 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
 | N0428 | T3193 / T4050 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0172 | T0621 / T2569 | spam | 1.0000 | threshold_candidate_review_needed | needs_review |
 | N0135 | T0279 / T1948 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0172 | T0621 / T2569 | spam | 1.0000 | threshold_candidate_review_needed | needs_review |
 | N0271 | T1332 / T2237 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
 
 ## Risk Interpretation
