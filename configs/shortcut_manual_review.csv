@@ -1,0 +1,17 @@
+id,decision,confidence,recommended_action,review_note
+H0946,include,high,retain_for_shortcut_stress_test,Legitimate apartment-price discussion is pushed to spam by eleven digits and three currency markers; this is a clear cue-induced false positive.
+H0044,include,high,retain_for_shortcut_stress_test,A ringtone-club solicitation has almost none of the usual numeric or contact cues so the shallow model misses clear spam that the text model detects.
+H0287,include,high,retain_for_shortcut_stress_test,A premium-rate adult-chat lure is recovered mainly from a telephone number and price marker while the full-text baseline remains below threshold.
+H0318,include,medium,retain_for_shortcut_stress_test,Phone and reply-cost markers drive the shallow probability to nearly one even though the full-text baseline remains below threshold.
+H0891,include,medium,retain_for_shortcut_stress_test,A mobile-club offer is missed by the shallow probe because it lacks the usual phone currency and promotional-token pattern.
+H0076,include,medium,retain_as_benign_hard_negative,A benign chain-message questionnaire contains many digits and a reply cue which causes a shallow false positive despite ordinary conversational context.
+H0400,include,medium,retain_as_benign_hard_negative,An informal message about a pay rise contains digits currency and uppercase text which pushes the shallow model over the spam threshold.
+H0927,include,medium,retain_for_shortcut_stress_test,URL stop and price cues recover a genuine subscription spam message that the frozen full-text baseline narrowly misses.
+H0143,exclude,low,refer_to_label_noise_review,The public spam label reads like an ordinary joke; a joint model miss does not isolate a shortcut and is better handled by label adjudication.
+H0896,exclude,low,refer_to_label_noise_review,This appears to be a recipient reply rather than an originating promotion so the disagreement is likely label noise rather than shortcut evidence.
+H0491,exclude,low,refer_to_ambiguity_review,Recruitment advertising with a URL and contact request is policy-sensitive so calling the shallow prediction a false positive would overstate the evidence.
+H0475,exclude,medium,exclude_duplicate_candidate,This message is an exact-text duplicate of H0949 and should not be counted as an independent shortcut example.
+H0949,exclude,medium,refer_to_ambiguity_review,The free-SMS service message is both policy-sensitive and duplicated so it is retained for ambiguity review rather than shortcut ranking.
+H0814,exclude,low,keep_but_do_not_rank,The quiz could be a paid service but lacks explicit price or contact evidence; two model misses do not identify a specific shortcut mechanism.
+H0550,exclude,low,refer_to_label_noise_review,The generic horoscope-style wording has uncertain label semantics and no strong shallow-versus-text contrast.
+H0889,exclude,low,keep_but_do_not_rank,The word call is polysemous but the full-text score is also near the boundary making this weaker than the retained benign hard negatives.
