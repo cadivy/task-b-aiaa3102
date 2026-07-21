@@ -10,6 +10,13 @@ Targets the label-noise/ambiguity findings (targets 4 and 6), so it pairs with
 scripts/intervention_leakage_eval.py the way target 6 pairs with target 3: same
 mechanism, different data problem, deliberately different magnitude.
 
+Read the two exclusion sets separately. The suspected label errors were
+retrieved because model signals oppose their label, and on held-out data
+"model opposes the label" and "model got it wrong" are the same statement, so
+removing them raises accuracy by construction and proves nothing. The ambiguous
+rows were selected by reading text against the annotation policy, independent
+of model behaviour, so their hit rate against the error set is a real result.
+
 Run from project/ with:  python scripts/intervention_ambiguity_eval.py
 """
 
@@ -23,8 +30,13 @@ SUSPICIOUS_PATH = RESULTS_DIR / "suspicious_examples_b.csv"
 
 
 def heldout_ids(suspicious: pd.DataFrame, issue_type: str) -> list[str]:
+    # Rows carrying reject_audit_finding are the false positives we submitted on
+    # purpose to show calibration. We adjudicated them as ordinary, unambiguous
+    # examples, so excluding them here would contradict our own decision.
     rows = suspicious[
-        (suspicious["issue_type"] == issue_type) & (suspicious["split"] == "heldout")
+        (suspicious["issue_type"] == issue_type)
+        & (suspicious["split"] == "heldout")
+        & (suspicious["recommended_action"] != "reject_audit_finding")
     ]
     return sorted(rows["id"])
 
@@ -75,10 +87,10 @@ def main() -> None:
     for name, metrics in results.items():
         print(
             f"{name:46s} n={metrics['n']:4d}  acc={metrics['accuracy']:.6f}  "
-            f"spam_recall={metrics['spam_recall']:.6f}"
+            f"spam_recall={metrics['spam_recall']:.6f}  "
+            f"removed_wrong={metrics['excluded_rows_baseline_got_wrong']}/{metrics['excluded_rows']}"
         )
     print()
-    print(f"removed rows the baseline got wrong: {final['excluded_rows_baseline_got_wrong']}/{final['excluded_rows']}")
     print(f"accuracy delta : {payload['accuracy_delta']:+.6f}")
 
 

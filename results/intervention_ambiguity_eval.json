@@ -3,8 +3,7 @@
   "description": "Drop held-out rows the audit judged ambiguous or mislabelled, re-score frozen baseline.",
   "ambiguous_heldout_ids": [
     "H0030",
-    "H0550",
-    "H0935"
+    "H0550"
   ],
   "suspected_label_error_heldout_ids": [
     "H0143",
@@ -32,15 +31,15 @@
       "excluded_rows_baseline_got_wrong": 0
     },
     "exclude_ambiguous": {
-      "n": 1111,
-      "accuracy": 0.991899189918992,
+      "n": 1112,
+      "accuracy": 0.9919064748201439,
       "spam_precision": 0.9928571428571429,
       "spam_recall": 0.9455782312925171,
       "spam_f1": 0.9686411149825784,
-      "macro_f1": 0.9819949760959403,
+      "macro_f1": 0.98199737731576,
       "confusion_matrix_ham_spam": [
         [
-          963,
+          964,
           1
         ],
         [
@@ -48,19 +47,19 @@
           139
         ]
       ],
-      "excluded_rows": 3,
+      "excluded_rows": 2,
       "excluded_rows_baseline_got_wrong": 1
     },
     "exclude_ambiguous_and_suspected_label_errors": {
-      "n": 1109,
-      "accuracy": 0.9936880072137061,
+      "n": 1110,
+      "accuracy": 0.9936936936936936,
       "spam_precision": 0.9928571428571429,
       "spam_recall": 0.9586206896551724,
       "spam_f1": 0.9754385964912281,
-      "macro_f1": 0.9859086412357847,
+      "macro_f1": 0.9859105127158982,
       "confusion_matrix_ham_spam": [
         [
-          963,
+          964,
           1
         ],
         [
@@ -68,10 +67,10 @@
           139
         ]
       ],
-      "excluded_rows": 5,
+      "excluded_rows": 4,
       "excluded_rows_baseline_got_wrong": 3
     }
   },
-  "accuracy_delta": 0.0026646678959323378,
+  "accuracy_delta": 0.0026703543759198922,
   "spam_recall_delta": 0.019023374218930855
 }
