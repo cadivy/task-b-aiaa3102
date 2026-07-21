@@ -37,13 +37,13 @@ The public threshold `0.92` sits in the middle of the sensitivity range. Lower t
 
 | Threshold | Candidate pairs | Cross-split pairs | Unique held-out IDs | Label conflicts |
 |---|---|---|---|---|
-| 0.88 | 445 | 129 | 82 | 0 |
-| 0.90 | 403 | 108 | 75 | 0 |
-| 0.92 | 363 | 90 | 65 | 0 |
-| 0.94 | 311 | 56 | 45 | 0 |
-| 0.96 | 273 | 46 | 38 | 0 |
+| 0.88 | 447 | 129 | 82 | 0 |
+| 0.90 | 405 | 108 | 75 | 0 |
+| 0.92 | 365 | 90 | 65 | 0 |
+| 0.94 | 313 | 56 | 45 | 0 |
+| 0.96 | 275 | 46 | 38 | 0 |
 
-At `0.92`, the automatic retrieval finds 363 non-exact near-duplicate candidate pairs, including 90 cross-split pairs affecting 65 unique held-out rows. The review queue contains 346 pairs after excluding 17 heldout-heldout pairs that are not useful for training-to-evaluation leakage.
+At `0.92`, the automatic retrieval finds 365 non-exact near-duplicate candidate pairs, including 90 cross-split pairs affecting 65 unique held-out rows. The review queue contains 348 pairs after excluding 17 heldout-heldout pairs that are not useful for training-to-evaluation leakage.
 
 ## Human Review Queue
 
@@ -57,14 +57,14 @@ Representative highest-scoring initial review candidates before adjudication:
 
 | Pair | IDs | Label(s) | Max cosine | Suggested reason | Decision |
 |---|---|---|---|---|---|
-| N0174 | T1056 / T4093 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0434 | H0908 / T4439 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0082 | T0388 / T3131 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0297 | T1847 / T3265 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0414 | T3193 / T4050 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0065 | T0279 / T1948 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
-| N0110 | T0621 / T2569 | spam | 1.0000 | threshold_candidate_review_needed | needs_review |
-| N0227 | T1332 / T2237 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0228 | T1056 / T4093 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0077 | H0908 / T4439 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0150 | T0388 / T3131 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0327 | T1847 / T3265 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0428 | T3193 / T4050 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0172 | T0621 / T2569 | spam | 1.0000 | threshold_candidate_review_needed | needs_review |
+| N0135 | T0279 / T1948 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
+| N0271 | T1332 / T2237 | spam | 1.0000 | very_high_similarity_template_review_needed | needs_review |
 
 ## Risk Interpretation
 
@@ -87,7 +87,7 @@ Representative highest-scoring initial review candidates before adjudication:
 
 ## Near-Duplicate Review Results
 
-The review queue has been adjudicated from the fixed manual decision set embedded in `scripts/review_near_duplicates.py` using `near-duplicate-review-v1.3-manual-ledger` and `near-duplicate-review-policy-v1.0`. The script writes `results/duplicate/near_duplicate_manual_review_decisions.csv` as a reproducible ledger, then merges it into `results\duplicate\near_duplicate_review_queue.csv`; it does not classify pairs with text heuristics. Punctuation-only variants remain near duplicates rather than exact duplicates because the exact-duplicate rule intentionally keeps punctuation.
+The review queue has been adjudicated from the stable manual decision ledger `results/duplicate/near_duplicate_manual_review_decisions.csv` using `near-duplicate-review-v1.4-stable-pair-key-ledger` and `near-duplicate-review-policy-v1.0`. The ledger is keyed by `pair_key = sorted(id_a, id_b)`, so manual judgments attach to the underlying sample pair rather than to a display-only `pair_id` that can change when candidates are regenerated. The script merges the ledger into `results\duplicate\near_duplicate_review_queue.csv`; it does not classify pairs with text heuristics. Punctuation-only variants remain near duplicates rather than exact duplicates because the exact-duplicate rule intentionally keeps punctuation.
 
 ### Review Policy
 
@@ -100,7 +100,7 @@ This means a common phrase can count as a duplicate when it is exactly repeated,
 | Review decision | Pair count |
 |---|---|
 | accepted | 200 |
-| rejected_false_positive | 146 |
+| rejected_false_positive | 148 |
 | needs_review | 0 |
 
 The expanded queue includes train-train and cross-split candidates, excluding heldout-heldout pairs. Accepted cross-split near duplicates total 85 pairs and affect 60 unique held-out messages. The reviewed sample-level table contains 922 samples involved in either exact duplicates or accepted near duplicates, including 134 samples with cross-split duplicate evidence.
@@ -110,13 +110,14 @@ The expanded queue includes train-train and cross-split candidates, excluding he
 | Path | Function / content |
 |---|---|
 | `scripts/audit_duplicates.py` | Deterministically rebuilds exact duplicate clusters, all near-duplicate candidates, threshold sensitivity, the review queue, and this report. It keeps cross-split status as columns rather than writing a separate cross-split near-candidate file. |
-| `scripts/review_near_duplicates.py` | Stores the Codex-assisted manual re-review and review policy as an embedded pair-id decision set, writes `near_duplicate_manual_review_decisions.csv`, merges it into `near_duplicate_review_queue.csv` or `near_duplicate_review_queue_reviewed.csv` if the original file is locked, then writes pair-level and sample-level summaries. |
+| `scripts/review_near_duplicates.py` | Reproduces the Codex-assisted manual re-review by reading `near_duplicate_manual_review_decisions.csv` as stable `pair_key` data, merges decisions into `near_duplicate_review_queue.csv` or `near_duplicate_review_queue_reviewed.csv` if the original file is locked, then writes pair-level and sample-level summaries. |
 | `results/duplicate/exact_duplicate_clusters.csv` | One row per exact duplicate cluster after lowercase plus whitespace normalization; includes cluster size, split mix, labels, representative text, and member IDs. |
 | `results/duplicate/exact_duplicate_members.csv` | One row per member of each exact duplicate cluster; useful when you need the original row ID, split, label, text, and normalized text. |
 | `results/duplicate/near_duplicate_candidates.csv` | All non-exact candidate pairs found above the search floor 0.88, with word/character cosine scores, cross-split status, and a flag for the protocol threshold 0.92. |
 | `results/duplicate/near_duplicate_threshold_sensitivity.csv` | Counts at thresholds 0.88, 0.90, 0.92, 0.94, and 0.96; used to justify why 0.92 is a balanced review threshold. |
-| `results/duplicate/near_duplicate_review_queue.csv` | The adjudicated review queue: all protocol-threshold candidates except heldout-heldout pairs, including train-train and cross-split pairs, with manual review fields merged in. |
-| `results/duplicate/near_duplicate_manual_review_decisions.csv` | Fixed manual decision ledger keyed by `pair_id`; this is the source used to reproduce review decisions without script heuristics. |
+| `results/duplicate/near_duplicate_review_queue.csv` | The review queue input: all protocol-threshold candidates except heldout-heldout pairs, including train-train and cross-split pairs. If writable, the review script overwrites this with adjudicated fields. |
+| `results/duplicate/near_duplicate_review_queue_reviewed.csv` | The adjudicated review queue copy written when `near_duplicate_review_queue.csv` is locked by another program. |
+| `results/duplicate/near_duplicate_manual_review_decisions.csv` | Fixed manual decision ledger keyed by stable `pair_key`; this is the source used to reproduce review decisions without script heuristics or unstable pair numbering. |
 | `results/duplicate/near_duplicate_review_summary.csv` | Compact decision-level counts split by decision, cross-split/train-train status, label type, and affected heldout IDs. |
 | `results/duplicate/near_duplicate_review_summary.json` | Machine-readable review summary with aggregate counts only; pair ID lists are intentionally omitted. |
 | `results/duplicate/reviewed_duplicate_samples.csv` | One row per sample involved in exact duplicates or accepted near duplicates; includes duplicate type, cross-split status, partner IDs, counts, categories, and text. |

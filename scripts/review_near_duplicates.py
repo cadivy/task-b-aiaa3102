@@ -1,9 +1,10 @@
 """Reproduce the manual near-duplicate adjudication pass.
 
-The candidate queue is created by scripts/audit_duplicates.py. This script stores
-the fixed manual re-review as pair_id decision sets, writes the reproducible
-manual ledger, merges it into the queue, and emits pair-level and sample-level
-duplicate evidence. It does not infer review decisions from text heuristics.
+The candidate queue is created by scripts/audit_duplicates.py. This script reads
+the fixed manual re-review from a stable pair_key ledger, merges it into the
+queue, and emits pair-level and sample-level duplicate evidence. It does not
+infer review decisions from text heuristics or bind decisions to unstable pair_id
+values.
 """
 
 from __future__ import annotations
@@ -16,7 +17,7 @@ import pandas as pd
 from common import RESULTS_DIR, ROOT, ensure_dirs, load_canonical, write_json
 
 REVIEWER = "Codex-assisted manual review"
-REVIEW_VERSION = "near-duplicate-review-v1.3-manual-ledger"
+REVIEW_VERSION = "near-duplicate-review-v1.4-stable-pair-key-ledger"
 REVIEW_POLICY_VERSION = "near-duplicate-review-policy-v1.0"
 DUPLICATE_RESULTS_DIR = RESULTS_DIR / "duplicate"
 QUEUE_PATH = DUPLICATE_RESULTS_DIR / "near_duplicate_review_queue.csv"
@@ -37,115 +38,44 @@ REVIEW_COLUMNS = [
     "confidence",
 ]
 
-ACCEPTED_HAM_PAIR_IDS = {
-    "N0102", "N0001", "N0003", "N0017", "N0153", "N0094", "N0327", "N0016", "N0093",
-    "N0380", "N0124", "N0377", "N0023", "N0091", "N0092", "N0007", "N0292", "N0426",
-    "N0223", "N0025", "N0291", "N0366", "N0387", "N0341", "N0345", "N0346", "N0209",
-    "N0210", "N0283", "N0344", "N0035", "N0036", "N0037", "N0142", "N0143", "N0266",
-    "N0273", "N0128", "N0123", "N0149", "N0231", "N0373", "N0024", "N0081",
-}
-SEMANTIC_CHANGE_REJECT_PAIR_IDS = {"N0313", "N0274", "N0138"}
-FORWARDED_OR_TEMPLATE_HAM_PAIR_IDS = {
-    "N0341", "N0345", "N0346", "N0209", "N0210", "N0283", "N0344", "N0035", "N0036",
-    "N0037", "N0142", "N0143", "N0266", "N0273",
-}
-EMBEDDED_OR_TRANSCRIPT_HAM_PAIR_IDS = {"N0007", "N0292", "N0426", "N0223", "N0025", "N0291", "N0366", "N0387"}
-MINOR_PERSONALIZATION_HAM_PAIR_IDS = ACCEPTED_HAM_PAIR_IDS - FORWARDED_OR_TEMPLATE_HAM_PAIR_IDS - EMBEDDED_OR_TRANSCRIPT_HAM_PAIR_IDS
+def stable_pair_key(id_a: object, id_b: object) -> str:
+    return "|".join(sorted([str(id_a), str(id_b)]))
 
 
-def accepted_ham_category(pair_id: str) -> tuple[str, str, str]:
-    if pair_id in FORWARDED_OR_TEMPLATE_HAM_PAIR_IDS:
-        return (
-            "same_forwarded_or_template_ham",
-            "Same substantive forwarded/template-style ham message with only punctuation, spacing, or minor wording changes.",
-            "medium",
-        )
-    if pair_id in EMBEDDED_OR_TRANSCRIPT_HAM_PAIR_IDS:
-        return (
-            "embedded_or_transcript_variant",
-            "One message substantially embeds the other or repeats the same specific conversation content with surrounding context.",
-            "medium",
-        )
-    if pair_id in MINOR_PERSONALIZATION_HAM_PAIR_IDS:
-        return (
-            "minor_personalization_change",
-            "Same specific ham message with only a name, addressee, punctuation, casing, or small wording detail changed.",
-            "medium",
-        )
-    raise ValueError(f"Accepted ham pair {pair_id} has no category")
-
-
-def manual_decision(row: pd.Series) -> dict[str, str]:
-    pair_id = row["pair_id"]
-    label_pair = (row["label_a"], row["label_b"])
-    if label_pair == ("spam", "spam"):
-        return {
-            "review_decision": "accepted",
-            "review_category": "same_spam_campaign_template",
-            "reviewer": REVIEWER,
-            "review_notes": "Same spam campaign/template with changed phone numbers, URLs, reference IDs, amounts, dates, names, formatting, casing, or minor wording.",
-            "recommended_action": "treat_as_near_duplicate_leakage_candidate",
-            "confidence": "high",
-        }
-    if label_pair != ("ham", "ham"):
-        raise ValueError(f"Unexpected label pair for {pair_id}: {label_pair}")
-    if pair_id in ACCEPTED_HAM_PAIR_IDS:
-        category, notes, confidence = accepted_ham_category(pair_id)
-        return {
-            "review_decision": "accepted",
-            "review_category": category,
-            "reviewer": REVIEWER,
-            "review_notes": notes,
-            "recommended_action": "treat_as_near_duplicate_leakage_candidate",
-            "confidence": confidence,
-        }
-    if pair_id in SEMANTIC_CHANGE_REJECT_PAIR_IDS:
-        return {
-            "review_decision": "rejected_false_positive",
-            "review_category": "semantic_change",
-            "reviewer": REVIEWER,
-            "review_notes": "Texts are lexically similar but the manual review found a material meaning change, so this is not duplicate evidence.",
-            "recommended_action": "exclude_from_duplicate_evidence",
-            "confidence": "high",
-        }
-    return {
-        "review_decision": "rejected_false_positive",
-        "review_category": "generic_short_text",
-        "reviewer": REVIEWER,
-        "review_notes": "Manual review found only a generic short conversational phrase or acknowledgement. Exact duplicates of such phrases remain objective string duplicates, but non-exact variants need a specific source/template/content anchor to count as near-duplicate evidence.",
-        "recommended_action": "exclude_from_duplicate_evidence",
-        "confidence": "high",
-    }
-
-
-def generate_manual_decisions(queue: pd.DataFrame) -> pd.DataFrame:
-    missing_accepted = sorted(ACCEPTED_HAM_PAIR_IDS - set(queue["pair_id"]))
-    missing_semantic = sorted(SEMANTIC_CHANGE_REJECT_PAIR_IDS - set(queue["pair_id"]))
-    if missing_accepted or missing_semantic:
-        raise ValueError(
-            f"Decision set refers to missing pair IDs: accepted={missing_accepted}, semantic={missing_semantic}"
-        )
-    rows = [{"pair_id": row["pair_id"], **manual_decision(row)} for _, row in queue.iterrows()]
-    decisions = pd.DataFrame(rows)
-    duplicated = decisions[decisions["pair_id"].duplicated()]["pair_id"].tolist()
+def load_manual_decisions(queue: pd.DataFrame) -> pd.DataFrame:
+    if not DECISIONS_PATH.exists():
+        raise FileNotFoundError(f"Manual review ledger not found: {DECISIONS_PATH}")
+    decisions = pd.read_csv(DECISIONS_PATH, keep_default_na=False)
+    if "pair_key" not in decisions.columns:
+        if {"id_a", "id_b"}.issubset(decisions.columns):
+            decisions["pair_key"] = decisions.apply(lambda row: stable_pair_key(row["id_a"], row["id_b"]), axis=1)
+        else:
+            raise ValueError("Manual review ledger must contain pair_key or id_a/id_b columns")
+    duplicated = decisions[decisions["pair_key"].duplicated()]["pair_key"].tolist()
     if duplicated:
-        raise ValueError(f"Manual review ledger has duplicate pair_id values: {duplicated[:10]}")
-    if len(decisions) != len(queue):
-        raise ValueError(f"Expected {len(queue)} decisions, wrote {len(decisions)}")
-    decisions.to_csv(DECISIONS_PATH, index=False)
-    return decisions[["pair_id", *REVIEW_COLUMNS]].copy()
+        raise ValueError(f"Manual review ledger has duplicate pair_key values: {duplicated[:10]}")
+    required = ["pair_key", *REVIEW_COLUMNS]
+    missing_columns = [column for column in required if column not in decisions.columns]
+    if missing_columns:
+        raise ValueError(f"Manual review ledger is missing columns: {missing_columns}")
+    queue_keys = set(queue["pair_key"])
+    extra_keys = sorted(set(decisions["pair_key"]) - queue_keys)
+    if extra_keys:
+        print(f"Ignoring {len(extra_keys)} manual decision(s) not present in the current queue")
+    return decisions[required].copy()
 
 
 def adjudicate(queue: pd.DataFrame, decisions: pd.DataFrame) -> pd.DataFrame:
     stale_review_columns = [column for column in REVIEW_COLUMNS if column in queue.columns]
     base = queue.drop(columns=stale_review_columns)
-    reviewed = base.merge(decisions, on="pair_id", how="left", validate="one_to_one")
-
-    missing = reviewed[reviewed["review_decision"].eq("") | reviewed["review_decision"].isna()]
-    if len(missing):
-        ids = missing["pair_id"].head(20).tolist()
-        raise ValueError(f"Missing manual review decisions for queued pairs: {ids}")
-
+    reviewed = base.merge(decisions, on="pair_key", how="left", validate="one_to_one")
+    missing = reviewed["review_decision"].eq("") | reviewed["review_decision"].isna()
+    reviewed.loc[missing, "review_decision"] = "needs_review"
+    reviewed.loc[missing, "review_category"] = "pending_manual_review"
+    reviewed.loc[missing, "reviewer"] = ""
+    reviewed.loc[missing, "review_notes"] = "No stable-key manual decision exists for this newly surfaced candidate."
+    reviewed.loc[missing, "recommended_action"] = "review_before_use"
+    reviewed.loc[missing, "confidence"] = "low"
     reviewed["reviewer"] = reviewed["reviewer"].replace("", REVIEWER)
     reviewed["review_version"] = REVIEW_VERSION
     return reviewed
@@ -362,7 +292,7 @@ def append_report_section(summary: dict[str, object], sample_summary: pd.DataFra
 
     section = f"""## Near-Duplicate Review Results
 
-The review queue has been adjudicated from the fixed manual decision set embedded in `scripts/review_near_duplicates.py` using `{REVIEW_VERSION}` and `{REVIEW_POLICY_VERSION}`. The script writes `results/duplicate/near_duplicate_manual_review_decisions.csv` as a reproducible ledger, then merges it into `{summary['reviewed_queue']}`; it does not classify pairs with text heuristics. Punctuation-only variants remain near duplicates rather than exact duplicates because the exact-duplicate rule intentionally keeps punctuation.
+The review queue has been adjudicated from the stable manual decision ledger `results/duplicate/near_duplicate_manual_review_decisions.csv` using `{REVIEW_VERSION}` and `{REVIEW_POLICY_VERSION}`. The ledger is keyed by `pair_key = sorted(id_a, id_b)`, so manual judgments attach to the underlying sample pair rather than to a display-only `pair_id` that can change when candidates are regenerated. The script merges the ledger into `{summary['reviewed_queue']}`; it does not classify pairs with text heuristics. Punctuation-only variants remain near duplicates rather than exact duplicates because the exact-duplicate rule intentionally keeps punctuation.
 
 ### Review Policy
 
@@ -385,14 +315,14 @@ The expanded queue includes train-train and cross-split candidates, excluding he
 | Path | Function / content |
 |---|---|
 | `scripts/audit_duplicates.py` | Deterministically rebuilds exact duplicate clusters, all near-duplicate candidates, threshold sensitivity, the review queue, and this report. It keeps cross-split status as columns rather than writing a separate cross-split near-candidate file. |
-| `scripts/review_near_duplicates.py` | Stores the Codex-assisted manual re-review and review policy as an embedded pair-id decision set, writes `near_duplicate_manual_review_decisions.csv`, merges it into `near_duplicate_review_queue.csv` or `near_duplicate_review_queue_reviewed.csv` if the original file is locked, then writes pair-level and sample-level summaries. |
+| `scripts/review_near_duplicates.py` | Reproduces the Codex-assisted manual re-review by reading `near_duplicate_manual_review_decisions.csv` as stable `pair_key` data, merges decisions into `near_duplicate_review_queue.csv` or `near_duplicate_review_queue_reviewed.csv` if the original file is locked, then writes pair-level and sample-level summaries. |
 | `results/duplicate/exact_duplicate_clusters.csv` | One row per exact duplicate cluster after lowercase plus whitespace normalization; includes cluster size, split mix, labels, representative text, and member IDs. |
 | `results/duplicate/exact_duplicate_members.csv` | One row per member of each exact duplicate cluster; useful when you need the original row ID, split, label, text, and normalized text. |
 | `results/duplicate/near_duplicate_candidates.csv` | All non-exact candidate pairs found above the search floor 0.88, with word/character cosine scores, cross-split status, and a flag for the protocol threshold 0.92. |
 | `results/duplicate/near_duplicate_threshold_sensitivity.csv` | Counts at thresholds 0.88, 0.90, 0.92, 0.94, and 0.96; used to justify why 0.92 is a balanced review threshold. |
 | `results/duplicate/near_duplicate_review_queue.csv` | The review queue input: all protocol-threshold candidates except heldout-heldout pairs, including train-train and cross-split pairs. If writable, the review script overwrites this with adjudicated fields. |
 | `results/duplicate/near_duplicate_review_queue_reviewed.csv` | The adjudicated review queue copy written when `near_duplicate_review_queue.csv` is locked by another program. |
-| `results/duplicate/near_duplicate_manual_review_decisions.csv` | Fixed manual decision ledger keyed by `pair_id`; this is the source used to reproduce review decisions without script heuristics. |
+| `results/duplicate/near_duplicate_manual_review_decisions.csv` | Fixed manual decision ledger keyed by stable `pair_key`; this is the source used to reproduce review decisions without script heuristics or unstable pair numbering. |
 | `results/duplicate/near_duplicate_review_summary.csv` | Compact decision-level counts split by decision, cross-split/train-train status, label type, and affected heldout IDs. |
 | `results/duplicate/near_duplicate_review_summary.json` | Machine-readable review summary with aggregate counts only; pair ID lists are intentionally omitted. |
 | `results/duplicate/reviewed_duplicate_samples.csv` | One row per sample involved in exact duplicates or accepted near duplicates; includes duplicate type, cross-split status, partner IDs, counts, categories, and text. |
@@ -407,21 +337,23 @@ def main() -> None:
     if not QUEUE_PATH.exists():
         raise FileNotFoundError(f"Review queue not found: {QUEUE_PATH}")
     queue = pd.read_csv(QUEUE_PATH, keep_default_na=False)
-    decisions = generate_manual_decisions(queue)
+    if "pair_key" not in queue.columns:
+        queue["pair_key"] = queue.apply(lambda row: stable_pair_key(row["id_a"], row["id_b"]), axis=1)
+    decisions = load_manual_decisions(queue)
     reviewed = adjudicate(queue, decisions)
     summary_table, summary_json = summarize(reviewed)
     sample_summary = build_reviewed_duplicate_samples(reviewed)
 
     try:
-        reviewed.to_csv(QUEUE_PATH, index=False)
+        reviewed.to_csv(QUEUE_PATH, index=False, lineterminator="\n")
         output_queue = QUEUE_PATH
     except PermissionError:
         output_queue = REVIEWED_QUEUE_PATH
-        reviewed.to_csv(output_queue, index=False)
+        reviewed.to_csv(output_queue, index=False, lineterminator="\n")
         summary_json["reviewed_queue"] = str(output_queue.relative_to(ROOT))
         summary_json["write_warning"] = "Original review queue was locked; wrote reviewed copy instead."
-    summary_table.to_csv(SUMMARY_CSV_PATH, index=False)
-    sample_summary.to_csv(SAMPLE_SUMMARY_PATH, index=False)
+    summary_table.to_csv(SUMMARY_CSV_PATH, index=False, lineterminator="\n")
+    sample_summary.to_csv(SAMPLE_SUMMARY_PATH, index=False, lineterminator="\n")
     write_json(SUMMARY_JSON_PATH, summary_json)
     update_duplicate_summary(summary_json, sample_summary)
     append_report_section(summary_json, sample_summary)

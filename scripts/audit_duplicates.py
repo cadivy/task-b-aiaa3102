@@ -17,7 +17,6 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.neighbors import NearestNeighbors
 
 from common import (
     FIGURES_DIR,
@@ -32,8 +31,7 @@ from common import (
 
 SEARCH_FLOOR = 0.88
 SENSITIVITY_THRESHOLDS = (0.88, 0.90, 0.92, 0.94, 0.96)
-N_NEIGHBORS = 15
-METHOD_VERSION = "duplicate-audit-v1.0"
+METHOD_VERSION = "duplicate-audit-v1.1-stable-pair-keys"
 DUPLICATE_RESULTS_DIR = RESULTS_DIR / "duplicate"
 
 
@@ -129,21 +127,9 @@ def build_exact_tables(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd
 
 
 def collect_candidate_indices(matrix, floor: float) -> set[tuple[int, int]]:
-    n_neighbors = min(N_NEIGHBORS + 1, matrix.shape[0])
-    model = NearestNeighbors(n_neighbors=n_neighbors, metric="cosine", algorithm="brute")
-    model.fit(matrix)
-    distances, indices = model.kneighbors(matrix)
-    pairs: set[tuple[int, int]] = set()
-    for left, (row_distances, row_indices) in enumerate(zip(distances, indices)):
-        for distance, right in zip(row_distances, row_indices):
-            if left == right:
-                continue
-            similarity = 1.0 - float(distance)
-            if similarity < floor:
-                continue
-            pair = (left, int(right)) if left < int(right) else (int(right), left)
-            pairs.add(pair)
-    return pairs
+    similarity = cosine_similarity(matrix)
+    left_indices, right_indices = np.where(np.triu(similarity >= floor, k=1))
+    return set(zip(left_indices.astype(int), right_indices.astype(int)))
 
 
 def compute_pair_scores(df: pd.DataFrame) -> list[PairScore]:
@@ -194,7 +180,8 @@ def pair_rows(df: pd.DataFrame, scores: list[PairScore], threshold: float) -> pd
         max_cos = score.max_cosine
         rows.append(
             {
-                "pair_id": f"N{len(rows) + 1:04d}",
+                "pair_id": "",
+                "pair_key": "|".join(sorted([str(left["id"]), str(right["id"])])),
                 "id_a": left["id"],
                 "id_b": right["id"],
                 "split_a": left["split"],
@@ -221,9 +208,11 @@ def pair_rows(df: pd.DataFrame, scores: list[PairScore], threshold: float) -> pd
         )
     result = pd.DataFrame(rows)
     if not result.empty:
+        result = result.sort_values(["id_a", "id_b"], ascending=[True, True]).reset_index(drop=True)
+        result["pair_id"] = [f"N{index + 1:04d}" for index in range(len(result))]
         result = result.sort_values(
-            ["above_protocol_threshold", "cross_split", "max_cosine", "pair_id"],
-            ascending=[False, False, False, True],
+            ["above_protocol_threshold", "cross_split", "max_cosine", "id_a", "id_b"],
+            ascending=[False, False, False, True, True],
         ).reset_index(drop=True)
     return result
 
@@ -448,7 +437,7 @@ def main() -> None:
         "exact_normalization": protocol.get("minimum_definitions", {}).get("exact_duplicate"),
         "near_duplicate_threshold": threshold,
         "search_floor": SEARCH_FLOOR,
-        "n_neighbors": N_NEIGHBORS,
+        "candidate_collection": "full_pairwise_threshold_scan",
         "exact_duplicate_clusters": int(len(clusters)),
         "rows_in_exact_duplicate_clusters": int(clusters["cluster_size"].sum()) if len(clusters) else 0,
         "repeated_rows_beyond_first": int((clusters["cluster_size"] - 1).sum()) if len(clusters) else 0,

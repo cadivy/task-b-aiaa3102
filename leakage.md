@@ -61,8 +61,8 @@ Held-out rows by severity:
 | example_type | case_id | heldout_id | train_id | max_cosine | review_category | confidence | heldout_text | train_text |
 |---|---|---|---|---|---|---|---|---|
 | exact_duplicate | L_EXACT_E0009_H0009_T3705 | H0009 | T3705 | 1.0000 | exact_duplicate | high | Sorry, I'll call later in meeting. | Sorry, I'll call later In meeting. |
-| near_spam_campaign_template | L_NEAR_N0434 | H0908 | T4439 | 1.0000 | same_spam_campaign_template | high | Had your contract mobile 11 Mnths? Latest Motorola, Nokia etc. all FREE! Double Mins & Text on Orange tariffs. TEXT Y... | Had your contract mobile 11 Mnths? Latest Motorola, Nokia etc. all FREE! Double Mins & Text on Orange tariffs. TEXT Y... |
-| near_ham_personalization | L_NEAR_N0102 | H0136 | T4269 | 1.0000 | minor_personalization_change | medium | So when do you wanna gym harri | So when do you wanna gym? |
+| near_spam_campaign_template | L_NEAR_N0077 | H0908 | T4439 | 1.0000 | same_spam_campaign_template | high | Had your contract mobile 11 Mnths? Latest Motorola, Nokia etc. all FREE! Double Mins & Text on Orange tariffs. TEXT Y... | Had your contract mobile 11 Mnths? Latest Motorola, Nokia etc. all FREE! Double Mins & Text on Orange tariffs. TEXT Y... |
+| near_ham_personalization | L_NEAR_N0017 | H0136 | T4269 | 1.0000 | minor_personalization_change | medium | So when do you wanna gym harri | So when do you wanna gym? |
 
 ## Metric Sensitivity
 

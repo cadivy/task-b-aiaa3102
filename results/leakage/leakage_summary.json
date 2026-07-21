@@ -22,7 +22,7 @@
   },
   "review_dependency": {
     "source_script": "scripts/review_near_duplicates.py",
-    "review_version": "near-duplicate-review-v1.2-manual-ledger",
+    "review_version": "near-duplicate-review-v1.4-stable-pair-key-ledger",
     "remaining_needs_review_pairs": 0
   },
   "exact_cross_split_cases": 6,
