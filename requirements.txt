@@ -1,5 +1,5 @@
-# Verified versions from the `ai2` conda environment (Python 3.12.11) that
-# produced every tracked artifact under results/ and audit/.
+# Verified versions (Python 3.12.11) that produced every tracked artifact
+# under results/ and audit/.
 # scikit-learn determines the numeric results; the baseline reproduces
 # bit-for-bit at word held-out accuracy 99.1023%.
 pandas==2.2.3

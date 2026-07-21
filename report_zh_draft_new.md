@@ -612,8 +612,6 @@ held-out 上另有一条标为 ambiguous 的 **H0935 未被移出**：它是 §6
 环境为 Python 3.12.11 / scikit-learn 1.8.0 / matplotlib 3.10.8 / pandas 2.2.3 / numpy 2.2.6 / scipy 1.16.0。数值结果由 scikit-learn 决定，已验证逐位复现（word held-out 99.1023%）。
 
 ```powershell
-conda activate ai2
-
 # 公共底座
 python scripts\download_data.py
 python scripts\build_dataset.py

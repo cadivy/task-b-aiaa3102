@@ -23,9 +23,7 @@ report.pdf                最终报告（由 report.md 生成）
 
 ## 2. 环境
 
-```powershell
-conda activate ai2
-```
+任意 Python 环境，只要版本满足下表：
 
 | 包           | 版本    |
 | ------------ | ------- |
@@ -41,17 +39,13 @@ conda activate ai2
 
 生成 `report.pdf` 另需 PATH 上有 **pandoc**（实测 3.1.2）与已安装的 **Edge 或 Chrome**。
 
-> 不要用裸 `python` / `pip`——本机上它们指向未安装 scikit-learn 的其他环境。
-
 ---
 
 ## 3. 精确命令
 
-从干净克隆开始，按顺序执行：
+从干净克隆开始，在已激活的上述环境中按顺序执行：
 
 ```powershell
-conda activate ai2
-
 # 数据与基线信号
 python scripts\download_data.py            # 下载 UCI 语料，校验 5574 行 + SHA-256
 python scripts\build_dataset.py            # 对齐 manifest → data/canonical_sms.csv
