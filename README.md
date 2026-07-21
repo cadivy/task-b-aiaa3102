@@ -14,13 +14,13 @@ Exact commands and software versions needed to regenerate the main artifacts.
 | matplotlib | 3.10.8 |
 | joblib | 1.5.3 |
 
-These match `requirements.txt`. scikit-learn determines the numeric results, which reproduce bit-for-bit at word held-out accuracy 99.1023%.
+scikit-learn determines the numeric results, which reproduce bit-for-bit at word held-out accuracy 99.1023%.
 
 Building `report.pdf` additionally requires **pandoc** (tested with 3.1.2) on PATH and either **Microsoft Edge** or **Google Chrome** installed.
 
 ## Commands
 
-Run from a clean clone, in order:
+The scripts read `starter/data/split_manifest.csv` and `starter/configs/audit_protocol.json`, so place the course starter package at `starter/` first. Then run, in order:
 
 ```powershell
 # Data and baseline signals

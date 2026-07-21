@@ -604,7 +604,7 @@ AI tools were used in this project to draft candidate-retrieval scripts, generat
 
 Specifically: AI assisted with writing the signal scripts, generating candidate evidence tables, and drafting first-pass policy readings. Team members read the original messages, made the final accept/reject/relabel decisions, and verified that every number in this report matches the script outputs. AI-produced judgements were checked against the source text before being accepted. Rejected candidates and their reasons are recorded in `adjudication_memo.csv`.
 
-**No inter-annotator agreement statistic, such as Cohen's kappa, is claimed anywhere in this report, and no double annotation was simulated.** Where uncertainty remains, it is recorded as a confidence value and as a rejected candidate rather than resolved silently. The dataset is the public UCI SMS Spam Collection. Dependency versions are listed in `requirements.txt` and `README.md`.
+**No inter-annotator agreement statistic, such as Cohen's kappa, is claimed anywhere in this report, and no double annotation was simulated.** Where uncertainty remains, it is recorded as a confidence value and as a rejected candidate rather than resolved silently. The dataset is the public UCI SMS Spam Collection. Dependency versions are listed in `README.md`.
 
 ---
 

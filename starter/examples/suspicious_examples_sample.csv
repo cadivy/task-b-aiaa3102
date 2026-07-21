@@ -1,7 +1,0 @@
-id,split,issue_type,rank,confidence,evidence_1,evidence_2,recommended_action,short_explanation
-T0001,train,exact_duplicate,1,low,normalized_text_probe,check_duplicate_cluster,review_cluster,"Example row showing the required format for an exact-duplicate claim."
-H0001,heldout,leakage,2,low,nearest_neighbor_probe,compare_against_training,review_for_eval_leakage,"Example row showing how to record a possible cross-split leakage finding."
-H0002,heldout,near_duplicate,3,low,tfidf_neighbor_probe,manual_text_comparison,review_candidate,"Example row showing how to record a near-duplicate candidate."
-T0002,train,label_error,4,low,model_disagreement_probe,manual_policy_review,review_label,"Example row showing how to document a possible label-error claim."
-T0003,train,shortcut,5,low,metadata_only_probe,text_model_comparison,mask_or_audit_source,"Example row showing how to document a shortcut-feature claim."
-T0004,train,ambiguous,6,low,low_agreement_probe,annotation_policy_boundary,document_guideline_boundary,"Example row showing how to document an ambiguous example."
